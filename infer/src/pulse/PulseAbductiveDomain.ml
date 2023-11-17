@@ -1184,6 +1184,15 @@ type summary = t [@@deriving compare, equal, yojson_of]
 
 let summary_with_need_specialization summary = {summary with need_specialization= true}
 
+let sum_pp f sum =
+  let pp_decompiler f =
+    if Config.debug_level_analysis >= 3 then F.fprintf f "decompiler=%a;@;" Decompiler.pp sum.decompiler
+  in
+  F.fprintf f "@[<v>%a@;%a@;PRE=[%a]@;%tneed_specialization=%b@;skipped_calls=%a@;Topl=%a@;full_trace=%a@]"
+    PathCondition.pp sum.path_condition PostDomain.pp sum.post PreDomain.pp sum.pre pp_decompiler
+    sum.need_specialization SkippedCalls.pp sum.skipped_calls PulseTopl.pp_state sum.topl
+    FullTrace.pp sum.full_trace
+
 let is_heap_allocated {post; pre} v =
   BaseMemory.is_allocated (post :> BaseDomain.t).heap v
   || BaseMemory.is_allocated (pre :> BaseDomain.t).heap v
@@ -1430,6 +1439,8 @@ let summary_list_of_post tenv pdesc location astate0 =
         Sat (astate, error)
   in
   (* L.debug_dev "Summary of post called on astate (before filtering) %a \n" pp astate_before_filter; *)
+  (*let _ = (fun () -> L.debug_dev "\n %a" Procdesc.pp_signature pdesc ;
+  L.debug_dev "%a \n" sum_pp astate ;) () in *)
   match error with
   | None -> (
     match

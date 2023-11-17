@@ -1,0 +1,425 @@
+ set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+unsat:false,
+bo: { v7 -> v7 },
+citv: { v7 -> ≠4 },
+formula: known=true (no var=var)
+               &&
+               true (no linear)
+               &&
+               true (no term_eqs)
+               &&
+               true (no tableau)
+               &&
+               {is_int([v7]) = 1},
+         pruned={[v7] ≠ 4},
+         both=true (no var=var)
+              &&
+              true (no linear)
+              &&
+              true (no term_eqs)
+              &&
+              true (no tableau)
+              &&
+              {is_int([v7]) = 1}∧{[v7] ≠ 4}
+{ roots={ &y=v1, &v=v2, &g=v3 };
+  mem  ={ v1 -> { * -> v4 },
+          v2 -> { * -> v6 },
+          v3 -> { * -> v7 },
+          v4 -> { } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v5 -> { s&z (variable `z` declared here at line 3 :t0 ) at line 9, column 1,
+                  MustBeValid(, None, t=0),
+                  Uninitialized } };}
+PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
+       mem  ={ v1 -> { * -> v4 },
+               v2 -> { * -> v6 },
+               v3 -> { * -> v7 },
+               v4 -> { },
+               v6 -> { },
+               v7 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=3
+4
+
+ set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+unsat:false,
+bo: { v7 -> [max(4, v7), min(4, v7)] },
+citv: { v7 -> =4 },
+formula: known=true (no var=var)
+               &&
+               true (no linear)
+               &&
+               true (no term_eqs)
+               &&
+               true (no tableau)
+               &&
+               {is_int([v6]) = 1}∧{is_int([v7]) = 1},
+         pruned={[v7] = 4},
+         both=true (no var=var)
+              &&
+              v7 = 4
+              &&
+              4=v7
+              &&
+              true (no tableau)
+              &&
+              {is_int([v6]) = 1}∧{is_int([v7]) = 1}
+{ roots={ &y=v1, &v=v2, &g=v3 };
+  mem  ={ v1 -> { * -> v4 },
+          v2 -> { * -> v6 },
+          v3 -> { * -> v7 },
+          v4 -> { * -> v8 },
+          v5 -> { * -> v8 },
+          v8 -> { * -> v6 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { ISLAbduced  },
+          v5 -> { s&z (variable `z` declared here at line 3 :t0 ) at line 7, column 9,
+                  MustBeValid(, None, t=0),
+                  WrittenTo  },
+          v8 -> { ISLAbduced , WrittenTo  } };}
+PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
+       mem  ={ v1 -> { * -> v4 },
+               v2 -> { * -> v6 },
+               v3 -> { * -> v7 },
+               v4 -> { * -> v8 },
+               v6 -> { },
+               v7 -> { },
+               v8 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { ISLAbduced ,
+                       MustBeInitialized(, t=7),
+                       MustBeValid(, None, t=7) },
+               v8 -> { ISLAbduced , MustBeValid(, None, t=13) } };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=3
+4
+6
+7
+
+ set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [max(4, v7), min(4, v7)] },
+                      citv: { v7 -> =4 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v6]) = 1}∧{is_int([v7]) = 1},
+                               pruned={[v7] = 4},
+                               both=true (no var=var)
+                                    &&
+                                    v7 = 4
+                                    &&
+                                    4=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v6]) = 1}
+                      { roots={ &y=v1, &v=v2, &g=v3 };
+                        mem  ={ v1 -> { * -> v4 },
+                                v2 -> { * -> v6 },
+                                v3 -> { * -> v7 },
+                                v4 -> { * -> v8 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { ISLAbduced  },
+                                v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
+                             mem  ={ v1 -> { * -> v4 },
+                                     v2 -> { * -> v6 },
+                                     v3 -> { * -> v7 },
+                                     v4 -> { * -> v8 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=7),
+                                             MustBeValid(, None, t=7) },
+                                     v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=3
+                      4
+                      6
+                      7}
+
+ set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [max(4, v7), min(4, v7)] },
+                      citv: { v7 -> =4 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v6]) = 1}∧{is_int([v7]) = 1},
+                               pruned={[v7] = 4},
+                               both=true (no var=var)
+                                    &&
+                                    v7 = 4
+                                    &&
+                                    4=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v6]) = 1}
+                      { roots={ &y=v1, &v=v2, &g=v3 };
+                        mem  ={ v1 -> { * -> v4 },
+                                v2 -> { * -> v6 },
+                                v3 -> { * -> v7 },
+                                v4 -> { * -> v8 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { ISLAbduced  },
+                                v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
+                             mem  ={ v1 -> { * -> v4 },
+                                     v2 -> { * -> v6 },
+                                     v3 -> { * -> v7 },
+                                     v4 -> { * -> v8 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=7),
+                                             MustBeValid(, None, t=7) },
+                                     v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=3
+                      4
+                      6
+                      7}
+
+ set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [max(4, v7), min(4, v7)] },
+                      citv: { v7 -> =4 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1},
+                               pruned={[v7] = 4},
+                               both=true (no var=var)
+                                    &&
+                                    v7 = 4
+                                    &&
+                                    4=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &y=v1, &v=v2, &g=v3 };
+                        mem  ={ v1 -> { * -> v4 },
+                                v2 -> { * -> v6 },
+                                v3 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
+                             mem  ={ v1 -> { * -> v4 },
+                                     v2 -> { * -> v6 },
+                                     v3 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=3
+                      4
+                      6}
+
+ set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [max(4, v7), min(4, v7)] },
+                      citv: { v7 -> =4 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1},
+                               pruned={[v7] = 4},
+                               both=true (no var=var)
+                                    &&
+                                    v7 = 4
+                                    &&
+                                    4=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &y=v1, &v=v2, &g=v3 };
+                        mem  ={ v1 -> { * -> v4 },
+                                v2 -> { * -> v6 },
+                                v3 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
+                             mem  ={ v1 -> { * -> v4 },
+                                     v2 -> { * -> v6 },
+                                     v3 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=3
+                      4
+                      6}
+Caller: foo [defined, Return type: void, Formals: None, Locals:  g:int x:int**]
+
+unsat:false,
+  bo: { v6 -> [1, +oo], v8 -> 0, v10 -> 1 },
+  citv: { v6 -> ≥1, v8 -> =0, v10 -> =1 },
+  formula: known=true (no var=var)
+                 &&
+                 v6 = a1 +1 ∧ v8 = 0 ∧ v10 = 1
+                 &&
+                 0=v8∧1=v10∧rand()=v3∧[a1 +1]=v6
+                 &&
+                 true (no tableau)
+                 &&
+                 {is_int([v3]) = 1},
+           pruned={[v6] ≠ 0},
+           both=true (no var=var)
+                &&
+                v6 = a2 +1 ∧ v8 = 0 ∧ v10 = 1
+                &&
+                0=v8∧1=v10∧rand()=v3∧[a2 +1]=v6
+                &&
+                true (no tableau)
+                &&
+                {is_int([v3]) = 1}∧{[v6] ≠ 0}
+  { roots={ n$6=v6, n$7=v3, &g=v1, &x=v2 };
+    mem  ={ v1 -> { * -> v3 }, v2 -> { * -> v6 }, v6 -> { * -> v8 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0), WrittenTo  },
+            v2 -> { MustBeValid(, None, t=0), WrittenTo  },
+            v6 -> { Allocated,
+                    DynamicType ,
+                    MustBeValid(, None, t=0),
+                    WrittenTo  },
+            v8 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+            v10 -> { Invalid ConstantDereference(is assigned to the constant 1) } };}
+  PRE=[{ roots={ };
+         mem  ={ };
+         attrs={ };}]
+  need_specialization=false
+  skipped_calls={ rand -> call to skipped function occurs here }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=11
+  14
+  15
+  16
+  17
+  18
+Callee: set
+Caller: foo [defined, Return type: void, Formals: None, Locals:  g:int x:int**]
+
+unsat:false,
+  bo: { v6 -> [1, +oo], v9 -> [1, +oo], v10 -> 1 },
+  citv: { v6 -> ≥1, v9 -> ≥1, v10 -> =1 },
+  formula: known=true (no var=var)
+                 &&
+                 v6 = a1 +1 ∧ v9 = a3 +1 ∧ v10 = 1
+                 &&
+                 1=v10∧rand()=v3∧[a1 +1]=v6∧[a3 +1]=v9
+                 &&
+                 true (no tableau)
+                 &&
+                 {is_int([v3]) = 1},
+           pruned={[v6] ≠ 0},
+           both=true (no var=var)
+                &&
+                v6 = a2 +1 ∧ v9 = a4 +1 ∧ v10 = 1
+                &&
+                1=v10∧rand()=v3∧[a2 +1]=v6∧[a4 +1]=v9
+                &&
+                true (no tableau)
+                &&
+                {is_int([v3]) = 1}∧{[v6] ≠ 0}
+  { roots={ n$6=v6, n$7=v3, &g=v1, &x=v2 };
+    mem  ={ v1 -> { * -> v3 }, v2 -> { * -> v6 }, v6 -> { * -> v9 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0), WrittenTo  },
+            v2 -> { MustBeValid(, None, t=0), WrittenTo  },
+            v6 -> { Allocated,
+                    DynamicType ,
+                    MustBeValid(, None, t=0),
+                    WrittenTo  },
+            v9 -> { Allocated,
+                    DynamicType ,
+                    MustBeValid(, None, t=0),
+                    Uninitialized },
+            v10 -> { Invalid ConstantDereference(is assigned to the constant 1) } };}
+  PRE=[{ roots={ };
+         mem  ={ };
+         attrs={ };}]
+  need_specialization=false
+  skipped_calls={ rand -> call to skipped function occurs here }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=11
+  14
+  15
+  16
+  17
+  18
+Callee: set

@@ -22,6 +22,10 @@ type summary_post = label * (AbductiveDomain.summary) [@@deriving yojson_of]
 
 type t = summary_post list [@@deriving yojson_of]
 
+type info = string * string [@@deriving yojson_of]
+
+type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
+
 (* From the computed summary with label, construct a structure for dumping information. *)
 let construct_summary_post (summary_label : AbductiveDomain.summary ExecutionDomain.base_t * label) =
   let summary, label = summary_label in
@@ -41,3 +45,9 @@ let construct_summary_post (summary_label : AbductiveDomain.summary ExecutionDom
 let from_lists_of_summaries summary_labels =
   let result_list = List.map summary_labels ~f:construct_summary_post in
   result_list
+
+let construct_info (proc_name:(Procname.t)) (file_path:(string)) = Procname.get_method proc_name, file_path
+
+let construct_context (proc_name:(Procname.t)) (file_path:(string)) (summary: AbductiveDomain.t) = 
+  let info = construct_info proc_name file_path in
+  (info, summary)

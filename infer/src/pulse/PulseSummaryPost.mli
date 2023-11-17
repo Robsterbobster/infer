@@ -23,6 +23,14 @@ type summary_post = label * (AbductiveDomain.summary) [@@deriving yojson_of]
 
 type t = summary_post list [@@deriving yojson_of]
 
+type info = string * string [@@deriving yojson_of]
+
+type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
+
 val from_lists_of_summaries : 
   (AbductiveDomain.summary ExecutionDomain.base_t * label) list
   ->  t
+
+val construct_info : Procname.t -> string -> info
+
+val construct_context : Procname.t -> string -> AbductiveDomain.t -> context

@@ -302,7 +302,6 @@ module Parameter = struct
   let of_typ typ =
     match typ.Typ.desc with Typ.Tptr ({desc= Tstruct name}, Pk_pointer) -> Some name | _ -> None
 
-
   let pp_parameters fmt parameters =
     if List.exists ~f:Option.is_some parameters then
       (* the tests rely on the fact that we discard non-pointer-to-struct types for some reason,

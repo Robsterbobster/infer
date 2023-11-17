@@ -235,6 +235,8 @@ val is_pre_without_isl_abduced : t -> bool
 (** private type to make sure {!summary_of_post} is always called when creating summaries *)
 type summary = private t [@@deriving compare, equal, yojson_of]
 
+val sum_pp : Format.formatter -> summary -> unit
+
 val skipped_calls_match_pattern : summary -> bool
 
 val summary_with_need_specialization : summary -> summary
