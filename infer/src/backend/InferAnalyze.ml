@@ -194,7 +194,7 @@ let analyze source_files_to_analyze =
     Out_channel.newline stdout;
     Out_channel.flush stdout; *)
   in
-  f_json json "context.json");
+  f_json json "context.json";f_json json "mappings.json" );
   if Config.pulse_fix_mode then (
     (* Special rountine for fix mode. Here, only 1 func needs to be analyzed. *)
     let fix_file = match Lazy.force (source_files_to_analyze) with
