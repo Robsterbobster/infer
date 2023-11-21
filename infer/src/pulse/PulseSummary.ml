@@ -143,9 +143,9 @@ list) =
 let of_posts tenv proc_desc err_log location posts =
   let summary_labels_list = List.mapi posts ~f:(fun i exec_state ->
       L.d_printfln "Creating spec out of state #%d:@\n%a" i ExecutionDomain.pp exec_state ;
-      (* if String.equal "set" (Procname.get_method (Procdesc.get_proc_name proc_desc)) then (L.debug_dev "\n %a" Procdesc.pp_signature proc_desc ;
+      if String.equal "set" (Procname.get_method (Procdesc.get_proc_name proc_desc)) then (L.debug_dev "\n %a" Procdesc.pp_signature proc_desc ;
       L.debug_dev "%a" Errlog.pp_errors  err_log ;
-      L.debug_dev "%a \n" ExecutionDomain.pp exec_state ; );*)
+      L.debug_dev "%a \n" ExecutionDomain.pp exec_state ; );
       exec_summary_of_post_common tenv proc_desc err_log location exec_state
         ~continue_program:(fun astate -> ContinueProgram astate)
       |> SatUnsat.sat )
