@@ -29,7 +29,7 @@ type mapping = string * AbstractValue.t [@@deriving yojson_of]
 
 type mappings = mapping list [@@deriving yojson_of]
 
-type info = string * string [@@deriving yojson_of]
+type info = string * string * int * int [@@deriving yojson_of]
 
 type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
 
@@ -62,8 +62,8 @@ let from_formals_actuals_lst (formals: (Pvar.t list)) (actuals: (AbstractValue.t
   | List.Or_unequal_lengths.Unequal_lengths -> []  
 
   
-let construct_info (proc_name:(Procname.t)) (file_path:(string)) = Procname.get_method proc_name, file_path
+let construct_info (proc_name:(Procname.t)) (file_path:(string)) (line_num: (int)) (column_num: (int)) = Procname.get_method proc_name, file_path, line_num, column_num
 
-let construct_context (proc_name:(Procname.t)) (file_path:(string)) (summary: AbductiveDomain.t)= 
-  let info = construct_info proc_name file_path in
+let construct_context (proc_name:(Procname.t)) (file_path:(string)) (line_num: (int)) (column_num: (int)) (summary: AbductiveDomain.t)= 
+  let info = construct_info proc_name file_path line_num column_num in
   (info, summary)

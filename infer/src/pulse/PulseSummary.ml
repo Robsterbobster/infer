@@ -101,7 +101,6 @@ let exec_summary_of_post_common tenv ~continue_program proc_desc err_log locatio
       let error_trace = LatentIssue.to_diagnostic latent_issue |> Diagnostic.get_trace in
       let error_trace_start = Errlog.get_loc_trace_start error_trace in
       let error_trace_end = Errlog.get_loc_trace_end error_trace in
-      let _ = (fun () -> L.debug_dev "%a \n" AbductiveDomain.sum_pp astate; ) () in
       Sat 
         [ ( LatentAbortProgram {astate; latent_issue}
         , SummaryPost.LatentAbortProgram (error_trace_start.line, error_trace_end.line) ) ]
@@ -143,9 +142,6 @@ list) =
 let of_posts tenv proc_desc err_log location posts =
   let summary_labels_list = List.mapi posts ~f:(fun i exec_state ->
       L.d_printfln "Creating spec out of state #%d:@\n%a" i ExecutionDomain.pp exec_state ;
-      if String.equal "set" (Procname.get_method (Procdesc.get_proc_name proc_desc)) then (L.debug_dev "\n %a" Procdesc.pp_signature proc_desc ;
-      L.debug_dev "%a" Errlog.pp_errors  err_log ;
-      L.debug_dev "%a \n" ExecutionDomain.pp exec_state ; );
       exec_summary_of_post_common tenv proc_desc err_log location exec_state
         ~continue_program:(fun astate -> ContinueProgram astate)
       |> SatUnsat.sat )

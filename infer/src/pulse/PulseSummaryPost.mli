@@ -30,7 +30,7 @@ type mapping = (string * AbstractValue.t) [@@deriving yojson_of]
 
 type mappings = mapping list [@@deriving yojson_of]
 
-type info = string * string [@@deriving yojson_of]
+type info = string * string * int * int [@@deriving yojson_of]
 
 type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
 
@@ -42,6 +42,6 @@ val construct_mapping: Pvar.t -> AbstractValue.t -> mapping
 
 val from_formals_actuals_lst: Pvar.t list -> AbstractValue.t list -> mappings
 
-val construct_info : Procname.t -> string -> info
+val construct_info : Procname.t -> string -> int -> int -> info
 
-val construct_context : Procname.t -> string -> AbductiveDomain.t -> context
+val construct_context : Procname.t -> string -> int -> int -> AbductiveDomain.t -> context

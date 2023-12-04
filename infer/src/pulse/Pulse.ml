@@ -52,8 +52,10 @@ let append_to_json_array original_json new_data_json =
   | `List lst -> `List (lst @ [new_data_json])
   | _ -> `List ([new_data_json])
 
-let write_context_json (proc_name:(Procname.t)) (file_path:(string)) (summary: AbductiveDomain.t) =
-  let context = PulseSummaryPost.construct_context proc_name file_path summary in
+let write_context_json (proc_name:(Procname.t)) (file_path:(string)) (loc: (Location.t)) (summary: AbductiveDomain.t) =
+  let line_num = loc.line in
+  let column_num = loc.col in
+  let context = PulseSummaryPost.construct_context proc_name file_path line_num column_num summary in
   let json_context = [%yojson_of: PulseSummaryPost.context] context in
   let existing_json = read_existing_json "context.json" in
   let json = append_to_json_array existing_json json_context in
@@ -198,7 +200,7 @@ module PulseTransferFunctions = struct
           let loc = Procdesc.get_loc proc_desc in
           let file = loc.file in
           let path = SourceFile.to_abs_path file in
-          write_context_json (Procdesc.get_proc_name proc_desc) path astate; write_mappings_json mappings
+          write_context_json (Procdesc.get_proc_name proc_desc) path call_loc astate; write_mappings_json mappings;
           )
           )
         ) () in

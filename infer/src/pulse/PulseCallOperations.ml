@@ -317,18 +317,6 @@ let append_to_json_array original_json new_data_json =
   | `List lst -> (lst @ [new_data_json])
   | _ -> [new_data_json]
 
-let write_context_json (proc_name:(Procname.t)) (file_path:(string)) (summary: AbductiveDomain.t) =
-  let context = PulseSummaryPost.construct_context proc_name file_path summary in
-  let json_context = [%yojson_of: PulseSummaryPost.context] context in
-  let existing_json = read_existing_json "context.json" in
-  let json = append_to_json_array existing_json json_context in
-  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
-    (* Yojson.Safe.to_channel stdout json_content;
-    Out_channel.newline stdout;
-    Out_channel.flush stdout; *)
-  in
-  f_json json_context "context.json"
-
 let call_aux tenv path caller_proc_desc call_loc callee_pname ret actuals call_kind callee_proc_desc
     exec_states (astate : AbductiveDomain.t) =
   let formals =
