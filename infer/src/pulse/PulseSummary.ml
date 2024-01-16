@@ -139,6 +139,15 @@ list) =
   in
   f_json json_summary_posts "summary_posts.json"
 
+  let write_procdesc_json (proc_desc:(Procdesc.t)) =
+    let json_proc_desc = [%yojson_of: Procdesc.t] proc_desc in
+    let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+      (* Yojson.Safe.to_channel stdout json_content;
+      Out_channel.newline stdout;
+      Out_channel.flush stdout; *)
+    in
+    f_json json_proc_desc "proc.json"
+
 let of_posts tenv proc_desc err_log location posts =
   let summary_labels_list = List.mapi posts ~f:(fun i exec_state ->
       L.d_printfln "Creating spec out of state #%d:@\n%a" i ExecutionDomain.pp exec_state ;

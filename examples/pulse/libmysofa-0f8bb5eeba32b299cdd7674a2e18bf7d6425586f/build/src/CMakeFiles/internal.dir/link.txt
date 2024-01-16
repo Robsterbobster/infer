@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -g -DDEBUG -DVDEBUG  -rdynamic CMakeFiles/internal.dir/tests/internal.c.o CMakeFiles/internal.dir/tests/tools.c.o CMakeFiles/internal.dir/hrtf/tools.c.o  -o internal  -lm -lcunit 

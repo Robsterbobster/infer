@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -g -DDEBUG -DVDEBUG  -rdynamic CMakeFiles/mysofa2json.dir/tests/sofa2json.c.o CMakeFiles/mysofa2json.dir/tests/json.c.o  -o mysofa2json  libmysofa.a -lm -lz 

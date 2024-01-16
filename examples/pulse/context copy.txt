@@ -1,100 +1,87 @@
- set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+ main [defined, Return type: int, Formals: None, Locals:  p:int* x:int]
 unsat:false,
-bo: { v7 -> v7 },
-citv: { v7 -> ≠4 },
+bo: { v5 -> [1, +oo], v7 -> 123 },
+citv: { v5 -> ≥1, v7 -> =123 },
 formula: known=true (no var=var)
                &&
-               true (no linear)
+               v5 = a2 +1 ∧ v7 = 123
                &&
-               true (no term_eqs)
+               123=v7∧rand()=v4∧vendor([v4])=v5∧[a2 +1]=v5
                &&
                true (no tableau)
                &&
-               {is_int([v7]) = 1},
-         pruned={[v7] ≠ 4},
+               {is_int([v4]) = 1},
+         pruned=true (no atoms),
          both=true (no var=var)
               &&
-              true (no linear)
+              v5 = a1 +1 ∧ v7 = 123
               &&
-              true (no term_eqs)
+              123=v7∧rand()=v4∧vendor([v4])=v5∧[a1 +1]=v5
               &&
               true (no tableau)
               &&
-              {is_int([v7]) = 1}∧{[v7] ≠ 4}
-{ roots={ &y=v1, &v=v2, &g=v3 };
-  mem  ={ v1 -> { * -> v5 }, v2 -> { * -> v6 }, v3 -> { * -> v7 } };
-  attrs={ v4 -> { s&z (variable `z` declared here at line 3 :t0 ) at line 9, column 1,
-                  Uninitialized } };}
-PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
-       mem  ={ v1 -> { * -> v5 },
-               v2 -> { * -> v6 },
-               v3 -> { * -> v7 },
-               v5 -> { },
-               v6 -> { },
-               v7 -> { } };
-       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
-need_specialization=false
-skipped_calls={ }
-Topl={len=0;content=
-       [  ]}
-full_trace=3
-4
-
- set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
-unsat:false,
-bo: { v7 -> [max(4, v7), min(4, v7)] },
-citv: { v7 -> =4 },
-formula: known=true (no var=var)
-               &&
-               true (no linear)
-               &&
-               true (no term_eqs)
-               &&
-               true (no tableau)
-               &&
-               {is_int([v6]) = 1}∧{is_int([v7]) = 1},
-         pruned={[v7] = 4},
-         both=true (no var=var)
-              &&
-              v7 = 4
-              &&
-              4=v7
-              &&
-              true (no tableau)
-              &&
-              {is_int([v6]) = 1}∧{is_int([v7]) = 1}
-{ roots={ &y=v1, &v=v2, &g=v3 };
-  mem  ={ v1 -> { * -> v5 },
-          v2 -> { * -> v6 },
-          v3 -> { * -> v7 },
-          v4 -> { * -> v8 },
-          v5 -> { * -> v8 },
-          v8 -> { * -> v6 } };
-  attrs={ v4 -> { s&z (variable `z` declared here at line 3 :t0 ) at line 7, column 9,
+              {is_int([v4]) = 1}
+{ roots={ };
+  mem  ={ v1 -> { * -> v5 }, v3 -> { * -> v4 }, v5 -> { * -> v7 } };
+  attrs={ v1 -> { s&p (variable `p` declared here at line 35 :t0 ) at line 40, column 3,
+                  MustBeValid(, None, t=0),
                   WrittenTo  },
-          v8 -> { WrittenTo  } };}
-PRE=[{ roots={ &y=v1, &v=v2, &g=v3 };
-       mem  ={ v1 -> { * -> v5 },
-               v2 -> { * -> v6 },
-               v3 -> { * -> v7 },
-               v5 -> { * -> v8 },
-               v6 -> { },
-               v7 -> { },
-               v8 -> { } };
-       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v5 -> { MustBeInitialized(, t=7), MustBeValid(, None, t=7) },
-               v8 -> { MustBeValid(, None, t=13) } };}]
+          v2 -> { MustBeValid(, None, t=0), Uninitialized },
+          v3 -> { s&x (variable `x` declared here at line 37 :t1 ) at line 39, column 3,
+                  MustBeValid(, None, t=0),
+                  WrittenTo  },
+          v5 -> { Invalid CFree(was invalidated by call to `free()`),
+                  PropagateTaintFrom([{v= v4}]),
+                  WrittenTo  },
+          v7 -> { Invalid ConstantDereference(is assigned to the constant 123) } };}
+PRE=[{ roots={ };
+       mem  ={ };
+       attrs={ };}]
 need_specialization=false
-skipped_calls={ }
+skipped_calls={ rand -> call to skipped function occurs here,
+                vendor -> call to skipped function occurs here }
 Topl={len=0;content=
        [  ]}
-full_trace=3
-4
-6
-7
+full_trace=35
+37
+39
+40
 
- set [defined, Return type: void, Formals:  y:int** v:int g:int, Locals:  z:int*]
+ main [defined, Return type: int, Formals: None, Locals:  p:int* x:int]
+{LatentInvalidAccess(p) unsat:false,
+                        bo: { },
+                        citv: { },
+                        formula: known=true (no var=var)
+                                       &&
+                                       true (no linear)
+                                       &&
+                                       true (no term_eqs)
+                                       &&
+                                       true (no tableau)
+                                       &&
+                                       true (no atoms),
+                                 pruned=true (no atoms),
+                                 both=true (no var=var)
+                                      &&
+                                      true (no linear)
+                                      &&
+                                      true (no term_eqs)
+                                      &&
+                                      true (no tableau)
+                                      &&
+                                      true (no atoms)
+                        { roots={ };
+                          mem  ={ };
+                          attrs={ };}
+                        PRE=[{ roots={ };
+                               mem  ={ };
+                               attrs={ };}]
+                        need_specialization=false
+                        skipped_calls={ rand -> call to skipped function occurs here,
+                                        vendor -> call to skipped function occurs here }
+                        Topl={len=0;content=
+                               [  ]}
+                        full_trace=35
+                        37
+                        39
+                        40}

@@ -1,0 +1,483 @@
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v2 -> v2 },
+                      citv: { v2 -> ≠null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     true (no atoms),
+                               pruned={[v2] ≠ 0},
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {[v2] ≠ 0}
+                      { roots={ &s=v1 };
+                        mem  ={ v1 -> { * -> v2 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &s=v1 };
+                             mem  ={ v1 -> { * -> v2 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=650
+                      653}
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+unsat:false,
+bo: { v2 -> v2, v3 -> 0, v130 -> v130, v131 -> [1, +oo] },
+citv: { v2 -> ≠null, v3 -> =null, v130 -> ≠null, v131 -> ≥1 },
+formula: known=v3=v132
+               &&
+               v2 = v133 -1 ∧ v3 = 0 ∧ v131 = a4 +1 ∧ v132 = 0
+               &&
+               0=v3∧[v133 -1]=v2∧[a4 +1]=v131
+               &&
+               true (no tableau)
+               &&
+               {is_int([v133]) = 1},
+         pruned={[v2] ≠ 0}∧{[v130] ≠ 0}∧{[v133] ≠ 0},
+         both=v3=v132
+              &&
+              v2 = v133 -1 ∧ v3 = 0 ∧ v131 = a3 +1
+              &&
+              0=v3∧[v133 -1]=v2∧[a3 +1]=v131
+              &&
+              true (no tableau)
+              &&
+              {is_int([v133]) = 1}∧{[v2] ≠ 0}∧{[v130] ≠ 0}∧{[v131] ≠ 0}
+              ∧{[v133] ≠ 0}
+{ roots={ &ber_int_memory_fns=v129, &s=v1, &return=v151 };
+  mem  ={ v1 -> { * -> v2 },
+          v2 -> { },
+          v129 -> { * -> v130 },
+          v151 -> { * -> v131 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { ISLAbduced  },
+          v3 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v129 -> { MustBeValid(, None, t=2) },
+          v131 -> { Allocated },
+          v132 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v151 -> { MustBeValid(, None, t=5), WrittenTo  } };}
+PRE=[{ roots={ &ber_int_memory_fns=v129, &s=v1 };
+       mem  ={ v1 -> { * -> v2 },
+               v2 -> { },
+               v129 -> { * -> v130 },
+               v130 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { ISLAbduced ,
+                       MustBeInitialized(, t=2),
+                       MustBeValid(, None, t=2) } };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=650
+653
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+unsat:false,
+bo: { v2 -> v2,
+      v3 -> 0,
+      v125 -> [max(0, v125), min(0, v125)],
+      v126 -> 0,
+      v127 -> [1, +oo] },
+citv: { v2 -> ≠null,
+        v3 -> =null,
+        v125 -> =null,
+        v126 -> =null,
+        v127 -> ≥1 },
+formula: known=v3=v126
+               &&
+               v2 = v128 -1 ∧ v3 = 0 ∧ v126 = 0 ∧ v127 = a2 +1
+               &&
+               0=v3∧[v128 -1]=v2∧[a2 +1]=v127
+               &&
+               true (no tableau)
+               &&
+               {is_int([v128]) = 1},
+         pruned={[v125] = 0}∧{[v2] ≠ 0}∧{[v128] ≠ 0},
+         both=v3=v125=v126
+              &&
+              v2 = v128 -1 ∧ v3 = 0 ∧ v125 = 0 ∧ v127 = a1 +1
+              &&
+              0=v3∧[v128 -1]=v2∧[a1 +1]=v127
+              &&
+              true (no tableau)
+              &&
+              {is_int([v128]) = 1}∧{[v2] ≠ 0}∧{[v127] ≠ 0}∧{[v128] ≠ 0}
+{ roots={ &ber_int_memory_fns=v124, &s=v1, &return=v150 };
+  mem  ={ v1 -> { * -> v2 },
+          v2 -> { },
+          v124 -> { * -> v3 },
+          v150 -> { * -> v127 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { ISLAbduced  },
+          v3 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v124 -> { MustBeValid(, None, t=2) },
+          v126 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v127 -> { Allocated },
+          v150 -> { MustBeValid(, None, t=5), WrittenTo  } };}
+PRE=[{ roots={ &ber_int_memory_fns=v124, &s=v1 };
+       mem  ={ v1 -> { * -> v2 },
+               v2 -> { },
+               v124 -> { * -> v125 },
+               v125 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { ISLAbduced ,
+                       MustBeInitialized(, t=2),
+                       MustBeValid(, None, t=2) } };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=650
+653
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v2 -> v2, v3 -> 0, v95 -> v95, v98 -> v98 },
+                      citv: { v2 -> ≠null,
+                              v3 -> =null,
+                              v95 -> ≠0,
+                              v98 -> ≠null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     v2 = v100 -1 ∧ v3 = 0
+                                     &&
+                                     0=v3∧[v95]()=v101∧[v100 -1]=v2
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v100]) = 1},
+                               pruned={[v2] ≠ 0}∧{[v95] ≠ 0}∧{[v98] ≠ 0}
+                                      ∧{[v100] ≠ 0},
+                               both=true (no var=var)
+                                    &&
+                                    v2 = v100 -1 ∧ v3 = 0
+                                    &&
+                                    0=v3∧[v95]()=v101∧[v100 -1]=v2
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v100]) = 1}∧{[v2] ≠ 0}
+                                    ∧{[v95] ≠ 0}∧{[v98] ≠ 0}∧{[v100] ≠ 0}
+                      { roots={ &ber_errno_addr.ber_int_errno=v93,
+                                &ber_int_errno_fn=v94,
+                                &ber_int_memory_fns=v97,
+                                &s=v1 };
+                        mem  ={ v1 -> { * -> v2 },
+                                v93 -> { * -> v3 },
+                                v94 -> { * -> v95 },
+                                v95 -> { * -> v96 },
+                                v97 -> { * -> v98 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { ISLAbduced  },
+                                v3 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+                                v93 -> { MustBeValid(, None, t=2),
+                                         WrittenTo  },
+                                v94 -> { MustBeValid(, None, t=2) },
+                                v97 -> { MustBeValid(, None, t=2) } };}
+                      PRE=[{ roots={ &ber_errno_addr.ber_int_errno=v93,
+                                     &ber_int_errno_fn=v94,
+                                     &ber_int_memory_fns=v97,
+                                     &s=v1 };
+                             mem  ={ v1 -> { * -> v2 },
+                                     v94 -> { * -> v95 },
+                                     v95 -> { * -> v96 },
+                                     v97 -> { * -> v98 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=2),
+                                             MustBeValid(, None, t=2) },
+                                     v95 -> { MustBeInitialized(, t=2),
+                                              MustBeValid(, None, t=2) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=650
+                      653}
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v2 -> v2, v3 -> 0, v86 -> v86, v89 -> v89 },
+                      citv: { v2 -> ≠null,
+                              v3 -> =null,
+                              v86 -> ≠0,
+                              v89 -> ≠null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     v2 = v91 -1 ∧ v3 = 0
+                                     &&
+                                     0=v3∧[v86]()=v92∧[v91 -1]=v2
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v91]) = 1},
+                               pruned={[v2] ≠ 0}∧{[v86] ≠ 0}∧{[v89] ≠ 0}
+                                      ∧{[v91] ≠ 0},
+                               both=true (no var=var)
+                                    &&
+                                    v2 = v91 -1 ∧ v3 = 0
+                                    &&
+                                    0=v3∧[v86]()=v92∧[v91 -1]=v2
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v91]) = 1}∧{[v2] ≠ 0}
+                                    ∧{[v86] ≠ 0}∧{[v89] ≠ 0}∧{[v91] ≠ 0}
+                      { roots={ &ber_errno_addr.ber_int_errno=v84,
+                                &ber_int_errno_fn=v85,
+                                &ber_int_memory_fns=v88,
+                                &s=v1 };
+                        mem  ={ v1 -> { * -> v2 },
+                                v84 -> { * -> v3 },
+                                v85 -> { * -> v86 },
+                                v86 -> { * -> v87 },
+                                v88 -> { * -> v89 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { ISLAbduced  },
+                                v3 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+                                v84 -> { MustBeValid(, None, t=2),
+                                         WrittenTo  },
+                                v85 -> { MustBeValid(, None, t=2) },
+                                v88 -> { MustBeValid(, None, t=2) } };}
+                      PRE=[{ roots={ &ber_errno_addr.ber_int_errno=v84,
+                                     &ber_int_errno_fn=v85,
+                                     &ber_int_memory_fns=v88,
+                                     &s=v1 };
+                             mem  ={ v1 -> { * -> v2 },
+                                     v85 -> { * -> v86 },
+                                     v86 -> { * -> v87 },
+                                     v88 -> { * -> v89 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=2),
+                                             MustBeValid(, None, t=2) },
+                                     v86 -> { MustBeInitialized(, t=2),
+                                              MustBeValid(, None, t=2) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=650
+                      653}
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v2 -> v2,
+                            v3 -> 0,
+                            v77 -> v77,
+                            v80 -> [max(0, v80), min(0, v80)] },
+                      citv: { v2 -> ≠null,
+                              v3 -> =null,
+                              v77 -> ≠0,
+                              v80 -> =null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     v2 = v82 -1 ∧ v3 = 0
+                                     &&
+                                     0=v3∧[v77]()=v83∧[v82 -1]=v2
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v82]) = 1},
+                               pruned={[v80] = 0}∧{[v2] ≠ 0}∧{[v77] ≠ 0}
+                                      ∧{[v82] ≠ 0},
+                               both=v3=v80
+                                    &&
+                                    v2 = v82 -1 ∧ v3 = 0
+                                    &&
+                                    0=v3∧[v77]()=v83∧[v82 -1]=v2
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v82]) = 1}∧{[v2] ≠ 0}
+                                    ∧{[v77] ≠ 0}∧{[v82] ≠ 0}
+                      { roots={ &ber_errno_addr.ber_int_errno=v75,
+                                &ber_int_errno_fn=v76,
+                                &ber_int_memory_fns=v79,
+                                &s=v1 };
+                        mem  ={ v1 -> { * -> v2 },
+                                v75 -> { * -> v3 },
+                                v76 -> { * -> v77 },
+                                v77 -> { * -> v78 },
+                                v79 -> { * -> v3 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { ISLAbduced  },
+                                v3 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+                                v75 -> { MustBeValid(, None, t=2),
+                                         WrittenTo  },
+                                v76 -> { MustBeValid(, None, t=2) },
+                                v79 -> { MustBeValid(, None, t=2) } };}
+                      PRE=[{ roots={ &ber_errno_addr.ber_int_errno=v75,
+                                     &ber_int_errno_fn=v76,
+                                     &ber_int_memory_fns=v79,
+                                     &s=v1 };
+                             mem  ={ v1 -> { * -> v2 },
+                                     v76 -> { * -> v77 },
+                                     v77 -> { * -> v78 },
+                                     v79 -> { * -> v80 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=2),
+                                             MustBeValid(, None, t=2) },
+                                     v77 -> { MustBeInitialized(, t=2),
+                                              MustBeValid(, None, t=2) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=650
+                      653}
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v2 -> v2,
+                            v3 -> 0,
+                            v68 -> v68,
+                            v71 -> [max(0, v71), min(0, v71)] },
+                      citv: { v2 -> ≠null,
+                              v3 -> =null,
+                              v68 -> ≠0,
+                              v71 -> =null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     v2 = v73 -1 ∧ v3 = 0
+                                     &&
+                                     0=v3∧[v68]()=v74∧[v73 -1]=v2
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v73]) = 1},
+                               pruned={[v71] = 0}∧{[v2] ≠ 0}∧{[v68] ≠ 0}
+                                      ∧{[v73] ≠ 0},
+                               both=v3=v71
+                                    &&
+                                    v2 = v73 -1 ∧ v3 = 0
+                                    &&
+                                    0=v3∧[v68]()=v74∧[v73 -1]=v2
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v73]) = 1}∧{[v2] ≠ 0}
+                                    ∧{[v68] ≠ 0}∧{[v73] ≠ 0}
+                      { roots={ &ber_errno_addr.ber_int_errno=v66,
+                                &ber_int_errno_fn=v67,
+                                &ber_int_memory_fns=v70,
+                                &s=v1 };
+                        mem  ={ v1 -> { * -> v2 },
+                                v66 -> { * -> v3 },
+                                v67 -> { * -> v68 },
+                                v68 -> { * -> v69 },
+                                v70 -> { * -> v3 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { ISLAbduced  },
+                                v3 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+                                v66 -> { MustBeValid(, None, t=2),
+                                         WrittenTo  },
+                                v67 -> { MustBeValid(, None, t=2) },
+                                v70 -> { MustBeValid(, None, t=2) } };}
+                      PRE=[{ roots={ &ber_errno_addr.ber_int_errno=v66,
+                                     &ber_int_errno_fn=v67,
+                                     &ber_int_memory_fns=v70,
+                                     &s=v1 };
+                             mem  ={ v1 -> { * -> v2 },
+                                     v67 -> { * -> v68 },
+                                     v68 -> { * -> v69 },
+                                     v70 -> { * -> v71 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=2),
+                                             MustBeValid(, None, t=2) },
+                                     v68 -> { MustBeInitialized(, t=2),
+                                              MustBeValid(, None, t=2) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=650
+                      653}
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+unsat:false,
+bo: { v2 -> v2, v3 -> 0, v64 -> 0 },
+citv: { v2 -> ≠null, v3 -> =null, v64 -> =null },
+formula: known=v3=v64
+               &&
+               v2 = v65 -1 ∧ v3 = 0 ∧ v64 = 0
+               &&
+               0=v3∧[v65 -1]=v2
+               &&
+               true (no tableau)
+               &&
+               {is_int([v65]) = 1},
+         pruned={[v2] ≠ 0},
+         both=v3=v64=v65
+              &&
+              v2 = -1 ∧ v3 = 0 ∧ v64 = 0
+              &&
+              -1=v2∧0=v3
+              &&
+              true (no tableau)
+              &&
+              true (no atoms)
+{ roots={ &s=v1, &return=v149 };
+  mem  ={ v1 -> { * -> v2 }, v2 -> { }, v149 -> { * -> v64 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { ISLAbduced  },
+          v3 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v64 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v65 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v149 -> { MustBeValid(, None, t=5), WrittenTo  } };}
+PRE=[{ roots={ &s=v1 };
+       mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { ISLAbduced ,
+                       MustBeInitialized(, t=2),
+                       MustBeValid(, None, t=2) } };}]
+need_specialization=false
+skipped_calls={ __infer_skip -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=650
+653
+
+ ber_strdup [defined, Return type: char*, Formals:  s:char const *, Locals: None]
+unsat:false,
+bo: { v2 -> v2,
+      v3 -> 0,
+      v38 -> [max(0, v38), min(0, v38)],
+      v40 -> v40,
+      v41 -> 2 },
+citv: { v2 -> ≠null, v3 -> =null, v38 -> =0, v40 -> ≠null, v41 -> =2 },
+formula: known=v3=v42
+               &&
+               v2 = v43 -1 ∧ v3 = 0 ∧ v41 = 2 ∧ v42 = 0
+               &&
+               0=v3∧2=v41∧[v43 -1]=v2
+               &&
+               true (no tableau)
+               &&
+               {is_int([v43]) = 1},
+
+

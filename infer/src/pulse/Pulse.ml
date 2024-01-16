@@ -66,16 +66,16 @@ let write_context_json (proc_name:(Procname.t)) (file_path:(string)) (loc: (Loca
   in
   f_json json "context.json"
 
-  let write_mappings_json (mappings: PulseSummaryPost.mappings) =
-    let json_mapping = [%yojson_of: PulseSummaryPost.mappings] mappings in
-    let existing_json = read_existing_json "mappings.json" in
-    let json = append_to_json_array existing_json json_mapping in
-    let f_json json_content fname = Yojson.Safe.to_file fname json_content;
-      (* Yojson.Safe.to_channel stdout json_content;
-      Out_channel.newline stdout;
-      Out_channel.flush stdout; *)
-    in
-    f_json json "mappings.json"
+let write_mappings_json (mappings: PulseSummaryPost.mappings) =
+  let json_mapping = [%yojson_of: PulseSummaryPost.mappings] mappings in
+  let existing_json = read_existing_json "mappings.json" in
+  let json = append_to_json_array existing_json json_mapping in
+  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+    (* Yojson.Safe.to_channel stdout json_content;
+    Out_channel.newline stdout;
+    Out_channel.flush stdout; *)
+  in
+  f_json json "mappings.json"
 
 let report_topl_errors proc_desc err_log summary =
   let f = function

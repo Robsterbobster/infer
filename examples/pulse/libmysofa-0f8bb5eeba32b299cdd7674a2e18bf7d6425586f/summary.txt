@@ -1,0 +1,1012 @@
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     true (no atoms),
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     true (no atoms),
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     true (no atoms),
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v7 -> { Invalid ConstantDereference(is assigned to the null pointer),
+                                        UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                                        WrittenTo  } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                                      mysofa_load -> call to skipped function occurs here }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     true (no atoms),
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v7 -> { Invalid CFree(was invalidated by call to `free()`),
+                                        UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                                        WrittenTo  } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                                      mysofa_load -> call to skipped function occurs here }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v55 -> 0 },
+                      citv: { v55 -> =null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     v55 = 0
+                                     &&
+                                     0=v55
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v56]) = 1}∧{is_int([v57]) = 1},
+                               pruned=true (no atoms),
+                               both=v55=v56=v57
+                                    &&
+                                    v55 = 0
+                                    &&
+                                    0=v55
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 },
+                                v7 -> { * -> v55 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced ,
+                                        UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                                        WrittenTo  },
+                                v55 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeValid(, None, t=5) } };}]
+                      need_specialization=false
+                      skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                                      mysofa_load -> call to skipped function occurs here,
+                                      mysofa_lookup_init -> call to skipped function occurs here,
+                                      mysofa_loudness -> call to skipped function occurs here,
+                                      mysofa_neighborhood_init_withstepdefine -> call to skipped function occurs here,
+                                      mysofa_resample -> call to skipped function occurs here,
+                                      mysofa_tocartesian -> call to skipped function occurs here }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v52 -> 0 },
+                      citv: { v52 -> =null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     v52 = 0
+                                     &&
+                                     0=v52
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v53]) = 1}∧{is_int([v54]) = 1},
+                               pruned=true (no atoms),
+                               both=v52=v53=v54
+                                    &&
+                                    v52 = 0
+                                    &&
+                                    0=v52
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 },
+                                v7 -> { * -> v52 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v6 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+                                v7 -> { ISLAbduced ,
+                                        UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                                        WrittenTo  },
+                                v52 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeValid(, None, t=5) } };}]
+                      need_specialization=false
+                      skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                                      mysofa_load -> call to skipped function occurs here,
+                                      mysofa_lookup_init -> call to skipped function occurs here,
+                                      mysofa_loudness -> call to skipped function occurs here,
+                                      mysofa_neighborhood_init_withstepdefine -> call to skipped function occurs here,
+                                      mysofa_resample -> call to skipped function occurs here,
+                                      mysofa_tocartesian -> call to skipped function occurs here }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v49 -> 0 },
+                      citv: { v49 -> =null },
+                      formula: known=true (no var=var)
+                                     &&
+                                     v49 = 0
+                                     &&
+                                     0=v49
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v50]) = 1}∧{is_int([v51]) = 1},
+                               pruned=true (no atoms),
+                               both=v49=v50=v51
+                                    &&
+                                    v49 = 0
+                                    &&
+                                    0=v49
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 },
+                                v7 -> { * -> v49 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v6 -> { Invalid CFree(was invalidated by call to `free()`) },
+                                v7 -> { ISLAbduced ,
+                                        UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                                        WrittenTo  },
+                                v49 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { Invalid CFree(was invalidated by call to `free()`) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeValid(, None, t=5) } };}]
+                      need_specialization=false
+                      skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                                      mysofa_load -> call to skipped function occurs here,
+                                      mysofa_lookup_init -> call to skipped function occurs here,
+                                      mysofa_loudness -> call to skipped function occurs here,
+                                      mysofa_neighborhood_init_withstepdefine -> call to skipped function occurs here,
+                                      mysofa_resample -> call to skipped function occurs here,
+                                      mysofa_tocartesian -> call to skipped function occurs here }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+unsat:false,
+bo: { v9 -> 1,
+      v30 -> [1, +oo],
+      v31 -> 0,
+      v32 -> v32,
+      v33 -> v33,
+      v34 -> [1, +oo] },
+citv: { v9 -> =1,
+        v30 -> ≥1,
+        v31 -> =null,
+        v32 -> ≠0,
+        v33 -> ≠null,
+        v34 -> ≥1 },
+formula: known=true (no var=var)
+               &&
+               v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+                ∧ v30 = a3 +1 ∧ v31 = 0 ∧ v34 = a4 +1
+               &&
+               0=v31∧5764607523034235/576460752303423488=v11∧1/2=v10
+               ∧1=v9∧[a3 +1]=v30∧[a4 +1]=v34∧[v37]×[v38]=v39
+               ∧[v39]×[v40]=v41
+               &&
+               true (no tableau)
+               &&
+               {is_int([v35]) = 1}∧{is_int([v36]) = 1}∧{is_int([v37]) = 1}
+               ∧{is_int([v38]) = 1},
+         pruned=true (no atoms),
+         both=v31=v35=v36
+              &&
+              v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+               ∧ v30 = a1 +1 ∧ v31 = 0 ∧ v34 = a2 +1
+              &&
+              0=v31∧5764607523034235/576460752303423488=v11∧1/2=v10
+              ∧1=v9∧[a1 +1]=v30∧[a2 +1]=v34∧[v37]×[v38]=v39∧[v39]×[v40]=v41
+              &&
+              true (no tableau)
+              &&
+              {is_int([v37]) = 1}∧{is_int([v38]) = 1}∧{[v30] ≠ 0}
+              ∧{[v32] ≠ 0}∧{[v33] ≠ 0}∧{[v34] ≠ 0}
+mfilterlength=v3,
+          &samplerate=v2,
+          &return=v62,
+          &filename=v1,
+          &err=v4 };
+  mem  ={ v1 -> { * -> v5 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> v6 },
+          v4 -> { * -> v7 },
+          v5 -> { },
+          v6 -> { * -> v37 },
+          v7 -> { * -> v31 },
+          v30 -> { fir -> v42,
+                   neighborhood -> v43,
+                   lookup -> v44,
+                   hrtf -> v45 },
+          v32 -> { R -> v47, N -> v48 },
+          v42 -> { * -> v34 },
+          v43 -> { * -> v46 },
+          v44 -> { * -> v33 },
+          v45 -> { * -> v32 },
+          v47 -> { * -> v38 },
+          v48 -> { * -> v37 },
+          v62 -> { * -> v30 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v6 -> { ISLAbduced , WrittenTo  },
+          v7 -> { ISLAbduced ,
+                  UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                  WrittenTo  },
+          v9 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v30 -> { Allocated, DynamicType  },
+          v31 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v32 -> { ISLAbduced ,
+                   PropagateTaintFrom([{v= v5};{v= v7}]),
+                   UnknownEffect(function `mysofa_check` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_check` with no summary at line 43 :t39
+                                                                    [] ] ),
+                   WrittenTo  },
+          v33 -> { PropagateTaintFrom([{v= v32}]),
+                   UnknownEffect(function `mysofa_neighborhood_init_withstepdefine` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_neighborhood_init_withstepdefine` with no summary at line 72 :t95
+                                                                    [] ] ),
+                   WrittenTo  },
+          v34 -> { Allocated, MustBeValid(, None, t=5), Uninitialized },
+          v42 -> { MustBeValid(, None, t=5), WrittenTo  },
+          v43 -> { MustBeValid(, None, t=5), WrittenTo  },
+          v44 -> { MustBeValid(, None, t=5), WrittenTo  },
+          v45 -> { MustBeValid(, None, t=5), WrittenTo  },
+          v46 -> { PropagateTaintFrom([{v= v32};{v= v33};{v= v10};{v= v11}]) },
+          v62 -> { MustBeValid(, None, t=11), WrittenTo  } };}
+PRE=[{ roots={ &filterlength=v3, &samplerate=v2, &filename=v1, &err=v4 };
+       mem  ={ v1 -> { * -> v5 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v6 },
+               v4 -> { * -> v7 },
+               v5 -> { },
+               v6 -> { },
+               v7 -> { },
+               v8 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v6 -> { ISLAbduced , MustBeValid(, None, t=5) },
+               v7 -> { ISLAbduced , MustBeValid(, None, t=5) } };}]
+need_specialization=false
+skipped_calls={ __infer_skip -> call to skipped function occurs here,
+                mysofa_check -> call to skipped function occurs here,
+                mysofa_load -> call to skipped function occurs here,
+                mysofa_lookup_init -> call to skipped function occurs here,
+                mysofa_loudness -> call to skipped function occurs here,
+                mysofa_neighborhood_init_withstepdefine -> call to skipped function occurs here,
+                mysofa_resample -> call to skipped function occurs here,
+                mysofa_tocartesian -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=83
+86
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+unsat:false,
+bo: { v9 -> 1, v21 -> 0, v22 -> -1 },
+citv: { v9 -> =1, v21 -> =null, v22 -> =-1 },
+formula: known=true (no var=var)
+               &&
+               v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+                ∧ v21 = 0 ∧ v22 = -1
+               &&
+               -1=v22∧0=v21∧5764607523034235/576460752303423488=v11
+               ∧1/2=v10∧1=v9
+               &&
+               true (no tableau)
+               &&
+               {is_int([v23]) = 1}∧{is_int([v24]) = 1},
+         pruned=true (no atoms),
+         both=v21=v23=v24=v25
+              &&
+              v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+               ∧ v21 = 0 ∧ v22 = -1
+              &&
+              -1=v22∧0=v21∧5764607523034235/576460752303423488=v11
+              ∧1/2=v10∧1=v9
+              &&
+              true (no tableau)
+              &&
+              true (no atoms)
+{ roots={ &filterlength=v3,
+          &samplerate=v2,
+          &return=v61,
+          &filename=v1,
+          &err=v4 };
+  mem  ={ v1 -> { * -> v5 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> v6 },
+          v4 -> { * -> v7 },
+          v5 -> { },
+          v6 -> { },
+          v7 -> { * -> v22 },
+          v61 -> { * -> v21 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced ,
+                  UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                  WrittenTo  },
+          v9 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v21 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v61 -> { MustBeValid(, None, t=11), WrittenTo  } };}
+PRE=[{ roots={ &filterlength=v3, &samplerate=v2, &filename=v1, &err=v4 };
+       mem  ={ v1 -> { * -> v5 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v6 },
+               v4 -> { * -> v7 },
+               v5 -> { },
+               v6 -> { },
+               v7 -> { },
+               v8 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced , MustBeValid(, None, t=5) } };}]
+need_specialization=false
+skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                mysofa_free -> call to skipped function occurs here,
+                mysofa_load -> call to skipped function occurs here,
+                mysofa_lookup_init -> call to skipped function occurs here,
+                mysofa_loudness -> call to skipped function occurs here,
+                mysofa_resample -> call to skipped function occurs here,
+                mysofa_tocartesian -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=83
+86
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+unsat:false,
+bo: { v9 -> 1, v16 -> 0, v17 -> v17 },
+citv: { v9 -> =1, v16 -> =null, v17 -> ≠0 },
+formula: known=true (no var=var)
+               &&
+               v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+                ∧ v16 = 0
+               &&
+               0=v16∧5764607523034235/576460752303423488=v11∧1/2=v10
+               ∧1=v9
+               &&
+               true (no tableau)
+               &&
+               {is_int([v17]) = 1}∧{is_int([v18]) = 1},
+         pruned=true (no atoms),
+         both=v16=v18
+              &&
+              v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+               ∧ v16 = 0
+              &&
+              0=v16∧5764607523034235/576460752303423488=v11∧1/2=v10
+              ∧1=v9
+              &&
+              true (no tableau)
+              &&
+              {is_int([v17]) = 1}∧{[v17] ≠ 0}
+{ roots={ &filterlength=v3,
+          &samplerate=v2,
+          &return=v60,
+          &filename=v1,
+          &err=v4 };
+  mem  ={ v1 -> { * -> v5 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> v6 },
+          v4 -> { * -> v7 },
+          v5 -> { },
+          v6 -> { },
+          v7 -> { * -> v17 },
+          v60 -> { * -> v16 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced ,
+                  UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                  WrittenTo  },
+          v9 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v16 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v60 -> { MustBeValid(, None, t=11), WrittenTo  } };}
+PRE=[{ roots={ &filterlength=v3, &samplerate=v2, &filename=v1, &err=v4 };
+       mem  ={ v1 -> { * -> v5 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v6 },
+               v4 -> { * -> v7 },
+               v5 -> { },
+               v6 -> { },
+               v7 -> { },
+               v8 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced , MustBeValid(, None, t=5) } };}]
+need_specialization=false
+skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                mysofa_free -> call to skipped function occurs here,
+                mysofa_load -> call to skipped function occurs here,
+                mysofa_resample -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=83
+86
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+unsat:false,
+bo: { v9 -> 1, v14 -> 0, v15 -> v15 },
+citv: { v9 -> =1, v14 -> =null, v15 -> ≠0 },
+formula: known=true (no var=var)
+               &&
+               v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+                ∧ v14 = 0
+               &&
+               0=v14∧5764607523034235/576460752303423488=v11∧1/2=v10
+               ∧1=v9
+               &&
+               true (no tableau)
+               &&
+               {is_int([v15]) = 1},
+         pruned=true (no atoms),
+         both=true (no var=var)
+              &&
+              v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+               ∧ v14 = 0
+              &&
+              0=v14∧5764607523034235/576460752303423488=v11∧1/2=v10
+              ∧1=v9
+              &&
+              true (no tableau)
+              &&
+              {is_int([v15]) = 1}∧{[v15] ≠ 0}
+{ roots={ &filterlength=v3,
+          &samplerate=v2,
+          &return=v59,
+          &filename=v1,
+          &err=v4 };
+  mem  ={ v1 -> { * -> v5 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> v6 },
+          v4 -> { * -> v7 },
+          v5 -> { },
+          v6 -> { },
+          v7 -> { * -> v15 },
+          v59 -> { * -> v14 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced ,
+                  UnknownEffect(function `mysofa_load` with no summary, in call to `mysofa_open_default` at line 86 :t5
+                                                                    [in call to function `mysofa_load` with no summary at line 37 :t27
+                                                                    [] ] ),
+                  WrittenTo  },
+          v9 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v14 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v59 -> { MustBeValid(, None, t=11), WrittenTo  } };}
+PRE=[{ roots={ &filterlength=v3, &samplerate=v2, &filename=v1, &err=v4 };
+       mem  ={ v1 -> { * -> v5 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v6 },
+               v4 -> { * -> v7 },
+               v5 -> { },
+               v6 -> { },
+               v7 -> { },
+               v8 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced , MustBeValid(, None, t=5) } };}]
+need_specialization=false
+skipped_calls={ mysofa_check -> call to skipped function occurs here,
+                mysofa_free -> call to skipped function occurs here,
+                mysofa_load -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=83
+86
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     true (no atoms),
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v7 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     true (no atoms),
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    true (no atoms)
+                      { roots={ &filterlength=v3,
+                                &samplerate=v2,
+                                &filename=v1,
+                                &err=v4 };
+                        mem  ={ v1 -> { * -> v5 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v6 },
+                                v4 -> { * -> v7 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v7 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &filterlength=v3,
+                                     &samplerate=v2,
+                                     &filename=v1,
+                                     &err=v4 };
+                             mem  ={ v1 -> { * -> v5 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v6 },
+                                     v4 -> { * -> v7 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=83
+                      86}
+
+ mysofa_open [defined, Return type: MYSOFA_EASY*, Formals:  filename:char const * samplerate:float filterlength:int* err:int*, Locals: None]
+unsat:false,
+bo: { v9 -> 1, v12 -> 0, v13 -> 10002 },
+citv: { v9 -> =1, v12 -> =0, v13 -> =10002 },
+formula: known=true (no var=var)
+               &&
+               v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+                ∧ v12 = 0 ∧ v13 = 10002
+               &&
+               0=v12∧5764607523034235/576460752303423488=v11∧1/2=v10
+               ∧1=v9∧10002=v13
+               &&
+               true (no tableau)
+               &&
+               true (no atoms),
+         pruned=true (no atoms),
+         both=true (no var=var)
+              &&
+              v9 = 1 ∧ v10 = 1/2 ∧ v11 = 5764607523034235/576460752303423488
+               ∧ v12 = 0 ∧ v13 = 10002
+              &&
+              0=v12∧5764607523034235/576460752303423488=v11∧1/2=v10
+              ∧1=v9∧10002=v13
+              &&
+              true (no tableau)
+              &&
+              true (no atoms)
+{ roots={ &filterlength=v3,
+          &samplerate=v2,
+          &return=v58,
+          &filename=v1,
+          &err=v4 };
+  mem  ={ v1 -> { * -> v5 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> v6 },
+          v4 -> { * -> v7 },
+          v5 -> { },
+          v6 -> { },
+          v7 -> { * -> v13 },
+          v58 -> { * -> v12 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced , WrittenTo  },
+          v9 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v12 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v13 -> { Invalid ConstantDereference(is assigned to the constant 10002) },
+          v58 -> { MustBeValid(, None, t=11), WrittenTo  } };}
+PRE=[{ roots={ &filterlength=v3, &samplerate=v2, &filename=v1, &err=v4 };
+       mem  ={ v1 -> { * -> v5 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v6 },
+               v4 -> { * -> v7 },
+               v5 -> { },
+               v6 -> { },
+               v7 -> { },
+               v8 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced , MustBeValid(, None, t=5) } };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=83
+86
