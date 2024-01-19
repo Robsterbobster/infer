@@ -1,0 +1,42 @@
+ unsat:false,
+         bo: { v5 -> 5, v7 -> 0, v8 -> 5 },
+         citv: { v5 -> =5, v7 -> =0, v8 -> =5 },
+         formula: known=v5=v8
+                        &&
+                        v5 = 5 ∧ v7 = 0 ∧ v8 = 5
+                        &&
+                        0=v7∧5=v5
+                        &&
+                        true (no tableau)
+                        &&
+                        true (no atoms),
+                  pruned=true (no atoms),
+                  both=v5=v8
+                       &&
+                       v5 = 5 ∧ v7 = 0 ∧ v8 = 5
+                       &&
+                       0=v7∧5=v5
+                       &&
+                       true (no tableau)
+                       &&
+                       true (no atoms)
+         { roots={ n$0=v7, n$1=v4, &regex=v6, &bufr=v3 };
+           mem  ={ v3 -> { * -> v4 },
+                   v4 -> { __infer_model_string_length -> v5 },
+                   v6 -> { * -> v7 } };
+           attrs={ v1 -> { MustBeValid(, None, t=0), Uninitialized },
+                   v2 -> { MustBeValid(, None, t=0), Uninitialized },
+                   v3 -> { MustBeValid(, None, t=0), WrittenTo  },
+                   v6 -> { MustBeValid(, None, t=0), WrittenTo  },
+                   v7 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+                   v8 -> { Invalid ConstantDereference(is assigned to the constant 5) } };}
+         PRE=[{ roots={ };
+                mem  ={ };
+                attrs={ };}]
+         need_specialization=false
+         skipped_calls={ }
+         Topl={len=0;content=
+                [  ]}
+         full_trace=4
+         6
+         7

@@ -1,1 +1,0 @@
-/usr/bin/cc  -Wall -g -DDEBUG -DVDEBUG  -rdynamic CMakeFiles/multithread.dir/tests/multithread.c.o  -o multithread  libmysofa.a -lpthread -lm -lz 
