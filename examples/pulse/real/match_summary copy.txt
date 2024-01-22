@@ -1,153 +1,27 @@
  match [defined, Return type: int, Formals:  re:char const * caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
-{ISLLatentMemoryError unsat:false,
-                      bo: { },
-                      citv: { },
-                      formula: known=true (no var=var)
-                                     &&
-                                     true (no linear)
-                                     &&
-                                     true (no term_eqs)
-                                     &&
-                                     true (no tableau)
-                                     &&
-                                     {is_int([v15]) = 1}∧{is_int([v16]) = 1},
-                               pruned=true (no atoms),
-                               both=true (no var=var)
-                                    &&
-                                    true (no linear)
-                                    &&
-                                    true (no term_eqs)
-                                    &&
-                                    true (no tableau)
-                                    &&
-                                    {is_int([v15]) = 1}∧{is_int([v16]) = 1}
-                      { roots={ &caps=v2, &re=v1, &flags=v4, &num_caps=v3 };
-                        mem  ={ v1 -> { * -> v5 },
-                                v2 -> { * -> v6 },
-                                v3 -> { * -> v15 },
-                                v4 -> { * -> v16 } };
-                        attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                v2 -> { MustBeValid(, None, t=0) },
-                                v3 -> { MustBeValid(, None, t=0) },
-                                v4 -> { MustBeValid(, None, t=0) },
-                                v5 -> { ISLAbduced  } };}
-                      PRE=[{ roots={ &caps=v2,
-                                     &re=v1,
-                                     &flags=v4,
-                                     &num_caps=v3 };
-                             mem  ={ v1 -> { * -> v5 },
-                                     v2 -> { * -> v6 },
-                                     v3 -> { * -> v15 },
-                                     v4 -> { * -> v16 } };
-                             attrs={ v1 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v2 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v3 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v4 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v5 -> { ISLAbduced ,
-                                             MustBeInitialized(, t=19),
-                                             MustBeValid(, None, t=19) } };}]
-                      need_specialization=false
-                      skipped_calls={ }
-                      Topl={len=0;content=
-                             [  ]}
-                      full_trace=52
-                      55
-                      56
-                      57
-                      58
-                      59}
-
- match [defined, Return type: int, Formals:  re:char const * caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
-{ISLLatentMemoryError unsat:false,
-                      bo: { },
-                      citv: { },
-                      formula: known=true (no var=var)
-                                     &&
-                                     true (no linear)
-                                     &&
-                                     true (no term_eqs)
-                                     &&
-                                     true (no tableau)
-                                     &&
-                                     {is_int([v15]) = 1}∧{is_int([v16]) = 1},
-                               pruned=true (no atoms),
-                               both=true (no var=var)
-                                    &&
-                                    true (no linear)
-                                    &&
-                                    true (no term_eqs)
-                                    &&
-                                    true (no tableau)
-                                    &&
-                                    {is_int([v15]) = 1}∧{is_int([v16]) = 1}
-                      { roots={ &caps=v2, &re=v1, &flags=v4, &num_caps=v3 };
-                        mem  ={ v1 -> { * -> v5 },
-                                v2 -> { * -> v6 },
-                                v3 -> { * -> v15 },
-                                v4 -> { * -> v16 } };
-                        attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                v2 -> { MustBeValid(, None, t=0) },
-                                v3 -> { MustBeValid(, None, t=0) },
-                                v4 -> { MustBeValid(, None, t=0) },
-                                v5 -> { ISLAbduced  } };}
-                      PRE=[{ roots={ &caps=v2,
-                                     &re=v1,
-                                     &flags=v4,
-                                     &num_caps=v3 };
-                             mem  ={ v1 -> { * -> v5 },
-                                     v2 -> { * -> v6 },
-                                     v3 -> { * -> v15 },
-                                     v4 -> { * -> v16 } };
-                             attrs={ v1 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v2 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v3 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v4 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v5 -> { ISLAbduced ,
-                                             MustBeInitialized(, t=19),
-                                             MustBeValid(, None, t=19) } };}]
-                      need_specialization=false
-                      skipped_calls={ }
-                      Topl={len=0;content=
-                             [  ]}
-                      full_trace=52
-                      55
-                      56
-                      57
-                      58
-                      59}
-
- match [defined, Return type: int, Formals:  re:char const * caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
 unsat:false,
-bo: { v17 -> 0, v18 -> 0 },
-citv: { v17 -> =0, v18 -> =0 },
-formula: known=v17=v18
+bo: { v17 -> 0, v18 -> 1, v19 -> 0 },
+citv: { v17 -> =0, v18 -> =1, v19 -> =0 },
+formula: known=v17=v19
                &&
-               v17 = 0 ∧ v18 = 0
+               v17 = 0 ∧ v18 = 1 ∧ v19 = 0
                &&
-               0=v17
+               0=v17∧1=v18
                &&
                true (no tableau)
                &&
                {is_int([v15]) = 1}∧{is_int([v16]) = 1},
          pruned=true (no atoms),
-         both=v17=v18
+         both=v17=v19
               &&
-              v17 = 0 ∧ v18 = 0
+              v17 = 0 ∧ v18 = 1 ∧ v19 = 0
               &&
-              0=v17
+              0=v17∧1=v18
               &&
               true (no tableau)
               &&
               {is_int([v15]) = 1}∧{is_int([v16]) = 1}
-{ roots={ &caps=v2, &re=v1, &return=v25, &flags=v4, &num_caps=v3 };
+{ roots={ &caps=v2, &re=v1, &return=v20, &flags=v4, &num_caps=v3 };
   mem  ={ v1 -> { * -> v5 },
           v2 -> { * -> v6 },
           v3 -> { * -> v15 },
@@ -161,15 +35,12 @@ formula: known=v17=v18
                   branches -> v10,
                   num_brackets -> v9,
                   brackets -> v8 },
-          v8 -> { [v18] -> v19 },
-          v9 -> { * -> v17 },
+          v9 -> { * -> v18 },
           v11 -> { * -> v17 },
           v12 -> { * -> v6 },
           v13 -> { * -> v15 },
           v14 -> { * -> v16 },
-          v19 -> { ptr -> v20 },
-          v20 -> { * -> v5 },
-          v25 -> { * -> v18 } };
+          v20 -> { * -> v19 } };
   attrs={ v1 -> { MustBeValid(, None, t=0) },
           v2 -> { MustBeValid(, None, t=0) },
           v3 -> { MustBeValid(, None, t=0) },
@@ -183,10 +54,9 @@ formula: known=v17=v18
           v13 -> { MustBeValid(, None, t=0), WrittenTo  },
           v14 -> { MustBeValid(, None, t=0), WrittenTo  },
           v17 -> { Invalid ConstantDereference(is assigned to the null pointer) },
-          v18 -> { Invalid ConstantDereference(is assigned to the null pointer) },
-          v19 -> { ISLAbduced  },
-          v20 -> { WrittenTo  },
-          v25 -> { MustBeValid(, None, t=23), WrittenTo  } };}
+          v18 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v19 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v20 -> { MustBeValid(, None, t=23), WrittenTo  } };}
 PRE=[{ roots={ &caps=v2, &re=v1, &flags=v4, &num_caps=v3 };
        mem  ={ v1 -> { * -> v5 },
                v2 -> { * -> v6 },

@@ -1,0 +1,2391 @@
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v18]) = 1}∧{is_int([v19]) = 1}
+                                     ∧{is_int([v20]) = 1},
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v18]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v18]) = 1}∧{is_int([v19]) = 1}
+                                     ∧{is_int([v20]) = 1},
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v18]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+unsat:false,
+bo: { v7 -> [v7, min(0, v7)],
+      v18 -> [max(0, v18), v18],
+      v20 -> v20,
+      v21 -> 0,
+      v567 -> 0,
+      v572 -> [max(94, v572), min(94, v572)],
+      v576 -> [max(1, v576), min(3, v576)],
+      v578 -> [max(0, v578), min(0, v578)],
+      v581 -> [0, -1+min(1, v576)],
+      v583 -> [max(91, v583), min(91, v583)],
+      v584 -> 0,
+      v586 -> v586,
+      v587 -> 0,
+      v589 -> [max(91, v589), min(91, v589)],
+      v590 -> 0,
+      v594 -> [max(0, v7), 0],
+      v598 -> 1 },
+citv: { v7 -> ≤0,
+        v18 -> ≥0,
+        v21 -> =0,
+        v567 -> =0,
+        v572 -> =94,
+        v576 -> ∈[1,3],
+        v578 -> =0,
+        v581 -> =0,
+        v583 -> =91,
+        v584 -> =0,
+        v586 -> ∉[42,43],
+        v587 -> =0,
+        v589 -> =91,
+        v590 -> =0,
+        v594 -> =0,
+        v598 -> =1 },
+formula: known=v21=v567=v573=v581=v584=v587=v590=v594
+               &&
+               v21 = 0 ∧ v567 = 0 ∧ v576 = v601 +1 ∧ v580 = v600 -1
+                ∧ v598 = 1 ∧ v599 = v601 -1
+               &&
+               0=v21∧1=v598∧tolower([v566])=v602∧tolower([v605])=v603
+               ∧tolower([v606])=v604∧[v600 -1]=v580∧[v601 -1]=v599
+               ∧[v601 +1]=v576
+               &&
+               true (no tableau)
+               &&
+               {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+               ∧{is_int([v20]) = 1}∧{is_int([v566]) = 1}∧{is_int([v572]) = 1}
+               ∧{is_int([v576]) = 1}∧{is_int([v578]) = 1}∧{is_int([v583]) = 1}
+               ∧{is_int([v586]) = 1}∧{is_int([v589]) = 1}∧{is_int([v599]) = 1}
+               ∧{is_int([v601]) = 1}∧{is_int([v605]) = 1}∧{is_int([v606]) = 1}
+               ∧{is_int([a121]) = 1}∧{is_int([a123]) = 1},
+         pruned={0 ≤ [v18]}∧{0 ≤ [v599]}∧{0 ≤ [a121]}∧{1 ≤ [v601]}
+                ∧{[v7] ≤ 0}∧{[v576] ≤ 3}∧{[v601] ≤ 1}∧{[-v602
+                                                                     + v604] ≤ 0}
+                ∧{[v602 + -v603] ≤ 0}∧{0 < [v576]}∧{0 < [v601]}
+                ∧{[a123] < 3}∧{[v572] = 94}∧{[v578] = 0}∧{[v583] = 91}
+                ∧{[v589] = 91}∧{[v583] ≠ 40}∧{[v586] ≠ 42}∧{[v586] ≠ 43}
+                ∧{[v586] ≠ 63}∧{[v605] ≠ 0}∧{[v605] ≠ 93}
+                ∧{[v606] ≠ 45}∧{[v606] ≠ 93}∧{[v606] ≠ 94}
+                ∧{[v20]&1 ≠ 0},
+         both=a123=v599 ∧ a122=a121=v18 ∧ v21=v567=v573=v578=v581
+                                                  =v584=v587=v590=v594
+               ∧ v583=v589
+              &&
+              v7 = -a124 ∧ v21 = 0 ∧ v567 = 0 ∧ v572 = 94 ∧ v576 = a126 +1
+               ∧ v580 = v600 -1 ∧ v583 = 91 ∧ v598 = 1 ∧ v601 = a127 +1
+               ∧ v602 = v603 + -a128 ∧ v603 = v604 + a128 + a129
+              &&
+              0=v21∧1=v598∧91=v583∧94=v572∧tolower([v566])=v602
+              ∧tolower([v605])=v603∧tolower([v606])=v604∧[v600 -1]=v580
+              ∧[a126 -1]=a123∧[v603 + -a128]=v602∧[v604 + a128 + a129]=v603
+              ∧[v604 + a129]=v602∧[-a124]=v7∧[-a125]=v21∧[a126 +1]=v576
+              ∧[a127 +1]=v601∧[a130 +1]=v598∧[a127 +2]=v576
+              &&
+              a126 = a123 +1
+              &&
+              {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+              ∧{is_int([v20]) = 1}∧{is_int([v566]) = 1}∧{is_int([v576]) = 1}
+              ∧{is_int([v586]) = 1}∧{is_int([v601]) = 1}∧{is_int([v605]) = 1}
+              ∧{is_int([v606]) = 1}∧{is_int([a122]) = 1}∧{is_int([a123]) = 1}
+              ∧{[v586] ≠ 42}∧{[v586] ≠ 43}∧{[v586] ≠ 63}∧{[v605] ≠ 0}
+              ∧{[v605] ≠ 93}∧{[v606] ≠ 45}∧{[v606] ≠ 93}∧{[v606] ≠ 94}
+              ∧{[v20]&1 ≠ 0}
+{ roots={ &s=v2,
+          &regexp=v1,
+          &flags=v6,
+          &return=v656,
+          &num_caps=v5,
+          &s_len=v3,
+          &caps=v4 };
+  mem  ={ v1 -> { * -> v7 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> a122 },
+          v4 -> { * -> v9 },
+          v5 -> { * -> v19 },
+          v6 -> { * -> v20 },
+          v7 -> { },
+          v8 -> { * -> v566 },
+          v9 -> { },
+          v10 -> { flags -> v17,
+                   num_caps -> v16,
+                   caps -> v15,
+                   num_branches -> v14,
+                   branches -> v13,
+                   num_brackets -> v12,
+                   brackets -> v11 },
+          v11 -> { [v594] -> v595,
+                   [v590] -> v591,
+                   [v573] -> v574,
+                   [v567] -> v568 },
+          v12 -> { * -> v598 },
+          v14 -> { * -> v21 },
+          v15 -> { * -> v9 },
+          v16 -> { * -> v19 },
+          v17 -> { * -> v20 },
+          v568 -> { ptr -> v569 },
+          v569 -> { * -> v570 },
+          v570 -> { [v567] -> v571 },
+          v571 -> { * -> v572 },
+          v574 -> { ptr -> v579, num_branches -> v577, len -> v575 },
+          v575 -> { * -> v576 },
+          v577 -> { * -> v573 },
+          v579 -> { * -> v580 },
+          v580 -> { [v587] -> v588, [v581] -> v582 },
+          v582 -> { [v584] -> v585, * -> v583 },
+          v585 -> { * -> v586 },
+          v588 -> { * -> v583 },
+          v591 -> { branches -> v593, num_branches -> v592 },
+          v595 -> { ptr -> v597, len -> v596 },
+          v596 -> { * -> v7 },
+          v597 -> { * -> v7 },
+          v656 -> { * -> v598 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v5 -> { MustBeValid(, None, t=0) },
+          v6 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced  },
+          v8 -> { ISLAbduced  },
+          v10 -> { s&info (variable `info` declared here at line 425 :t0 ) at line 436, column 10,
+                   ISLAbduced  },
+          v12 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v14 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v15 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v16 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v17 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v21 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v568 -> { ISLAbduced  },
+          v570 -> { ISLAbduced  },
+          v574 -> { ISLAbduced  },
+          v580 -> { ISLAbduced  },
+          v582 -> { ISLAbduced  },
+          v591 -> { ISLAbduced  },
+          v592 -> { WrittenTo  },
+          v593 -> { WrittenTo  },
+          v594 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v595 -> { ISLAbduced  },
+          v596 -> { WrittenTo  },
+          v597 -> { WrittenTo  },
+          v598 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v656 -> { MustBeValid(, None, t=27), WrittenTo  } };}
+PRE=[{ roots={ &s=v2,
+               &regexp=v1,
+               &flags=v6,
+               &num_caps=v5,
+               &s_len=v3,
+               &caps=v4 };
+       mem  ={ v1 -> { * -> v7 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v18 },
+               v4 -> { * -> v9 },
+               v5 -> { * -> v19 },
+               v6 -> { * -> v20 },
+               v7 -> { },
+               v8 -> { * -> v566 },
+               v9 -> { },
+               v18 -> { },
+               v19 -> { },
+               v20 -> { },
+               v566 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v5 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v6 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced ,
+                       MustBeInitialized(, t=19),
+                       MustBeValid(, None, t=19) },
+               v8 -> { ISLAbduced ,
+                       MustBeInitialized(, t=22),
+                       MustBeValid(, None, t=22) } };}]
+need_specialization=false
+skipped_calls={ tolower -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=425
+430
+431
+432
+433
+436
+437
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+unsat:false,
+bo: { v7 -> [v7, min(0, v7)],
+      v18 -> [max(0, v18), v18],
+      v21 -> 0,
+      v529 -> 0,
+      v534 -> [max(94, v534), min(94, v534)],
+      v538 -> [max(1, v538), min(3, v538)],
+      v540 -> [max(0, v540), min(0, v540)],
+      v543 -> [0, -1+min(1, v538)],
+      v545 -> [max(91, v545), min(91, v545)],
+      v546 -> 0,
+      v548 -> v548,
+      v549 -> 0,
+      v551 -> [max(91, v551), min(91, v551)],
+      v552 -> 0,
+      v556 -> [max(0, v7), 0],
+      v560 -> 1 },
+citv: { v7 -> ≤0,
+        v18 -> ≥0,
+        v21 -> =0,
+        v529 -> =0,
+        v534 -> =94,
+        v538 -> ∈[1,3],
+        v540 -> =0,
+        v543 -> =0,
+        v545 -> =91,
+        v546 -> =0,
+        v548 -> ∉[42,43],
+        v549 -> =0,
+        v551 -> =91,
+        v552 -> =0,
+        v556 -> =0,
+        v560 -> =1 },
+formula: known=v21=v529=v535=v543=v546=v549=v552=v556
+               &&
+               v21 = 0 ∧ v529 = 0 ∧ v538 = v565 +3 ∧ v542 = v561 -1
+                ∧ v560 = 1 ∧ v561 = v562 -1 ∧ v563 = v565 +2 ∧ v564 = v565 +1
+               &&
+               0=v21∧1=v560∧[v562 -2]=v542∧[v561 -1]=v542∧[v562 -1]=v561
+               ∧[v565 +1]=v564∧[v565 +2]=v563∧[v565 +3]=v538
+               &&
+               true (no tableau)
+               &&
+               {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+               ∧{is_int([v20]) = 1}∧{is_int([v534]) = 1}∧{is_int([v538]) = 1}
+               ∧{is_int([v540]) = 1}∧{is_int([v545]) = 1}∧{is_int([v548]) = 1}
+               ∧{is_int([v551]) = 1}∧{is_int([v563]) = 1}∧{is_int([v564]) = 1}
+               ∧{is_int([v565]) = 1}∧{is_int([a113]) = 1},
+         pruned={0 ≤ [v18]}∧{0 ≤ [a113]}∧{1 ≤ [v563]}∧{[v7] ≤ 0}
+                ∧{[v538] ≤ 3}∧{[v563] ≤ 1}∧{0 < [v538]}∧{0 < [v563]}
+                ∧{[v565] < 0}∧{[v534] = 94}∧{[v540] = 0}∧{[v545] = 91}
+                ∧{[v551] = 91}∧{[v545] ≠ 40}∧{[v548] ≠ 42}∧{[v548] ≠ 43}
+                ∧{[v548] ≠ 63},
+         both=a114=a113=v18 ∧ v21=v529=v535=v540=v543=v546=v549=v552=v556
+               ∧ v545=v551
+              &&
+              v7 = -a115 ∧ v21 = 0 ∧ v529 = 0 ∧ v534 = 94 ∧ v538 = a117 +1
+               ∧ v542 = v561 -1 ∧ v545 = 91 ∧ v560 = 1 ∧ v561 = v562 -1
+               ∧ v563 = a118 +1 ∧ v564 = a117 -1 ∧ v565 = -a119 -1
+              &&
+              0=v21∧1=v560∧91=v545∧94=v534∧[v562 -2]=v542∧[v561 -1]=v542
+              ∧[v562 -1]=v561∧[a117 -1]=v564∧[-a119 -1]=v565∧[-a115]=v7
+              ∧[-a116]=v21∧[-a119]=v564∧[a117 +1]=v538∧[a118 +1]=v563
+              ∧[a120 +1]=v560∧[a118 +2]=v538
+              &&
+              a117 = -a119 +1
+              &&
+              {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+              ∧{is_int([v20]) = 1}∧{is_int([v538]) = 1}∧{is_int([v548]) = 1}
+              ∧{is_int([v563]) = 1}∧{is_int([v564]) = 1}∧{is_int([v565]) = 1}
+              ∧{is_int([a114]) = 1}∧{[v548] ≠ 42}∧{[v548] ≠ 43}
+              ∧{[v548] ≠ 63}
+{ roots={ &s=v2,
+          &regexp=v1,
+          &flags=v6,
+          &return=v655,
+          &num_caps=v5,
+          &s_len=v3,
+          &caps=v4 };
+  mem  ={ v1 -> { * -> v7 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> a114 },
+          v4 -> { * -> v9 },
+          v5 -> { * -> v19 },
+          v6 -> { * -> v20 },
+          v7 -> { },
+          v8 -> { },
+          v9 -> { },
+          v10 -> { flags -> v17,
+                   num_caps -> v16,
+                   caps -> v15,
+                   num_branches -> v14,
+                   branches -> v13,
+                   num_brackets -> v12,
+                   brackets -> v11 },
+          v11 -> { [v556] -> v557,
+                   [v552] -> v553,
+                   [v535] -> v536,
+                   [v529] -> v530 },
+          v12 -> { * -> v560 },
+          v14 -> { * -> v21 },
+          v15 -> { * -> v9 },
+          v16 -> { * -> v19 },
+          v17 -> { * -> v20 },
+          v530 -> { ptr -> v531 },
+          v531 -> { * -> v532 },
+          v532 -> { [v529] -> v533 },
+          v533 -> { * -> v534 },
+          v536 -> { ptr -> v541, num_branches -> v539, len -> v537 },
+          v537 -> { * -> v538 },
+          v539 -> { * -> v535 },
+          v541 -> { * -> v542 },
+          v542 -> { [v549] -> v550, [v543] -> v544 },
+          v544 -> { [v546] -> v547, * -> v545 },
+          v547 -> { * -> v548 },
+          v550 -> { * -> v545 },
+          v553 -> { branches -> v555, num_branches -> v554 },
+          v557 -> { ptr -> v559, len -> v558 },
+          v558 -> { * -> v7 },
+          v559 -> { * -> v7 },
+          v655 -> { * -> v560 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v5 -> { MustBeValid(, None, t=0) },
+          v6 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced  },
+          v10 -> { s&info (variable `info` declared here at line 425 :t0 ) at line 436, column 10,
+                   ISLAbduced  },
+          v12 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v14 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v15 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v16 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v17 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v21 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v530 -> { ISLAbduced  },
+          v532 -> { ISLAbduced  },
+          v536 -> { ISLAbduced  },
+          v542 -> { ISLAbduced  },
+          v544 -> { ISLAbduced  },
+          v553 -> { ISLAbduced  },
+          v554 -> { WrittenTo  },
+          v555 -> { WrittenTo  },
+          v556 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v557 -> { ISLAbduced  },
+          v558 -> { WrittenTo  },
+          v559 -> { WrittenTo  },
+          v560 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v655 -> { MustBeValid(, None, t=27), WrittenTo  } };}
+PRE=[{ roots={ &s=v2,
+               &regexp=v1,
+               &flags=v6,
+               &num_caps=v5,
+               &s_len=v3,
+               &caps=v4 };
+       mem  ={ v1 -> { * -> v7 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v18 },
+               v4 -> { * -> v9 },
+               v5 -> { * -> v19 },
+               v6 -> { * -> v20 },
+               v7 -> { },
+               v8 -> { },
+               v9 -> { },
+               v18 -> { },
+               v19 -> { },
+               v20 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v5 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v6 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced ,
+                       MustBeInitialized(, t=19),
+                       MustBeValid(, None, t=19) } };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=425
+430
+431
+432
+433
+436
+437
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+unsat:false,
+bo: { v7 -> [v7, min(0, v7)],
+      v18 -> [max(0, v18), v18],
+      v20 -> v20,
+      v21 -> 0,
+      v489 -> 0,
+      v494 -> [max(94, v494), min(94, v494)],
+      v498 -> [max(1, v498), min(3, v498)],
+      v500 -> [max(0, v500), min(0, v500)],
+      v503 -> [0, -1+min(1, v498)],
+      v505 -> [max(91, v505), min(91, v505)],
+      v506 -> 0,
+      v508 -> v508,
+      v509 -> 0,
+      v511 -> [max(91, v511), min(91, v511)],
+      v512 -> 0,
+      v516 -> [max(0, v7), 0],
+      v520 -> 1 },
+citv: { v7 -> ≤0,
+        v18 -> ≥0,
+        v21 -> =0,
+        v489 -> =0,
+        v494 -> =94,
+        v498 -> ∈[1,3],
+        v500 -> =0,
+        v503 -> =0,
+        v505 -> =91,
+        v506 -> =0,
+        v508 -> ∉[42,43],
+        v509 -> =0,
+        v511 -> =91,
+        v512 -> =0,
+        v516 -> =0,
+        v520 -> =1 },
+formula: known=v21=v489=v495=v503=v506=v509=v512=v516
+               &&
+               v21 = 0 ∧ v489 = 0 ∧ v498 = v525 +2 ∧ v502 = v522 -1
+                ∧ v520 = 1 ∧ v521 = v525 -1 ∧ v522 = v523 -1 ∧ v524 = v525 +1
+               &&
+               0=v21∧1=v520∧tolower([v488])=v526∧tolower([v528])=v527
+               ∧[v523 -2]=v502∧[v522 -1]=v502∧[v523 -1]=v522∧[v525 -1]=v521
+               ∧[v525 +1]=v524∧[v525 +2]=v498
+               &&
+               true (no tableau)
+               &&
+               {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+               ∧{is_int([v20]) = 1}∧{is_int([v488]) = 1}∧{is_int([v494]) = 1}
+               ∧{is_int([v498]) = 1}∧{is_int([v500]) = 1}∧{is_int([v505]) = 1}
+               ∧{is_int([v508]) = 1}∧{is_int([v511]) = 1}∧{is_int([v521]) = 1}
+               ∧{is_int([v524]) = 1}∧{is_int([v525]) = 1}∧{is_int([v528]) = 1}
+               ∧{is_int([a104]) = 1}∧{is_int([a106]) = 1},
+         pruned={0 ≤ [v18]}∧{0 ≤ [v521]}∧{0 ≤ [a104]}∧{1 ≤ [v524]}
+                ∧{[v7] ≤ 0}∧{[v498] ≤ 3}∧{[v524] ≤ 1}∧{0 < [v498]}
+                ∧{0 < [v524]}∧{0 < [-v526 + v527]}∧{[a106] < 3}
+                ∧{[v494] = 94}∧{[v500] = 0}∧{[v505] = 91}∧{[v511] = 91}
+                ∧{[v505] ≠ 40}∧{[v508] ≠ 42}∧{[v508] ≠ 43}
+                ∧{[v508] ≠ 63}∧{[v528] ≠ 45}∧{[v528] ≠ 93}
+                ∧{[v20]&1 ≠ 0},
+         both=a106=v521 ∧ a105=a104=v18 ∧ v21=v489=v495=v500=v503
+                                                  =v506=v509=v512=v516
+               ∧ v505=v511
+              &&
+              v7 = -a107 ∧ v21 = 0 ∧ v489 = 0 ∧ v494 = 94 ∧ v498 = a109 +1
+               ∧ v502 = v522 -1 ∧ v505 = 91 ∧ v520 = 1 ∧ v522 = v523 -1
+               ∧ v524 = a110 +1 ∧ v525 = a109 -1 ∧ v526 = v527 + -a111 -1
+              &&
+              0=v21∧1=v520∧91=v505∧94=v494∧tolower([v488])=v526
+              ∧tolower([v528])=v527∧[v523 -2]=v502∧[v522 -1]=v502
+              ∧[v523 -1]=v522∧[v527 + -a111 -1]=v526∧[a109 -1]=v525
+              ∧[-a107]=v7∧[-a108]=v21∧[a106 +1]=v525∧[a109 +1]=v498
+              ∧[a110 +1]=v524∧[a112 +1]=v520∧[a110 +2]=v498
+              &&
+              a109 = a106 +2
+              &&
+              {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+              ∧{is_int([v20]) = 1}∧{is_int([v488]) = 1}∧{is_int([v498]) = 1}
+              ∧{is_int([v508]) = 1}∧{is_int([v524]) = 1}∧{is_int([v525]) = 1}
+              ∧{is_int([v528]) = 1}∧{is_int([a105]) = 1}∧{is_int([a106]) = 1}
+              ∧{[v508] ≠ 42}∧{[v508] ≠ 43}∧{[v508] ≠ 63}∧{[v528] ≠ 45}
+              ∧{[v528] ≠ 93}∧{[v20]&1 ≠ 0}
+{ roots={ &s=v2,
+          &regexp=v1,
+          &flags=v6,
+          &return=v654,
+          &num_caps=v5,
+          &s_len=v3,
+          &caps=v4 };
+  mem  ={ v1 -> { * -> v7 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> a105 },
+          v4 -> { * -> v9 },
+          v5 -> { * -> v19 },
+          v6 -> { * -> v20 },
+          v7 -> { },
+          v8 -> { * -> v488 },
+          v9 -> { },
+          v10 -> { flags -> v17,
+                   num_caps -> v16,
+                   caps -> v15,
+                   num_branches -> v14,
+                   branches -> v13,
+                   num_brackets -> v12,
+                   brackets -> v11 },
+          v11 -> { [v516] -> v517,
+                   [v512] -> v513,
+                   [v495] -> v496,
+                   [v489] -> v490 },
+          v12 -> { * -> v520 },
+          v14 -> { * -> v21 },
+          v15 -> { * -> v9 },
+          v16 -> { * -> v19 },
+          v17 -> { * -> v20 },
+          v490 -> { ptr -> v491 },
+          v491 -> { * -> v492 },
+          v492 -> { [v489] -> v493 },
+          v493 -> { * -> v494 },
+          v496 -> { ptr -> v501, num_branches -> v499, len -> v497 },
+          v497 -> { * -> v498 },
+          v499 -> { * -> v495 },
+          v501 -> { * -> v502 },
+          v502 -> { [v509] -> v510, [v503] -> v504 },
+          v504 -> { [v506] -> v507, * -> v505 },
+          v507 -> { * -> v508 },
+          v510 -> { * -> v505 },
+          v513 -> { branches -> v515, num_branches -> v514 },
+          v517 -> { ptr -> v519, len -> v518 },
+          v518 -> { * -> v7 },
+          v519 -> { * -> v7 },
+          v654 -> { * -> v520 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v5 -> { MustBeValid(, None, t=0) },
+          v6 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced  },
+          v8 -> { ISLAbduced  },
+          v10 -> { s&info (variable `info` declared here at line 425 :t0 ) at line 436, column 10,
+                   ISLAbduced  },
+          v12 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v14 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v15 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v16 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v17 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v21 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v490 -> { ISLAbduced  },
+          v492 -> { ISLAbduced  },
+          v496 -> { ISLAbduced  },
+          v502 -> { ISLAbduced  },
+          v504 -> { ISLAbduced  },
+          v513 -> { ISLAbduced  },
+          v514 -> { WrittenTo  },
+          v515 -> { WrittenTo  },
+          v516 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v517 -> { ISLAbduced  },
+          v518 -> { WrittenTo  },
+          v519 -> { WrittenTo  },
+          v520 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v654 -> { MustBeValid(, None, t=27), WrittenTo  } };}
+PRE=[{ roots={ &s=v2,
+               &regexp=v1,
+               &flags=v6,
+               &num_caps=v5,
+               &s_len=v3,
+               &caps=v4 };
+       mem  ={ v1 -> { * -> v7 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v18 },
+               v4 -> { * -> v9 },
+               v5 -> { * -> v19 },
+               v6 -> { * -> v20 },
+               v7 -> { },
+               v8 -> { * -> v488 },
+               v9 -> { },
+               v18 -> { },
+               v19 -> { },
+               v20 -> { },
+               v488 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v5 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v6 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced ,
+                       MustBeInitialized(, t=19),
+                       MustBeValid(, None, t=19) },
+               v8 -> { ISLAbduced ,
+                       MustBeInitialized(, t=22),
+                       MustBeValid(, None, t=22) } };}]
+need_specialization=false
+skipped_calls={ tolower -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=425
+430
+431
+432
+433
+436
+437
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+unsat:false,
+bo: { v7 -> [v7, min(0, v7)],
+      v18 -> [max(0, v18), v18],
+      v20 -> v20,
+      v21 -> 0,
+      v446 -> 0,
+      v451 -> [max(94, v451), min(94, v451)],
+      v455 -> [max(1, v455), min(3, v455)],
+      v457 -> [max(0, v457), min(0, v457)],
+      v460 -> [0, -1+min(1, v455)],
+      v462 -> [max(91, v462), min(91, v462)],
+      v463 -> 0,
+      v465 -> v465,
+      v466 -> 0,
+      v468 -> [max(91, v468), min(91, v468)],
+      v469 -> 0,
+      v473 -> [max(0, v7), 0],
+      v477 -> 1 },
+citv: { v7 -> ≤0,
+        v18 -> ≥0,
+        v21 -> =0,
+        v446 -> =0,
+        v451 -> =94,
+        v455 -> ∈[1,3],
+        v457 -> =0,
+        v460 -> =0,
+        v462 -> =91,
+        v463 -> =0,
+        v465 -> ∉[42,43],
+        v466 -> =0,
+        v468 -> =91,
+        v469 -> =0,
+        v473 -> =0,
+        v477 -> =1 },
+formula: known=v21=v446=v452=v460=v463=v466=v469=v473
+               &&
+               v21 = 0 ∧ v446 = 0 ∧ v455 = v482 +2 ∧ v459 = v479 -1
+                ∧ v477 = 1 ∧ v478 = v482 -1 ∧ v479 = v480 -1 ∧ v481 = v482 +1
+               &&
+               0=v21∧1=v477∧tolower([v445])=v483∧tolower([v486])=v485
+               ∧tolower([v487])=v484∧[v480 -2]=v459∧[v479 -1]=v459
+               ∧[v480 -1]=v479∧[v482 -1]=v478∧[v482 +1]=v481∧[v482 +2]=v455
+               &&
+               true (no tableau)
+               &&
+               {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+               ∧{is_int([v20]) = 1}∧{is_int([v445]) = 1}∧{is_int([v451]) = 1}
+               ∧{is_int([v455]) = 1}∧{is_int([v457]) = 1}∧{is_int([v462]) = 1}
+               ∧{is_int([v465]) = 1}∧{is_int([v468]) = 1}∧{is_int([v478]) = 1}
+               ∧{is_int([v481]) = 1}∧{is_int([v482]) = 1}∧{is_int([v486]) = 1}
+               ∧{is_int([v487]) = 1}∧{is_int([a94]) = 1}∧{is_int([a96]) = 1},
+         pruned={0 ≤ [v18]}∧{0 ≤ [v478]}∧{0 ≤ [a94]}∧{1 ≤ [v481]}
+                ∧{[v7] ≤ 0}∧{[v455] ≤ 3}∧{[v481] ≤ 1}∧{[-v483
+                                                                     + v485] ≤ 0}
+                ∧{0 < [v455]}∧{0 < [v481]}∧{0 < [v483 + -v484]}
+                ∧{[a96] < 3}∧{[v451] = 94}∧{[v457] = 0}∧{[v462] = 91}
+                ∧{[v468] = 91}∧{[v462] ≠ 40}∧{[v465] ≠ 42}∧{[v465] ≠ 43}
+                ∧{[v465] ≠ 63}∧{[v486] ≠ 45}∧{[v486] ≠ 93}
+                ∧{[v487] ≠ 0}∧{[v487] ≠ 93}∧{[v20]&1 ≠ 0},
+         both=a96=v478 ∧ a95=a94=v18 ∧ v21=v446=v452=v457=v460=v463
+                                               =v466=v469=v473 ∧ v462=v468
+              &&
+              v7 = -a97 ∧ v21 = 0 ∧ v446 = 0 ∧ v451 = 94 ∧ v455 = a99 +1
+               ∧ v459 = v479 -1 ∧ v462 = 91 ∧ v477 = 1 ∧ v479 = v480 -1
+               ∧ v481 = a100 +1 ∧ v482 = a99 -1 ∧ v483 = v484 + a101 +1
+               ∧ v484 = v485 + -a101 + a102 -1
+              &&
+              0=v21∧1=v477∧91=v462∧94=v451∧tolower([v445])=v483
+              ∧tolower([v486])=v485∧tolower([v487])=v484∧[v480 -2]=v459
+              ∧[v479 -1]=v459∧[v480 -1]=v479∧[v485 + -a101 + a102 -1]=v484
+              ∧[a99 -1]=v482∧[v485 + a102]=v483∧[-a97]=v7∧[-a98]=v21
+              ∧[v484 + a101 +1]=v483∧[a96 +1]=v482∧[a99 +1]=v455
+              ∧[a100 +1]=v481∧[a103 +1]=v477∧[a100 +2]=v455
+              &&
+              a99 = a96 +2
+              &&
+              {is_int([v7]) = 1}∧{is_int([v18]) = 1}∧{is_int([v19]) = 1}
+              ∧{is_int([v20]) = 1}∧{is_int([v445]) = 1}∧{is_int([v455]) = 1}
+              ∧{is_int([v465]) = 1}∧{is_int([v481]) = 1}∧{is_int([v482]) = 1}
+              ∧{is_int([v486]) = 1}∧{is_int([v487]) = 1}∧{is_int([a95]) = 1}
+              ∧{is_int([a96]) = 1}∧{[v465] ≠ 42}∧{[v465] ≠ 43}
+              ∧{[v465] ≠ 63}∧{[v486] ≠ 45}∧{[v486] ≠ 93}∧{[v487] ≠ 0}
+              ∧{[v487] ≠ 93}∧{[v20]&1 ≠ 0}
+{ roots={ &s=v2,
+          &regexp=v1,
+          &flags=v6,
+          &return=v653,
+          &num_caps=v5,
+          &s_len=v3,
+          &caps=v4 };
+  mem  ={ v1 -> { * -> v7 },
+          v2 -> { * -> v8 },
+          v3 -> { * -> a95 },
+          v4 -> { * -> v9 },
+          v5 -> { * -> v19 },
+          v6 -> { * -> v20 },
+          v7 -> { },
+          v8 -> { * -> v445 },
+          v9 -> { },
+          v10 -> { flags -> v17,
+                   num_caps -> v16,
+                   caps -> v15,
+                   num_branches -> v14,
+                   branches -> v13,
+                   num_brackets -> v12,
+                   brackets -> v11 },
+          v11 -> { [v473] -> v474,
+                   [v469] -> v470,
+                   [v452] -> v453,
+                   [v446] -> v447 },
+          v12 -> { * -> v477 },
+          v14 -> { * -> v21 },
+          v15 -> { * -> v9 },
+          v16 -> { * -> v19 },
+          v17 -> { * -> v20 },
+          v447 -> { ptr -> v448 },
+          v448 -> { * -> v449 },
+          v449 -> { [v446] -> v450 },
+          v450 -> { * -> v451 },
+          v453 -> { ptr -> v458, num_branches -> v456, len -> v454 },
+          v454 -> { * -> v455 },
+          v456 -> { * -> v452 },
+          v458 -> { * -> v459 },
+          v459 -> { [v466] -> v467, [v460] -> v461 },
+          v461 -> { [v463] -> v464, * -> v462 },
+          v464 -> { * -> v465 },
+          v467 -> { * -> v462 },
+          v470 -> { branches -> v472, num_branches -> v471 },
+          v474 -> { ptr -> v476, len -> v475 },
+          v475 -> { * -> v7 },
+          v476 -> { * -> v7 },
+          v653 -> { * -> v477 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) },
+          v2 -> { MustBeValid(, None, t=0) },
+          v3 -> { MustBeValid(, None, t=0) },
+          v4 -> { MustBeValid(, None, t=0) },
+          v5 -> { MustBeValid(, None, t=0) },
+          v6 -> { MustBeValid(, None, t=0) },
+          v7 -> { ISLAbduced  },
+          v8 -> { ISLAbduced  },
+          v10 -> { s&info (variable `info` declared here at line 425 :t0 ) at line 436, column 10,
+                   ISLAbduced  },
+          v12 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v14 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v15 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v16 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v17 -> { MustBeValid(, None, t=0), WrittenTo  },
+          v21 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v447 -> { ISLAbduced  },
+          v449 -> { ISLAbduced  },
+          v453 -> { ISLAbduced  },
+          v459 -> { ISLAbduced  },
+          v461 -> { ISLAbduced  },
+          v470 -> { ISLAbduced  },
+          v471 -> { WrittenTo  },
+          v472 -> { WrittenTo  },
+          v473 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v474 -> { ISLAbduced  },
+          v475 -> { WrittenTo  },
+          v476 -> { WrittenTo  },
+          v477 -> { Invalid ConstantDereference(is assigned to the constant 1) },
+          v653 -> { MustBeValid(, None, t=27), WrittenTo  } };}
+PRE=[{ roots={ &s=v2,
+               &regexp=v1,
+               &flags=v6,
+               &num_caps=v5,
+               &s_len=v3,
+               &caps=v4 };
+       mem  ={ v1 -> { * -> v7 },
+               v2 -> { * -> v8 },
+               v3 -> { * -> v18 },
+               v4 -> { * -> v9 },
+               v5 -> { * -> v19 },
+               v6 -> { * -> v20 },
+               v7 -> { },
+               v8 -> { * -> v445 },
+               v9 -> { },
+               v18 -> { },
+               v19 -> { },
+               v20 -> { },
+               v445 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v4 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v5 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v6 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+               v7 -> { ISLAbduced ,
+                       MustBeInitialized(, t=19),
+                       MustBeValid(, None, t=19) },
+               v8 -> { ISLAbduced ,
+                       MustBeInitialized(, t=22),
+                       MustBeValid(, None, t=22) } };}]
+need_specialization=false
+skipped_calls={ tolower -> call to skipped function occurs here }
+Topl={len=0;content=
+       [  ]}
+full_trace=425
+430
+431
+432
+433
+436
+437
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18],
+                            v20 -> v20 },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a86]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a86]}∧{[v7] ≤ 0}
+                                      ∧{[v20]&1 ≠ 0},
+                               both=a87=a86=v18
+                                    &&
+                                    v7 = -a89
+                                    &&
+                                    [-a89]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a87]) = 1}
+                                    ∧{[v20]&1 ≠ 0}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  },
+                                v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) },
+                                     v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18],
+                            v20 -> v20 },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a78]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a78]}∧{[v7] ≤ 0}
+                                      ∧{[v20]&1 ≠ 0},
+                               both=a79=a78=v18
+                                    &&
+                                    v7 = -a81
+                                    &&
+                                    [-a81]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a79]) = 1}
+                                    ∧{[v20]&1 ≠ 0}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  },
+                                v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) },
+                                     v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18],
+                            v20 -> v20 },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a70]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a70]}∧{[v7] ≤ 0}
+                                      ∧{[v20]&1 ≠ 0},
+                               both=a71=a70=v18
+                                    &&
+                                    v7 = -a73
+                                    &&
+                                    [-a73]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a71]) = 1}
+                                    ∧{[v20]&1 ≠ 0}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  },
+                                v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) },
+                                     v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a62]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a62]}∧{[v7] ≤ 0}
+                                      ∧{[v20]&1 = 0},
+                               both=a63=a62=v18
+                                    &&
+                                    v7 = -a65
+                                    &&
+                                    [-a65]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {[v20]&1 = 0}∧{is_int([v7]) = 1}
+                                    ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                    ∧{is_int([a63]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  },
+                                v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) },
+                                     v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a54]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a54]}∧{[v7] ≤ 0}
+                                      ∧{[v20]&1 = 0},
+                               both=a55=a54=v18
+                                    &&
+                                    v7 = -a57
+                                    &&
+                                    [-a57]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {[v20]&1 = 0}∧{is_int([v7]) = 1}
+                                    ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                    ∧{is_int([a55]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  },
+                                v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) },
+                                     v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a46]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a46]}∧{[v7] ≤ 0}
+                                      ∧{[v20]&1 = 0},
+                               both=a47=a46=v18
+                                    &&
+                                    v7 = -a49
+                                    &&
+                                    [-a49]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {[v20]&1 = 0}∧{is_int([v7]) = 1}
+                                    ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                    ∧{is_int([a47]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  },
+                                v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) },
+                                     v8 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a38]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a38]}∧{[v7] ≤ 0}
+                                      ∧{[v20]&1 = 0},
+                               both=a39=a38=v18
+                                    &&
+                                    v7 = -a41
+                                    &&
+                                    [-a41]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {[v20]&1 = 0}∧{is_int([v7]) = 1}
+                                    ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                    ∧{is_int([a39]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  },
+                                v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) },
+                                     v8 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a31]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a31]}∧{[v7] ≤ 0},
+                               both=a32=a31=v18
+                                    &&
+                                    v7 = -a33
+                                    &&
+                                    [-a33]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a32]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a25]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a25]}∧{[v7] ≤ 0},
+                               both=a26=a25=v18
+                                    &&
+                                    v7 = -a27
+                                    &&
+                                    [-a27]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a26]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a19]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a19]}∧{[v7] ≤ 0},
+                               both=a20=a19=v18
+                                    &&
+                                    v7 = -a21
+                                    &&
+                                    [-a21]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a20]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a13]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a13]}∧{[v7] ≤ 0},
+                               both=a14=a13=v18
+                                    &&
+                                    v7 = -a15
+                                    &&
+                                    [-a15]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a14]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a7]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a7]}∧{[v7] ≤ 0},
+                               both=a8=a7=v18
+                                    &&
+                                    v7 = -a9
+                                    &&
+                                    [-a9]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a8]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { v7 -> [v7, min(0, v7)],
+                            v18 -> [max(0, v18), v18] },
+                      citv: { v7 -> ≤0, v18 -> ≥0 },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v7]) = 1}∧{is_int([v18]) = 1}
+                                     ∧{is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                                     ∧{is_int([a1]) = 1},
+                               pruned={0 ≤ [v18]}∧{0 ≤ [a1]}∧{[v7] ≤ 0},
+                               both=a2=a1=v18
+                                    &&
+                                    v7 = -a3
+                                    &&
+                                    [-a3]=v7
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v7]) = 1}∧{is_int([v19]) = 1}
+                                    ∧{is_int([v20]) = 1}∧{is_int([a2]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { ISLAbduced  } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { ISLAbduced ,
+                                             MustBeInitialized(, t=19),
+                                             MustBeValid(, None, t=19) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v19]) = 1}∧{is_int([v20]) = 1},
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { Invalid CFree(was invalidated by call to `free()`) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v19]) = 1}∧{is_int([v20]) = 1},
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v19]) = 1}∧{is_int([v20]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+39m },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) },
+                                v7 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v7 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430
+                      431
+                      432
+                      433
+                      436}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v20]) = 1},
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v20]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430}
+
+ slre_match [defined, Return type: int, Formals:  regexp:char const * s:char const * s_len:int caps:slre_cap* num_caps:int flags:int, Locals:  info:regex_info]
+{ISLLatentMemoryError unsat:false,
+                      bo: { },
+                      citv: { },
+                      formula: known=true (no var=var)
+                                     &&
+                                     true (no linear)
+                                     &&
+                                     true (no term_eqs)
+                                     &&
+                                     true (no tableau)
+                                     &&
+                                     {is_int([v20]) = 1},
+                               pruned=true (no atoms),
+                               both=true (no var=var)
+                                    &&
+                                    true (no linear)
+                                    &&
+                                    true (no term_eqs)
+                                    &&
+                                    true (no tableau)
+                                    &&
+                                    {is_int([v20]) = 1}
+                      { roots={ &s=v2,
+                                &regexp=v1,
+                                &flags=v6,
+                                &num_caps=v5,
+                                &s_len=v3,
+                                &caps=v4 };
+                        mem  ={ v1 -> { * -> v7 },
+                                v2 -> { * -> v8 },
+                                v3 -> { * -> v18 },
+                                v4 -> { * -> v9 },
+                                v5 -> { * -> v19 },
+                                v6 -> { * -> v20 } };
+                        attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                v2 -> { MustBeValid(, None, t=0) },
+                                v3 -> { MustBeValid(, None, t=0) },
+                                v4 -> { MustBeValid(, None, t=0) },
+                                v5 -> { MustBeValid(, None, t=0) },
+                                v6 -> { MustBeValid(, None, t=0) } };}
+                      PRE=[{ roots={ &s=v2,
+                                     &regexp=v1,
+                                     &flags=v6,
+                                     &num_caps=v5,
+                                     &s_len=v3,
+                                     &caps=v4 };
+                             mem  ={ v1 -> { * -> v7 },
+                                     v2 -> { * -> v8 },
+                                     v3 -> { * -> v18 },
+                                     v4 -> { * -> v9 },
+                                     v5 -> { * -> v19 },
+                                     v6 -> { * -> v20 } };
+                             attrs={ v1 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v2 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v3 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v4 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v5 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) },
+                                     v6 -> { MustBeInitialized(, t=0),
+                                             MustBeValid(, None, t=0) } };}]
+                      need_specialization=false
+                      skipped_calls={ }
+                      Topl={len=0;content=
+                             [  ]}
+                      full_trace=425
+                      430}

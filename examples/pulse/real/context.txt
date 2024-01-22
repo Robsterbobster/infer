@@ -1,42 +1,90 @@
  unsat:false,
-         bo: { v5 -> 5, v7 -> 0, v8 -> 5 },
-         citv: { v5 -> =5, v7 -> =0, v8 -> =5 },
-         formula: known=v5=v8
+         bo: { v17 -> 0 },
+         citv: { v17 -> =0 },
+         formula: known=true (no var=var)
                         &&
-                        v5 = 5 ∧ v7 = 0 ∧ v8 = 5
+                        v17 = 0
                         &&
-                        0=v7∧5=v5
+                        0=v17
                         &&
                         true (no tableau)
                         &&
-                        true (no atoms),
+                        {is_int([v15]) = 1}∧{is_int([v16]) = 1},
                   pruned=true (no atoms),
-                  both=v5=v8
+                  both=true (no var=var)
                        &&
-                       v5 = 5 ∧ v7 = 0 ∧ v8 = 5
+                       v17 = 0
                        &&
-                       0=v7∧5=v5
+                       0=v17
                        &&
                        true (no tableau)
                        &&
-                       true (no atoms)
-         { roots={ n$0=v7, n$1=v4, &regex=v6, &bufr=v3 };
-           mem  ={ v3 -> { * -> v4 },
-                   v4 -> { __infer_model_string_length -> v5 },
-                   v6 -> { * -> v7 } };
-           attrs={ v1 -> { MustBeValid(, None, t=0), Uninitialized },
-                   v2 -> { MustBeValid(, None, t=0), Uninitialized },
-                   v3 -> { MustBeValid(, None, t=0), WrittenTo  },
-                   v6 -> { MustBeValid(, None, t=0), WrittenTo  },
-                   v7 -> { Invalid ConstantDereference(is assigned to the null pointer) },
-                   v8 -> { Invalid ConstantDereference(is assigned to the constant 5) } };}
-         PRE=[{ roots={ };
-                mem  ={ };
-                attrs={ };}]
+                       {is_int([v15]) = 1}∧{is_int([v16]) = 1}
+         { roots={ n$0=v5,
+                   n$1=v5,
+                   n$2=v5,
+                   &info=v7,
+                   &caps=v2,
+                   &re=v1,
+                   &flags=v4,
+                   &num_caps=v3 };
+           mem  ={ v1 -> { * -> v5 },
+                   v2 -> { * -> v6 },
+                   v3 -> { * -> v15 },
+                   v4 -> { * -> v16 },
+                   v5 -> { },
+                   v6 -> { },
+                   v7 -> { flags -> v14,
+                           num_caps -> v13,
+                           caps -> v12,
+                           num_branches -> v11,
+                           branches -> v10,
+                           num_brackets -> v9,
+                           brackets -> v8 },
+                   v9 -> { * -> v17 },
+                   v11 -> { * -> v17 },
+                   v12 -> { * -> v6 },
+                   v13 -> { * -> v15 },
+                   v14 -> { * -> v16 } };
+           attrs={ v1 -> { MustBeValid(, None, t=0) },
+                   v2 -> { MustBeValid(, None, t=0) },
+                   v3 -> { MustBeValid(, None, t=0) },
+                   v4 -> { MustBeValid(, None, t=0) },
+                   v5 -> { ISLAbduced  },
+                   v7 -> { ISLAbduced  },
+                   v9 -> { MustBeValid(, None, t=0), WrittenTo  },
+                   v11 -> { MustBeValid(, None, t=0), WrittenTo  },
+                   v12 -> { MustBeValid(, None, t=0), WrittenTo  },
+                   v13 -> { MustBeValid(, None, t=0), WrittenTo  },
+                   v14 -> { MustBeValid(, None, t=0), WrittenTo  },
+                   v17 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+         PRE=[{ roots={ &caps=v2, &re=v1, &flags=v4, &num_caps=v3 };
+                mem  ={ v1 -> { * -> v5 },
+                        v2 -> { * -> v6 },
+                        v3 -> { * -> v15 },
+                        v4 -> { * -> v16 },
+                        v5 -> { },
+                        v6 -> { },
+                        v15 -> { },
+                        v16 -> { } };
+                attrs={ v1 -> { MustBeInitialized(, t=0),
+                                MustBeValid(, None, t=0) },
+                        v2 -> { MustBeInitialized(, t=0),
+                                MustBeValid(, None, t=0) },
+                        v3 -> { MustBeInitialized(, t=0),
+                                MustBeValid(, None, t=0) },
+                        v4 -> { MustBeInitialized(, t=0),
+                                MustBeValid(, None, t=0) },
+                        v5 -> { ISLAbduced ,
+                                MustBeInitialized(, t=19),
+                                MustBeValid(, None, t=19) } };}]
          need_specialization=false
          skipped_calls={ }
          Topl={len=0;content=
                 [  ]}
-         full_trace=4
-         6
-         7
+         full_trace=52
+         55
+         56
+         57
+         58
+         59
