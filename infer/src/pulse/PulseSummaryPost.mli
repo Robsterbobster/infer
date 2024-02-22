@@ -9,7 +9,7 @@ open PulseOperations.Import
 type start_end_loc = int * int [@@deriving yojson_of]
 
 type label =
-  | Ok of start_end_loc
+  | Ok of start_end_loc 
   | ExitProgram of start_end_loc
   | ErrorRetainCycle of start_end_loc
   | ErrorMemoryLeak of start_end_loc
@@ -22,7 +22,7 @@ type label =
 [@@deriving yojson_of]
 
 
-type summary_post = label * (AbductiveDomain.summary) [@@deriving yojson_of]
+type summary_post = (label * string) * (AbductiveDomain.summary) [@@deriving yojson_of]
 
 type t = summary_post list [@@deriving yojson_of]
 
@@ -35,7 +35,7 @@ type info = string * string * int * int [@@deriving yojson_of]
 type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
 
 val from_lists_of_summaries : 
-  (AbductiveDomain.summary ExecutionDomain.base_t * label) list
+  (AbductiveDomain.summary ExecutionDomain.base_t * label) list -> string
   ->  t
 
 val construct_mapping: Pvar.t -> AbstractValue.t -> mapping

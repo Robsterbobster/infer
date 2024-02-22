@@ -21,7 +21,7 @@ type label =
   | ISLLatentMemoryError of start_end_loc
 [@@deriving yojson_of]
 
-type summary_post = label * (AbductiveDomain.summary) [@@deriving yojson_of]
+type summary_post = (label * string) * (AbductiveDomain.summary) [@@deriving yojson_of]
 
 type t = summary_post list [@@deriving yojson_of]
 
@@ -34,23 +34,23 @@ type info = string * string * int * int [@@deriving yojson_of]
 type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
 
 (* From the computed summary with label, construct a structure for dumping information. *)
-let construct_summary_post (summary_label : AbductiveDomain.summary ExecutionDomain.base_t * label) =
+let construct_summary_post (summary_label : AbductiveDomain.summary ExecutionDomain.base_t * label) (path: string) =
   let summary, label = summary_label in
     (* The meta data in summary is already captured by labels;
         strip those and standardize the format of summary. *)
     match summary with
-    | ContinueProgram astate
+    | ContinueProgram astate 
     | ExceptionRaised astate
     | ExitProgram astate
     | AbortProgram {astate; _; }
     | LatentAbortProgram {astate; _ }
     | LatentInvalidAccess {astate; _; }
     | ISLLatentMemoryError astate ->
-      label, astate
+      (label, path), astate
 
 
-let from_lists_of_summaries summary_labels =
-  let result_list = List.map summary_labels ~f:construct_summary_post in
+let from_lists_of_summaries summary_labels path=
+  let result_list = List.map summary_labels ~f:(fun summary -> construct_summary_post summary path) in
   result_list
 
 let construct_mapping (formal: (Pvar.t)) (actual: (AbstractValue.t)) = (Mangled.to_string (Pvar.get_name formal), actual)

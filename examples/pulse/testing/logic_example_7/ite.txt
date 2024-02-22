@@ -1,0 +1,30 @@
+ITE( p2 <= 0,
+function_call,
+ITE( p1 <= 0,
+function_call,
+skip))
+
+ideal:
+ITE( 0 < p1,
+ITE( 0 < p3,
+ITE( p2 <= 0,
+skip,
+function_call),
+function_call),
+ITE( 0 < p3,
+skip,
+function_call))
+
+int changeAttribute(struct MYSOFA_ATTRIBUTE *attr, char *name, char *value,
+                    char *newvalue) {
+  while (attr) {
+    if (!strcmp(name, attr->name) &&
+        (value == NULL || attr->value == NULL || !strcmp(value, attr->value))) {
+      free(attr->value);
+      attr->value = mysofa_strdup(newvalue);
+      return 1;
+    }
+    attr = attr->next;
+  }
+  return 0;
+}

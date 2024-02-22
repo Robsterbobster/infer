@@ -1,0 +1,7 @@
+ITE( y != 0,
+    ITE( g = 4,
+        ITE( *(y) = 0,
+        skip,
+        function_call),
+    function_call),
+function_call)

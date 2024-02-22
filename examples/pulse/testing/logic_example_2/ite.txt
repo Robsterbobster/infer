@@ -1,0 +1,5 @@
+ITE( p2 <= 0,
+function_call,
+ITE( p1 <= 0,
+function_call,
+skip))
