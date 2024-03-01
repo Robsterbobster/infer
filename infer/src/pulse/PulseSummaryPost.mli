@@ -22,7 +22,7 @@ type label =
 [@@deriving yojson_of]
 
 
-type summary_post = (label * string) * (AbductiveDomain.summary) [@@deriving yojson_of]
+type summary_post = label * string * (AbductiveDomain.summary) [@@deriving yojson_of]
 
 type t = summary_post list [@@deriving yojson_of]
 

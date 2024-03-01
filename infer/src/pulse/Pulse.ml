@@ -203,7 +203,7 @@ module PulseTransferFunctions = struct
           let mappings = PulseSummaryPost.from_formals_actuals_lst formal_vars actual_vars in
           let loc = Procdesc.get_loc proc_desc in
           let file = loc.file in
-          let path = SourceFile.to_rel_path file in
+          let path = SourceFile.to_string file in
           (*L.debug_dev "Context\n %a \n" AbductiveDomain.pp astate;
           L.debug_dev "%a \n" Procname.pp callee_pname;
           List.iter formal_vars ~f:(fun formal-> L.debug_dev "%a \n" Pvar.pp_value formal;);*)

@@ -179,7 +179,7 @@ let of_posts tenv proc_desc err_log location posts =
   (* Include the file location *)
   let loc = Procdesc.get_loc proc_desc in
   let file = loc.file in
-  let path = SourceFile.to_abs_path file in
+  let path = SourceFile.to_string file in
   (* pass list of list for writing *)
   if Config.pulse_fix_mode then write_summary_and_posts_json summary_labels_list_filtered path;
   (* pass json when --autocode-check-mode is enabled and the function is what we are looking for *)
