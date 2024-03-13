@@ -1,285 +1,43 @@
- match [defined, Return type: int, Formals:  regex:char* s:char* s_len:int, Locals: None]
-{ISLLatentMemoryError unsat:false,
-                      bo: { v15 -> 0 },
-                      citv: { v15 -> =0 },
-                      formula: known=true (no var=var)
-                                     &&
-                                     v15 = 0
-                                     &&
-                                     0=v15
-                                     &&
-                                     true (no tableau)
-                                     &&
-                                     {is_int([v6]) = 1}∧{is_int([v17]) = 1},
-                               pruned=true (no atoms),
-                               both=true (no var=var)
-                                    &&
-                                    v15 = 0
-                                    &&
-                                    0=v15
-                                    &&
-                                    true (no tableau)
-                                    &&
-                                    {is_int([v6]) = 1}∧{is_int([v17]) = 1}
-                      { roots={ &s=v2, &regex=v1, &s_len=v3 };
-                        mem  ={ v1 -> { * -> v4 },
-                                v2 -> { * -> v5 },
-                                v3 -> { * -> v6 },
-                                v4 -> { [v15] -> v16 },
-                                v16 -> { * -> v17 } };
-                        attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                v2 -> { MustBeValid(, None, t=0) },
-                                v3 -> { MustBeValid(, None, t=0) },
-                                v4 -> { ISLAbduced  },
-                                v5 -> { Invalid ConstantDereference(is assigned to the null pointer) },
-                                v15 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
-                      PRE=[{ roots={ &s=v2, &regex=v1, &s_len=v3 };
-                             mem  ={ v1 -> { * -> v4 },
-                                     v2 -> { * -> v5 },
-                                     v3 -> { * -> v6 },
-                                     v4 -> { [v15] -> v16 },
-                                     v16 -> { * -> v17 } };
-                             attrs={ v1 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v2 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v3 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v4 -> { ISLAbduced ,
-                                             MustBeInitialized(, t=3),
-                                             MustBeValid(, None, t=3) },
-                                     v5 -> { Invalid ConstantDereference(is assigned to the null pointer) },
-                                     v16 -> { MustBeInitialized(, t=6),
-                                              MustBeValid(, None, t=6) } };}]
-                      need_specialization=false
-                      skipped_calls={ }
-                      Topl={len=0;content=
-                             [  ]}
-                      full_trace=16
-                      17}
-
- match [defined, Return type: int, Formals:  regex:char* s:char* s_len:int, Locals: None]
-{ISLLatentMemoryError unsat:false,
-                      bo: { v12 -> 0 },
-                      citv: { v12 -> =0 },
-                      formula: known=true (no var=var)
-                                     &&
-                                     v12 = 0
-                                     &&
-                                     0=v12
-                                     &&
-                                     true (no tableau)
-                                     &&
-                                     {is_int([v6]) = 1}∧{is_int([v14]) = 1},
-                               pruned=true (no atoms),
-                               both=true (no var=var)
-                                    &&
-                                    v12 = 0
-                                    &&
-                                    0=v12
-                                    &&
-                                    true (no tableau)
-                                    &&
-                                    {is_int([v6]) = 1}∧{is_int([v14]) = 1}
-                      { roots={ &s=v2, &regex=v1, &s_len=v3 };
-                        mem  ={ v1 -> { * -> v4 },
-                                v2 -> { * -> v5 },
-                                v3 -> { * -> v6 },
-                                v4 -> { [v12] -> v13 },
-                                v13 -> { * -> v14 } };
-                        attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                v2 -> { MustBeValid(, None, t=0) },
-                                v3 -> { MustBeValid(, None, t=0) },
-                                v4 -> { ISLAbduced  },
-                                v5 -> { Invalid CFree(was invalidated by call to `free()`) },
-                                v12 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
-                      PRE=[{ roots={ &s=v2, &regex=v1, &s_len=v3 };
-                             mem  ={ v1 -> { * -> v4 },
-                                     v2 -> { * -> v5 },
-                                     v3 -> { * -> v6 },
-                                     v4 -> { [v12] -> v13 },
-                                     v13 -> { * -> v14 } };
-                             attrs={ v1 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v2 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v3 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v4 -> { ISLAbduced ,
-                                             MustBeInitialized(, t=3),
-                                             MustBeValid(, None, t=3) },
-                                     v5 -> { Invalid CFree(was invalidated by call to `free()`) },
-                                     v13 -> { MustBeInitialized(, t=6),
-                                              MustBeValid(, None, t=6) } };}]
-                      need_specialization=false
-                      skipped_calls={ }
-                      Topl={len=0;content=
-                             [  ]}
-                      full_trace=16
-                      17}
-
- match [defined, Return type: int, Formals:  regex:char* s:char* s_len:int, Locals: None]
+ set [defined, Return type: void, Formals:  p1:int* p2:int, Locals: None]
+  [ 0.0s] idle
 unsat:false,
-bo: { v7 -> 0 },
-citv: { v7 -> =0 },
-formula: known=true (no var=var)
-               &&
-               v7 = 0
-               &&
-               0=v7
-               &&
-               true (no tableau)
-               &&
-               {is_int([v6]) = 1}∧{is_int([v9]) = 1}∧{is_int([v11]) = 1},
-         pruned=true (no atoms),
-         both=true (no var=var)
-              &&
-              v7 = 0
-              &&
-              0=v7
-              &&
-              true (no tableau)
-              &&
-              {is_int([v6]) = 1}∧{is_int([v9]) = 1}∧{is_int([v11]) = 1}
-{ roots={ &s=v2, &return=v18, &regex=v1, &s_len=v3 };
-  mem  ={ v1 -> { * -> v4 },
-          v2 -> { * -> v5 },
-          v3 -> { * -> v6 },
-          v4 -> { [v7] -> v8 },
-          v5 -> { [v7] -> v10 },
-          v8 -> { * -> v9 },
-          v10 -> { * -> v11 },
-          v18 -> { * -> v7 } };
-  attrs={ v1 -> { MustBeValid(, None, t=0) },
-          v2 -> { MustBeValid(, None, t=0) },
-          v3 -> { MustBeValid(, None, t=0) },
-          v4 -> { ISLAbduced  },
-          v5 -> { ISLAbduced  },
-          v7 -> { Invalid ConstantDereference(is assigned to the null pointer) },
-          v18 -> { MustBeValid(, None, t=11), WrittenTo  } };}
-PRE=[{ roots={ &s=v2, &regex=v1, &s_len=v3 };
-       mem  ={ v1 -> { * -> v4 },
-               v2 -> { * -> v5 },
-               v3 -> { * -> v6 },
-               v4 -> { [v7] -> v8 },
-               v5 -> { [v7] -> v10 },
-               v6 -> { },
-               v8 -> { * -> v9 },
-               v9 -> { },
-               v10 -> { * -> v11 },
-               v11 -> { } };
-       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v3 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-               v4 -> { ISLAbduced ,
-                       MustBeInitialized(, t=3),
-                       MustBeValid(, None, t=3) },
-               v5 -> { ISLAbduced ,
-                       MustBeInitialized(, t=6),
-                       MustBeValid(, None, t=6) },
-               v8 -> { MustBeInitialized(, t=6), MustBeValid(, None, t=6) },
-               v10 -> { MustBeInitialized(, t=6), MustBeValid(, None, t=6) } };}]
-need_specialization=false
-skipped_calls={ }
-Topl={len=0;content=
-       [  ]}
-full_trace=16
-17
-
- match [defined, Return type: int, Formals:  regex:char* s:char* s_len:int, Locals: None]
-{ISLLatentMemoryError unsat:false,
-                      bo: { },
-                      citv: { },
-                      formula: known=true (no var=var)
-                                     &&
-                                     true (no linear)
-                                     &&
-                                     true (no term_eqs)
-                                     &&
-                                     true (no tableau)
-                                     &&
-                                     true (no atoms),
-                               pruned=true (no atoms),
-                               both=true (no var=var)
-                                    &&
-                                    true (no linear)
-                                    &&
-                                    true (no term_eqs)
-                                    &&
-                                    true (no tableau)
-                                    &&
-                                    true (no atoms)
-                      { roots={ &s=v2, &regex=v1, &s_len=v3 };
-                        mem  ={ v1 -> { * -> v4 },
-                                v2 -> { * -> v5 },
-                                v3 -> { * -> v6 } };
-                        attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                v2 -> { MustBeValid(, None, t=0) },
-                                v3 -> { MustBeValid(, None, t=0) },
-                                v4 -> { Invalid CFree(was invalidated by call to `free()`) } };}
-                      PRE=[{ roots={ &s=v2, &regex=v1, &s_len=v3 };
-                             mem  ={ v1 -> { * -> v4 },
-                                     v2 -> { * -> v5 },
-                                     v3 -> { * -> v6 } };
-                             attrs={ v1 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v2 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v3 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v4 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
-                      need_specialization=false
-                      skipped_calls={ }
-                      Topl={len=0;content=
-                             [  ]}
-                      full_trace=16
-                      17}
-
- match [defined, Return type: int, Formals:  regex:char* s:char* s_len:int, Locals: None]
-{ISLLatentMemoryError unsat:false,
-                      bo: { },
-                      citv: { },
-                      formula: known=true (no var=var)
-                                     &&
-                                     true (no linear)
-                                     &&
-                                     true (no term_eqs)
-                                     &&
-                                     true (no tableau)
-                                     &&
-                                     true (no atoms),
-                               pruned=true (no atoms),
-                               both=true (no var=var)
-                                    &&
-                                    true (no linear)
-                                    &&
-                                    true (no term_eqs)
-                                    &&
-                                    true (no tableau)
-                                    &&
-                                    true (no atoms)
-                      { roots={ &s=v2, &regex=v1, &s_len=v3 };
-                        mem  ={ v1 -> { * -> v4 },
-                                v2 -> { * -> v5 },
-                                v3 -> { * -> v6 } };
-                        attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                v2 -> { MustBeValid(, None, t=0) },
-                                v3 -> { MustBeValid(, None, t=0) },
-                                v4 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
-                      PRE=[{ roots={ &s=v2, &regex=v1, &s_len=v3 };
-                             mem  ={ v1 -> { * -> v4 },
-                                     v2 -> { * -> v5 },
-                                     v3 -> { * -> v6 } };
-                             attrs={ v1 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v2 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v3 -> { MustBeInitialized(, t=0),
-                                             MustBeValid(, None, t=0) },
-                                     v4 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
-                      need_specialization=false
-                      skipped_calls={ }
-                      Topl={len=0;content=
-                             [  ]}
-                      full_trace=16
-                      17}
+  bo: { v5 -> 0 },
+  citv: { v5 -> =0 },
+  formula: known=true (no var=var)
+                 &&
+                 v5 = 0
+                 &&
+                 0=v5∧__infer_skip(0)=v6
+                 &&
+                 true (no tableau)
+                 &&
+                 true (no atoms),
+           pruned=true (no atoms),
+           both=true (no var=var)
+                &&
+                v5 = 0
+                &&
+                0=v5∧__infer_skip(0)=v6
+                &&
+                true (no tableau)
+                &&
+                true (no atoms)
+  { roots={ &p2=v2, &return=v7, &p1=v1 };
+    mem  ={ v1 -> { * -> v3 },
+            v2 -> { * -> v4 },
+            v3 -> { },
+            v7 -> { * -> v5 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0) },
+            v2 -> { MustBeValid(, None, t=0) },
+            v5 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+            v7 -> { MustBeValid(, None, t=3), WrittenTo  } };}
+  PRE=[{ roots={ &p2=v2, &p1=v1 };
+         mem  ={ v1 -> { * -> v3 }, v2 -> { * -> v4 }, v3 -> { }, v4 -> { } };
+         attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+                 v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
+  need_specialization=false
+  skipped_calls={ __infer_skip -> call to skipped function occurs here }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=7
+  8

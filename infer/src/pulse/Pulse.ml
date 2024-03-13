@@ -204,9 +204,9 @@ module PulseTransferFunctions = struct
           let loc = Procdesc.get_loc proc_desc in
           let file = loc.file in
           let path = SourceFile.to_string file in
-          (*L.debug_dev "Context\n %a \n" AbductiveDomain.pp astate;
+          L.debug_dev "Context\n %a \n" AbductiveDomain.pp astate;
           L.debug_dev "%a \n" Procname.pp callee_pname;
-          List.iter formal_vars ~f:(fun formal-> L.debug_dev "%a \n" Pvar.pp_value formal;);*)
+          (*List.iter formal_vars ~f:(fun formal-> L.debug_dev "%a \n" Pvar.pp_value formal;);*)
           write_context_json (Procdesc.get_proc_name proc_desc) path call_loc astate; write_mappings_json mappings;
           )
           )
