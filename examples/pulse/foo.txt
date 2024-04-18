@@ -1,0 +1,45 @@
+ foo [defined, Return type: void, Formals:  p1:int* p2:int*, Locals: None]
+  [ 0.0s] idle
+unsat:false,
+  bo: { v5 -> 0 },
+  citv: { v5 -> =0 },
+  formula: known=true (no var=var)
+                 &&
+                 v5 = 0
+                 &&
+                 0=v5∧__infer_skip(0)=v6
+                 &&
+                 true (no tableau)
+                 &&
+                 true (no atoms),
+           pruned=true (no atoms),
+           both=true (no var=var)
+                &&
+                v5 = 0
+                &&
+                0=v5∧__infer_skip(0)=v6
+                &&
+                true (no tableau)
+                &&
+                true (no atoms)
+  { roots={ &p2=v2, &return=v7, &p1=v1 };
+    mem  ={ v1 -> { * -> v4 },
+            v2 -> { * -> v4 },
+            v3 -> { },
+            v4 -> { },
+            v7 -> { * -> v5 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0), WrittenTo  },
+            v2 -> { MustBeValid(, None, t=0) },
+            v5 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+            v7 -> { MustBeValid(, None, t=8), WrittenTo  } };}
+  PRE=[{ roots={ &p2=v2, &p1=v1 };
+         mem  ={ v1 -> { * -> v3 }, v2 -> { * -> v4 }, v3 -> { }, v4 -> { } };
+         attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+                 v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
+  need_specialization=false
+  skipped_calls={ __infer_skip -> call to skipped function occurs here }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=12
+  13
+  14

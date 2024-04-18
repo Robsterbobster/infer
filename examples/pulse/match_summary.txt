@@ -1,43 +1,102 @@
- set [defined, Return type: void, Formals:  p1:int* p2:int, Locals: None]
+ foo [defined, Return type: void, Formals: None, Locals:  x:int* cond:int]
   [ 0.0s] idle
 unsat:false,
-  bo: { v5 -> 0 },
-  citv: { v5 -> =0 },
-  formula: known=true (no var=var)
+  bo: { v7 -> 0, v9 -> 0 },
+  citv: { v7 -> =null, v9 -> =null },
+  formula: known=v7=v9
                  &&
-                 v5 = 0
+                 v7 = 0 ∧ v9 = 0
                  &&
-                 0=v5∧__infer_skip(0)=v6
+                 0=v7∧rand()=v4
                  &&
                  true (no tableau)
                  &&
-                 true (no atoms),
+                 {is_int([v4]) = 1},
            pruned=true (no atoms),
-           both=true (no var=var)
+           both=v7=v9
                 &&
-                v5 = 0
+                v7 = 0 ∧ v9 = 0
                 &&
-                0=v5∧__infer_skip(0)=v6
+                0=v7∧rand()=v4
                 &&
                 true (no tableau)
                 &&
-                true (no atoms)
-  { roots={ &p2=v2, &return=v7, &p1=v1 };
-    mem  ={ v1 -> { * -> v3 },
-            v2 -> { * -> v4 },
-            v3 -> { },
-            v7 -> { * -> v5 } };
-    attrs={ v1 -> { MustBeValid(, None, t=0) },
-            v2 -> { MustBeValid(, None, t=0) },
-            v5 -> { Invalid ConstantDereference(is assigned to the null pointer) },
-            v7 -> { MustBeValid(, None, t=3), WrittenTo  } };}
-  PRE=[{ roots={ &p2=v2, &p1=v1 };
-         mem  ={ v1 -> { * -> v3 }, v2 -> { * -> v4 }, v3 -> { }, v4 -> { } };
-         attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
-                 v2 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
+                {is_int([v4]) = 1}
+  { roots={ };
+    mem  ={ v3 -> { * -> v4 }, v5 -> { * -> v7 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0), Uninitialized },
+            v2 -> { MustBeValid(, None, t=0), Uninitialized },
+            v3 -> { s&cond (variable `cond` declared here at line 6 :t1 ) at line 6, column 3,
+                    MustBeValid(, None, t=0),
+                    WrittenTo  },
+            v5 -> { s&x (variable `x` declared here at line 7 :t6 ) at line 8, column 7,
+                    MustBeValid(, None, t=0),
+                    WrittenTo  },
+            v7 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+            v9 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+  PRE=[{ roots={ };
+         mem  ={ };
+         attrs={ };}]
   need_specialization=false
-  skipped_calls={ __infer_skip -> call to skipped function occurs here }
+  skipped_calls={ rand -> call to skipped function occurs here }
   Topl={len=0;content=
          [  ]}
-  full_trace=7
+  full_trace=5
+  6
+  7
   8
+
+ foo [defined, Return type: void, Formals: None, Locals:  x:int* cond:int]
+
+unsat:false,
+  bo: { v8 -> [1, +oo], v9 -> 0, v10 -> 0 },
+  citv: { v8 -> ≥1, v9 -> =null, v10 -> =0 },
+  formula: known=v9=v10
+                 &&
+                 v8 = a1 +1 ∧ v9 = 0 ∧ v10 = 0
+                 &&
+                 0=v9∧rand()=v4∧[a1 +1]=v8
+                 &&
+                 true (no tableau)
+                 &&
+                 {is_int([v4]) = 1},
+           pruned={[v8] ≠ 0},
+           both=v9=v10
+                &&
+                v8 = a2 +1 ∧ v9 = 0 ∧ v10 = 0
+                &&
+                0=v9∧rand()=v4∧[a2 +1]=v8
+                &&
+                true (no tableau)
+                &&
+                {is_int([v4]) = 1}∧{[v8] ≠ 0}
+  { roots={ };
+    mem  ={ v3 -> { * -> v4 }, v5 -> { * -> v8 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0), Uninitialized },
+            v2 -> { MustBeValid(, None, t=0), Uninitialized },
+            v3 -> { s&cond (variable `cond` declared here at line 6 :t1 ) at line 6, column 3,
+                    MustBeValid(, None, t=0),
+                    WrittenTo  },
+            v5 -> { s&x (variable `x` declared here at line 7 :t6 ) at line 9, column 5,
+                    MustBeValid(, None, t=0),
+                    WrittenTo  },
+            v8 -> { Allocated,
+                    DynamicType ,
+                    MustBeValid(, None, t=0),
+                    Uninitialized,
+                    UnreachableAt(line 9, column 5) },
+            v9 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+            v10 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}
+  PRE=[{ roots={ };
+         mem  ={ };
+         attrs={ };}]
+  need_specialization=false
+  skipped_calls={ __infer_skip -> call to skipped function occurs here,
+                  rand -> call to skipped function occurs here }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=5
+  6
+  7
+  8
+  9

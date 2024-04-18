@@ -10,6 +10,11 @@ module L = Logging
 open PulseBasicInterface
 open PulseDomainInterface
 
+module Entity = PulseBlameEntity
+module ErroneousProperty = PulseBlameErrorProperty
+module SanitisationPolicy = PulseBlameSaniPolicy
+module ConflictPolicy = PulseBlameConflictPolicy
+
 module Import = struct
   type access_mode = Read | Write | NoAccess
 
@@ -380,6 +385,10 @@ let eval_deref_biad_isl path location access addr_hist astate =
 
 
 let eval_deref_isl path location exp astate =
+  (*let _ = (fun () -> 
+              L.debug_dev "%a \n" Location.pp location;
+              L.debug_dev "%a \n" AbductiveDomain.pp astate
+              ) () in *)
   let<*> is_structured, ls_astate_addr_hist = eval_structure_isl path Read location exp astate in
   let eval_deref_function (astate, addr_hist) =
     if is_structured then eval_deref_biad_isl path location Dereference addr_hist astate
@@ -458,6 +467,49 @@ let always_reachable address astate = AddressAttributes.always_reachable address
 let allocate allocator location addr astate =
   AddressAttributes.allocate allocator addr location astate
 
+let write_blame () = 
+  let error_prop_ls = [ErroneousProperty.MemoryLeak; ErroneousProperty.UseAfterFree; ErroneousProperty.NullPointerDereference]
+  in
+  let san_poli_ls = [SanitisationPolicy.MemoryLeak; SanitisationPolicy.UseAfterFree; SanitisationPolicy.NullPointerDereference]
+  in
+  let conf_poli_ls = [ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient]
+  in
+  let json = [%yojson_of: PulseAttribute.t] (PulseAttribute.Blame (Entity.Vendor,error_prop_ls,san_poli_ls,conf_poli_ls)) in
+  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+    (* Yojson.Safe.to_channel stdout json_content;
+    Out_channel.newline stdout;
+    Out_channel.flush stdout; *)
+  in
+  f_json json "blame.json"
+  
+
+let add_blame addr entity result =
+  (*let _ = (fun () -> 
+    write_blame ()
+    ) () in *)
+  let error_prop_ls = [ErroneousProperty.MemoryLeak; ErroneousProperty.UseAfterFree; ErroneousProperty.NullPointerDereference]
+  in
+  let san_poli_ls = [SanitisationPolicy.MemoryLeak; SanitisationPolicy.UseAfterFree; SanitisationPolicy.NullPointerDereference]
+  in
+  let conf_poli_ls = [ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient]
+  in
+  AddressAttributes.add_blame addr entity error_prop_ls san_poli_ls conf_poli_ls result  
+
+let read_vendor_names_list () =
+  let json = Yojson.Safe.from_file "vendor_names.json" in
+  let lst = match json with
+    | `List names -> names
+    | _ -> L.die InternalError "Expected a JSON array"
+  in
+  List.map lst (function
+    | `String name -> name
+    | _ -> L.die InternalError "Expected a string"
+  ) 
+
+let check_in_vendor_world proc_name = 
+  let name = (Procname.get_method proc_name)
+  in
+  List.exists (read_vendor_names_list ()) (fun x -> String.equal x name)
 
 let java_resource_release address astate =
   let if_valid_access_then_eval addr access astate =
@@ -491,6 +543,8 @@ let add_ref_counted address astate = AddressAttributes.add_ref_counted address a
 let is_ref_counted address astate = AddressAttributes.is_ref_counted address astate
 
 let remove_allocation_attr address astate = AddressAttributes.remove_allocation_attr address astate
+
+let remove_blame_attr address astate = AddressAttributes.remove_blame_attr address astate
 
 type invalidation_access =
   | MemoryAccess of

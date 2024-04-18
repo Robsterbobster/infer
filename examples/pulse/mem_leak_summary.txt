@@ -1,0 +1,205 @@
+ Callee:malloc
+unsat:false,
+                   bo: { },
+                   citv: { },
+                   formula: known=true (no var=var)
+                                  &&
+                                  true (no linear)
+                                  &&
+                                  true (no term_eqs)
+                                  &&
+                                  true (no tableau)
+                                  &&
+                                  true (no atoms),
+                            pruned=true (no atoms),
+                            both=true (no var=var)
+                                 &&
+                                 true (no linear)
+                                 &&
+                                 true (no term_eqs)
+                                 &&
+                                 true (no tableau)
+                                 &&
+                                 true (no atoms)
+                   { roots={ &p1=v1 };
+                     mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+                     attrs={ v1 -> { MustBeValid(, None, t=0) } };}
+                   PRE=[{ roots={ &p1=v1 };
+                          mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+                          attrs={ v1 -> { MustBeInitialized(, t=0),
+                                          MustBeValid(, None, t=0) } };}]
+                   need_specialization=false
+                   skipped_calls={ }
+                   Topl={len=0;content=
+                          [  ]}
+                   full_trace=8
+2:
+ Callee:malloc
+unsat:false,
+                                                    bo: { },
+                                                    citv: { },
+                                                    formula: known=true (no var=var)
+                                                                   &&
+                                                                   true (no linear)
+                                                                   &&
+                                                                   true (no term_eqs)
+                                                                   &&
+                                                                   true (no tableau)
+                                                                   &&
+                                                                   true (no atoms),
+                                                             pruned=true (no atoms),
+                                                             both=true (no var=var)
+                                                                  &&
+                                                                  true (no linear)
+                                                                  &&
+                                                                  true (no term_eqs)
+                                                                  &&
+                                                                  true (no tableau)
+                                                                  &&
+                                                                  true (no atoms)
+                                                    { roots={ &p1=v1 };
+                                                      mem  ={ v1 -> { * -> v2 },
+                                                              v2 -> { } };
+                                                      attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                                              v5 -> { DynamicType  } };}
+                                                    PRE=[{ roots={ &p1=v1 };
+                                                           mem  ={ v1 -> { * -> v2 },
+                                                                   v2 -> { } };
+                                                           attrs={ v1 -> { MustBeInitialized(, t=0),
+                                                                    MustBeValid(, None, t=0) } };}]
+                                                    need_specialization=false
+                                                    skipped_calls={ }
+                                                    Topl={len=0;content=
+                                                           [  ]}
+                                                    full_trace=8
+3:
+ Callee:malloc
+
+unsat:false,
+bo: { },
+citv: { },
+formula: known=true (no var=var)
+               &&
+               true (no linear)
+               &&
+               true (no term_eqs)
+               &&
+               true (no tableau)
+               &&
+               true (no atoms),
+         pruned=true (no atoms),
+         both=true (no var=var)
+              &&
+              true (no linear)
+              &&
+              true (no term_eqs)
+              &&
+              true (no tableau)
+              &&
+              true (no atoms)
+{ roots={ n$0=v5, &p1=v1 };
+  mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+  attrs={ v1 -> { MustBeValid(, None, t=0) }, v5 -> { DynamicType  } };}
+PRE=[{ roots={ &p1=v1 };
+       mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=8
+4:
+ Callee:malloc
+unsat:false,
+                                 bo: { },
+                                 citv: { },
+                                 formula: known=true (no var=var)
+                                                &&
+                                                true (no linear)
+                                                &&
+                                                true (no term_eqs)
+                                                &&
+                                                true (no tableau)
+                                                &&
+                                                true (no atoms),
+                                          pruned=true (no atoms),
+                                          both=true (no var=var)
+                                               &&
+                                               true (no linear)
+                                               &&
+                                               true (no term_eqs)
+                                               &&
+                                               true (no tableau)
+                                               &&
+                                               true (no atoms)
+                                 { roots={ n$0=v5, &p1=v1 };
+                                   mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+                                   attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                           v5 -> { Allocated, DynamicType  } };}
+                                 PRE=[{ roots={ &p1=v1 };
+                                        mem  ={ v1 -> { * -> v2 },
+                                                v2 -> { } };
+                                        attrs={ v1 -> { MustBeInitialized(, t=0),
+                                                        MustBeValid(, None, t=0) } };}]
+                                 need_specialization=false
+                                 skipped_calls={ }
+                                 Topl={len=0;content=
+                                        [  ]}
+                                 full_trace=8
+5:
+ Callee:malloc
+unsat:false,
+                                                                  bo:
+                                                                  { },
+                                                                  citv:
+                                                                  { },
+                                                                  formula:
+                                                                  known=
+                                                                  true (no var=var)
+                                                                  &&
+                                                                  true (no linear)
+                                                                  &&
+                                                                  true (no term_eqs)
+                                                                  &&
+                                                                  true (no tableau)
+                                                                  &&
+                                                                  true (no atoms),
+                                                                  pruned=true (no atoms),
+                                                                  both=
+                                                                  true (no var=var)
+                                                                  &&
+                                                                  true (no linear)
+                                                                  &&
+                                                                  true (no term_eqs)
+                                                                  &&
+                                                                  true (no tableau)
+                                                                  &&
+                                                                  true (no atoms)
+                                                                  { roots=
+                                                                    { n$0=v5,
+                                                                    &p1=v1 };
+                                                                    mem  =
+                                                                    { v1 -> { * -> v2 },
+                                                                    v2 -> { } };
+                                                                    attrs=
+                                                                    { v1 -> { MustBeValid(, None, t=0) },
+                                                                    v5 -> { Allocated,
+                                                                    DynamicType ,
+                                                                    MustBeValid(, None, t=0),
+                                                                    Uninitialized } };}
+                                                                  PRE=[{
+                                                                   roots=
+                                                                   { &p1=v1 };
+                                                                   mem  =
+                                                                   { v1 -> { * -> v2 },
+                                                                    v2 -> { } };
+                                                                   attrs=
+                                                                   { v1 -> { MustBeInitialized(, t=0),
+                                                                    MustBeValid(, None, t=0) } };}]
+                                                                  need_specialization=false
+                                                                  skipped_calls=
+                                                                  { }
+                                                                  Topl=
+                                                                  {len=0;content=
+                                                                    [  ]}
+                                                                  full_trace=8

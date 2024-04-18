@@ -13,6 +13,10 @@ module Taint = PulseTaint
 module Timestamp = PulseTimestamp
 module Trace = PulseTrace
 module ValueHistory = PulseValueHistory
+module Entity = PulseBlameEntity
+module ErroneousProperty = PulseBlameErrorProperty
+module SanitisationPolicy = PulseBlameSaniPolicy
+module ConflictPolicy = PulseBlameConflictPolicy
 
 type allocator =
   | CMalloc
@@ -61,6 +65,7 @@ type t =
       (** temporary marker to remember where a variable became unreachable; helps with accurately
           reporting leaks *)
   | WrittenTo of Trace.t
+  | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list)
 [@@deriving compare, yojson_of]
 
 val pp : F.formatter -> t -> unit
@@ -87,6 +92,8 @@ module Attributes : sig
   val get_source_origin_of_copy : t -> PulseAbstractValue.t option
 
   val get_allocation : t -> (allocator * Trace.t) option
+
+  val get_blame : t -> (Entity.t * ErroneousProperty.t list * SanitisationPolicy.t list * ConflictPolicy.t list) option
 
   val is_ref_counted : t -> bool
 

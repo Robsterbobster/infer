@@ -7,6 +7,10 @@
 open! IStd
 module F = Format
 module L = Logging
+module Entity = PulseBlameEntity
+module ErroneousProperty = PulseBlameErrorProperty
+module SanitisationPolicy = PulseBlameSaniPolicy
+module ConflictPolicy = PulseBlameConflictPolicy
 open PulseBasicInterface
 
 module AttributesNoRank = struct
@@ -101,9 +105,12 @@ let always_reachable address memory = add_one address Attribute.AlwaysReachable 
 
 let allocate allocator address location memory =
   add_one address
-    (Attribute.Allocated (allocator, Immediate {location; history= ValueHistory.epoch}))
-    memory
-
+  (Attribute.Allocated (allocator, Immediate {location; history= ValueHistory.epoch}))
+  memory
+  
+let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls memory = add_one address
+(Attribute.Blame (entity, erroneous_prop_ls, san_poli_ls, conf_poli_ls))
+memory
 
 let java_resource_release address memory = add_one address Attribute.JavaResourceReleased memory
 
@@ -152,6 +159,13 @@ let remove_must_be_valid_attr address memory =
   match get_attribute Attributes.get_must_be_valid address memory with
   | Some (timestamp, trace, reason) ->
       remove_one address (Attribute.MustBeValid (timestamp, trace, reason)) memory
+  | None ->
+      memory
+
+let remove_blame_attr address memory =
+  match get_attribute Attributes.get_blame address memory with
+  | Some (entity, err_prop_ls, san_poli_ls, conf_poli_ls) ->
+      remove_one address (Attribute.Blame (entity, err_prop_ls, san_poli_ls, conf_poli_ls)) memory
   | None ->
       memory
 

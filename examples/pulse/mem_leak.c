@@ -6,9 +6,8 @@ void foo (){
   int cond = rand();
   int* x = (int *)malloc(sizeof(int));
   if (x != NULL){
+    *x = 2;
     set(x);
-  }
-  if (cond >= 1){
-    free(x);
+    int z = *x;
   }
 }

@@ -13,6 +13,10 @@ module BaseStack = PulseBaseStack
 module Decompiler = PulseDecompiler
 module PathContext = PulsePathContext
 module FullTrace = PulseFullTrace
+module Entity = PulseBlameEntity
+module ErroneousProperty = PulseBlameErrorProperty
+module SanitisationPolicy = PulseBlameSaniPolicy
+module ConflictPolicy = PulseBlameConflictPolicy
 
 (** Layer on top of {!BaseDomain} to propagate operations on the current state to the pre-condition
     when necessary
@@ -124,6 +128,9 @@ module AddressAttributes : sig
   val add_one : AbstractValue.t -> Attribute.t -> t -> t
   (** add the attribute only to the post *)
 
+  val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> SanitisationPolicy.t list -> ConflictPolicy.t list -> t -> t
+  (** add the blame attribute to the post *)
+
   val add_attrs : AbstractValue.t -> Attributes.t -> t -> t
 
   val check_valid :
@@ -155,6 +162,8 @@ module AddressAttributes : sig
   val is_ref_counted : AbstractValue.t -> t -> bool
 
   val remove_allocation_attr : AbstractValue.t -> t -> t
+
+  val remove_blame_attr : AbstractValue.t -> t -> t
 
   val get_allocation : AbstractValue.t -> t -> (Attribute.allocator * Trace.t) option
 

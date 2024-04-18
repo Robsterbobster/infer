@@ -17,6 +17,10 @@ module Decompiler = PulseDecompiler
 module PathContext = PulsePathContext
 module UninitBlocklist = PulseUninitBlocklist
 module FullTrace = PulseFullTrace
+module Entity = PulseBlameEntity
+module ErroneousProperty = PulseBlameErrorProperty
+module SanitisationPolicy = PulseBlameSaniPolicy
+module ConflictPolicy = PulseBlameConflictPolicy
 
 (** signature common to the "normal" [Domain], representing the post at the current program point,
     and the inverted [PreDomain], representing the inferred pre-condition*)
@@ -335,6 +339,8 @@ module AddressAttributes = struct
   let allocate allocator address location astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.allocate allocator address location)
 
+  let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls astate =
+    map_post_attrs astate ~f:(BaseAddressAttributes.add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls)
 
   let java_resource_release address astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.java_resource_release address)
@@ -378,6 +384,9 @@ module AddressAttributes = struct
 
   let remove_must_be_valid_attr address astate =
     map_pre_attrs astate ~f:(BaseAddressAttributes.remove_must_be_valid_attr address)
+
+  let remove_blame_attr address astate =
+    map_pre_attrs astate ~f:(BaseAddressAttributes.remove_blame_attr address)
 
 
   let get_closure_proc_name addr astate =

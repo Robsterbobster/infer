@@ -14,6 +14,10 @@ module Taint = PulseTaint
 module Timestamp = PulseTimestamp
 module Trace = PulseTrace
 module ValueHistory = PulseValueHistory
+module Entity = PulseBlameEntity
+module ErroneousProperty = PulseBlameErrorProperty
+module SanitisationPolicy = PulseBlameSaniPolicy
+module ConflictPolicy = PulseBlameConflictPolicy
 
 module Attribute = struct
   type allocator =
@@ -50,7 +54,7 @@ module Attribute = struct
 
   let pp_taint_in fmt {v} = F.fprintf fmt "{@[v= %a@]}" AbstractValue.pp v
 
-  type t =
+   type t =
     | AddressOfCppTemporary of Var.t * ValueHistory.t
     | AddressOfStackVariable of Var.t * Location.t * ValueHistory.t
     | Allocated of allocator * Trace.t
@@ -77,6 +81,7 @@ module Attribute = struct
     | UnknownEffect of CallEvent.t * ValueHistory.t
     | UnreachableAt of Location.t
     | WrittenTo of Trace.t
+    | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list)
   [@@deriving compare, variants, yojson_of]
 
   let equal = [%compare.equal: t]
@@ -131,6 +136,14 @@ module Attribute = struct
 
   let written_to_rank = Variants.writtento.rank
 
+  let entity_rank = Entity.Variants.to_rank
+  let erroneous_property_rank = ErroneousProperty.Variants.to_rank
+  let sanitisation_policy_rank = SanitisationPolicy.Variants.to_rank
+  let conflict_policy_rank = ConflictPolicy.Variants.to_rank
+
+  let blame_rank = Variants.blame.rank
+
+  (* potentially conflict resolving location*)
   let isl_subset attr1 attr2 =
     match (attr1, attr2) with
     | Invalid (v1, _), Invalid (v2, _) ->
@@ -216,12 +229,14 @@ module Attribute = struct
         F.fprintf f "UnreachableAt(%a)" Location.pp location
     | WrittenTo trace ->
         F.fprintf f "WrittenTo %a" (Trace.pp ~pp_immediate:(pp_string_if_debug "mutation")) trace
+    | Blame (entity, errorprop_ls, sanpolicy_ls, conflictpolicy_ls) ->
+        F.fprintf f "Blame(%a, %a, %a, %a)" Entity.pp entity ErroneousProperty.list_pp errorprop_ls SanitisationPolicy.list_pp sanpolicy_ls ConflictPolicy.list_pp conflictpolicy_ls
 
 
   let is_suitable_for_pre = function
     | MustBeValid _ | MustBeInitialized _ | MustNotBeTainted _ | RefCounted ->
         true
-    | Invalid _ | Allocated _ | ISLAbduced _ ->
+    | Invalid _ | Allocated _ | ISLAbduced _ | Blame _ ->
         Config.pulse_isl
     | AddressOfCppTemporary _
     | AddressOfStackVariable _
@@ -250,6 +265,7 @@ module Attribute = struct
     | AddressOfStackVariable _
     | Allocated _
     | AlwaysReachable
+    | Blame _
     | Closure _
     | CopiedVar _
     | DynamicType _
@@ -279,6 +295,7 @@ module Attribute = struct
     | AddressOfStackVariable _
     | Allocated _
     | AlwaysReachable
+    | Blame _
     | Closure _
     | DynamicType _
     | EndOfCollection
@@ -333,6 +350,7 @@ module Attribute = struct
     | ( AddressOfCppTemporary _
       | AddressOfStackVariable _
       | AlwaysReachable
+      | Blame _ (* added for now, it may be correct since no trace stored in blame*)
       | Closure _
       | DynamicType _
       | EndOfCollection
@@ -365,6 +383,7 @@ module Attribute = struct
       | AddressOfStackVariable _
       | Allocated _
       | AlwaysReachable
+      | Blame _
       | Closure _
       | CopiedVar _
       | DynamicType _
@@ -432,6 +451,9 @@ module Attributes = struct
     get_by_rank Attribute.written_to_rank ~dest:(function [@warning "-8"] WrittenTo action ->
         action )
 
+
+let get_blame =
+    get_by_rank Attribute.blame_rank ~dest:(function [@warning "-8"] |Blame (entity, errneous_prop, san_poli, conf_poli) -> (entity, errneous_prop, san_poli, conf_poli) )
 
   let get_closure_proc_name =
     get_by_rank Attribute.closure_rank ~dest:(function [@warning "-8"] Closure proc_name ->

@@ -8,6 +8,11 @@
 open! IStd
 open PulseBasicInterface
 open PulseDomainInterface
+module Entity = PulseBlameEntity
+module ErroneousProperty = PulseBlameErrorProperty
+module SanitisationPolicy = PulseBlameSaniPolicy
+module ConflictPolicy = PulseBlameConflictPolicy
+
 
 (** For [open]ing in other modules. *)
 module Import : sig
@@ -278,6 +283,10 @@ val always_reachable : AbstractValue.t -> t -> t
 
 val allocate : Attribute.allocator -> Location.t -> AbstractValue.t -> t -> t
 
+val add_blame: AbstractValue.t -> Entity.t -> t -> t
+
+val check_in_vendor_world: Procname.t -> bool
+
 val java_resource_release : AbstractValue.t -> t -> t
 
 val add_dynamic_type : Typ.t -> AbstractValue.t -> t -> t
@@ -287,6 +296,8 @@ val add_ref_counted : AbstractValue.t -> t -> t
 val is_ref_counted : AbstractValue.t -> t -> bool
 
 val remove_allocation_attr : AbstractValue.t -> t -> t
+
+val remove_blame_attr : AbstractValue.t -> t -> t
 
 val invalidate_access :
      PathContext.t
