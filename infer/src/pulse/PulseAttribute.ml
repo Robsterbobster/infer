@@ -136,11 +136,6 @@ module Attribute = struct
 
   let written_to_rank = Variants.writtento.rank
 
-  let entity_rank = Entity.Variants.to_rank
-  let erroneous_property_rank = ErroneousProperty.Variants.to_rank
-  let sanitisation_policy_rank = SanitisationPolicy.Variants.to_rank
-  let conflict_policy_rank = ConflictPolicy.Variants.to_rank
-
   let blame_rank = Variants.blame.rank
 
   (* potentially conflict resolving location*)
@@ -150,6 +145,8 @@ module Attribute = struct
         Invalidation.isl_equiv v1 v2
     | Invalid _, (WrittenTo _ | DynamicType _) ->
         true
+    (*| Blame (_, _, _ , _), Blame (_, _, _ , _) ->
+        true*)
     | Uninitialized, Uninitialized ->
         true
     | (MustBeValid _ | Allocated _ | ISLAbduced _), Invalid _ ->
@@ -523,7 +520,6 @@ let get_blame =
   let isl_subset callee_attrs caller_attrs =
     Set.for_all callee_attrs ~f:(fun attr1 ->
         Set.for_all caller_attrs ~f:(fun attr2 -> Attribute.isl_subset attr1 attr2) )
-
 
   let replace_isl_abduced attrs_callee attrs_caller =
     Set.fold attrs_callee ~init:Set.empty ~f:(fun acc attr1 ->

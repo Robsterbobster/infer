@@ -386,7 +386,7 @@ module AddressAttributes = struct
     map_pre_attrs astate ~f:(BaseAddressAttributes.remove_must_be_valid_attr address)
 
   let remove_blame_attr address astate =
-    map_pre_attrs astate ~f:(BaseAddressAttributes.remove_blame_attr address)
+    map_post_attrs astate ~f:(BaseAddressAttributes.remove_blame_attr address)
 
 
   let get_closure_proc_name addr astate =

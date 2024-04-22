@@ -1,18 +1,21 @@
 #include <stdlib.h>
 
 int good(int* p1){
-    p1 = (int *)malloc(sizeof(int));
+    //p1 = (int *)malloc(sizeof(int));
+    free(p1);
     return p1;
 }
 
-void abc(int* p1){
+void abc(int* p1, int x){
     p1 = (int *)malloc(sizeof(int));
+    //x = 1;
     if (p1 != NULL){
         *p1 = 1;
+        //x = *p1;
         p1 = good(p1);
-        //int x = *p1;
+        //x = *p1;
     }
-    free(p1);
+    //free(p1);
 }
 
 int test(int* p1, int x){

@@ -5,7 +5,7 @@ module F = Format
 type t = 
 | RemoveClient
 | RemoveVendor
-[@@deriving compare, variants, equal, yojson_of]
+[@@deriving compare, equal, yojson_of]
 
 let pp fmt policy = 
   match policy with

@@ -4,7 +4,7 @@ module F = Format
 type t = 
 | RemoveClient
 | RemoveVendor
-[@@deriving compare, variants, equal, yojson_of]
+[@@deriving compare, equal, yojson_of]
 
 val pp : F.formatter -> t -> unit
 

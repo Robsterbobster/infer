@@ -1,205 +1,229 @@
- Callee:malloc
+ good [defined, Return type: int, Formals:  p1:int*, Locals: None]
+  [ 0.0s] idle
 unsat:false,
-                   bo: { },
-                   citv: { },
-                   formula: known=true (no var=var)
-                                  &&
-                                  true (no linear)
-                                  &&
-                                  true (no term_eqs)
-                                  &&
-                                  true (no tableau)
-                                  &&
-                                  true (no atoms),
-                            pruned=true (no atoms),
-                            both=true (no var=var)
-                                 &&
-                                 true (no linear)
-                                 &&
-                                 true (no term_eqs)
-                                 &&
-                                 true (no tableau)
-                                 &&
-                                 true (no atoms)
-                   { roots={ &p1=v1 };
-                     mem  ={ v1 -> { * -> v2 }, v2 -> { } };
-                     attrs={ v1 -> { MustBeValid(, None, t=0) } };}
-                   PRE=[{ roots={ &p1=v1 };
-                          mem  ={ v1 -> { * -> v2 }, v2 -> { } };
-                          attrs={ v1 -> { MustBeInitialized(, t=0),
-                                          MustBeValid(, None, t=0) } };}]
-                   need_specialization=false
-                   skipped_calls={ }
-                   Topl={len=0;content=
-                          [  ]}
-                   full_trace=8
-2:
- Callee:malloc
-unsat:false,
-                                                    bo: { },
-                                                    citv: { },
-                                                    formula: known=true (no var=var)
-                                                                   &&
-                                                                   true (no linear)
-                                                                   &&
-                                                                   true (no term_eqs)
-                                                                   &&
-                                                                   true (no tableau)
-                                                                   &&
-                                                                   true (no atoms),
-                                                             pruned=true (no atoms),
-                                                             both=true (no var=var)
-                                                                  &&
-                                                                  true (no linear)
-                                                                  &&
-                                                                  true (no term_eqs)
-                                                                  &&
-                                                                  true (no tableau)
-                                                                  &&
-                                                                  true (no atoms)
-                                                    { roots={ &p1=v1 };
-                                                      mem  ={ v1 -> { * -> v2 },
-                                                              v2 -> { } };
-                                                      attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                                              v5 -> { DynamicType  } };}
-                                                    PRE=[{ roots={ &p1=v1 };
-                                                           mem  ={ v1 -> { * -> v2 },
-                                                                   v2 -> { } };
-                                                           attrs={ v1 -> { MustBeInitialized(, t=0),
-                                                                    MustBeValid(, None, t=0) } };}]
-                                                    need_specialization=false
-                                                    skipped_calls={ }
-                                                    Topl={len=0;content=
-                                                           [  ]}
-                                                    full_trace=8
-3:
- Callee:malloc
+  bo: { v2 -> [max(0, v2), min(0, v2)] },
+  citv: { v2 -> =0 },
+  formula: known=true (no var=var)
+                 &&
+                 true (no linear)
+                 &&
+                 true (no term_eqs)
+                 &&
+                 true (no tableau)
+                 &&
+                 {is_int([v2]) = 1},
+           pruned={[v2] = 0},
+           both=true (no var=var)
+                &&
+                v2 = 0
+                &&
+                0=v2
+                &&
+                true (no tableau)
+                &&
+                true (no atoms)
+  { roots={ &return=v5, &p1=v1 };
+    mem  ={ v1 -> { * -> v2 }, v2 -> { }, v5 -> { * -> v2 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0) },
+            v2 -> { Blame(Unknown, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) },
+            v5 -> { MustBeValid(, None, t=7),
+                    WrittenTo ,
+                    Blame(Unknown, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) } };}
+  PRE=[{ roots={ &p1=v1 };
+         mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+         attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
+  need_specialization=false
+  skipped_calls={ }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=3
+  5
+  6
+
+ good [defined, Return type: int, Formals:  p1:int*, Locals: None]
 
 unsat:false,
-bo: { },
-citv: { },
-formula: known=true (no var=var)
-               &&
-               true (no linear)
-               &&
-               true (no term_eqs)
-               &&
-               true (no tableau)
-               &&
-               true (no atoms),
-         pruned=true (no atoms),
-         both=true (no var=var)
-              &&
-              true (no linear)
-              &&
-              true (no term_eqs)
-              &&
-              true (no tableau)
-              &&
-              true (no atoms)
-{ roots={ n$0=v5, &p1=v1 };
-  mem  ={ v1 -> { * -> v2 }, v2 -> { } };
-  attrs={ v1 -> { MustBeValid(, None, t=0) }, v5 -> { DynamicType  } };}
-PRE=[{ roots={ &p1=v1 };
-       mem  ={ v1 -> { * -> v2 }, v2 -> { } };
-       attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) } };}]
-need_specialization=false
-skipped_calls={ }
-Topl={len=0;content=
-       [  ]}
-full_trace=8
-4:
- Callee:malloc
+  bo: { v2 -> [1, +oo] },
+  citv: { v2 -> ≥1 },
+  formula: known=true (no var=var)
+                 &&
+                 v2 = a1 +1
+                 &&
+                 [a1 +1]=v2
+                 &&
+                 true (no tableau)
+                 &&
+                 {is_int([v2]) = 1},
+           pruned=true (no atoms),
+           both=true (no var=var)
+                &&
+                v2 = a2 +1
+                &&
+                [a2 +1]=v2
+                &&
+                true (no tableau)
+                &&
+                {is_int([v2]) = 1}
+  { roots={ &return=v4, &p1=v1 };
+    mem  ={ v1 -> { * -> v2 }, v2 -> { }, v4 -> { * -> v2 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0) },
+            v2 -> { Invalid CFree(was invalidated by call to `free()`),
+                    Blame(Vendor, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) },
+            v4 -> { MustBeValid(, None, t=7),
+                    WrittenTo ,
+                    Blame(Unknown, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) } };}
+  PRE=[{ roots={ &p1=v1 };
+         mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+         attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+                 v2 -> { ISLAbduced , MustBeValid(, None, t=2) } };}]
+  need_specialization=false
+  skipped_calls={ }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=3
+  5
+  6
+
+ good [defined, Return type: int, Formals:  p1:int*, Locals: None]
+
+{ISLLatentMemoryError unsat:false,
+                        bo: { v2 -> [1, +oo] },
+                        citv: { v2 -> ≥1 },
+                        formula: known=true (no var=var)
+                                       &&
+                                       v2 = a1 +1
+                                       &&
+                                       true (no term_eqs)
+                                       &&
+                                       true (no tableau)
+                                       &&
+                                       true (no atoms),
+                                 pruned=true (no atoms),
+                                 both=true (no var=var)
+                                      &&
+                                      v2 = a2 +1
+                                      &&
+                                      [a2 +1]=v2
+                                      &&
+                                      true (no tableau)
+                                      &&
+                                      true (no atoms)
+                        { roots={ &p1=v1 };
+                          mem  ={ v1 -> { * -> v2 } };
+                          attrs={ v1 -> { MustBeValid(, None, t=0) },
+                                  v2 -> { Invalid CFree(was invalidated by call to `free()`),
+                                          Blame(Unknown, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) } };}
+                        PRE=[{ roots={ &p1=v1 };
+                               mem  ={ v1 -> { * -> v2 } };
+                               attrs={ v1 -> { MustBeInitialized(, t=0),
+                                               MustBeValid(, None, t=0) },
+                                       v2 -> { Invalid CFree(was invalidated by call to `free()`) } };}]
+                        need_specialization=false
+                        skipped_calls={ }
+                        Topl={len=0;content=
+                               [  ]}
+                        full_trace=3
+                        5}
+
+ good [defined, Return type: int, Formals:  p1:int*, Locals: None]
+
 unsat:false,
-                                 bo: { },
-                                 citv: { },
-                                 formula: known=true (no var=var)
-                                                &&
-                                                true (no linear)
-                                                &&
-                                                true (no term_eqs)
-                                                &&
-                                                true (no tableau)
-                                                &&
-                                                true (no atoms),
-                                          pruned=true (no atoms),
-                                          both=true (no var=var)
-                                               &&
-                                               true (no linear)
-                                               &&
-                                               true (no term_eqs)
-                                               &&
-                                               true (no tableau)
-                                               &&
-                                               true (no atoms)
-                                 { roots={ n$0=v5, &p1=v1 };
-                                   mem  ={ v1 -> { * -> v2 }, v2 -> { } };
-                                   attrs={ v1 -> { MustBeValid(, None, t=0) },
-                                           v5 -> { Allocated, DynamicType  } };}
-                                 PRE=[{ roots={ &p1=v1 };
-                                        mem  ={ v1 -> { * -> v2 },
-                                                v2 -> { } };
-                                        attrs={ v1 -> { MustBeInitialized(, t=0),
-                                                        MustBeValid(, None, t=0) } };}]
-                                 need_specialization=false
-                                 skipped_calls={ }
-                                 Topl={len=0;content=
-                                        [  ]}
-                                 full_trace=8
-5:
- Callee:malloc
-unsat:false,
-                                                                  bo:
-                                                                  { },
-                                                                  citv:
-                                                                  { },
-                                                                  formula:
-                                                                  known=
-                                                                  true (no var=var)
-                                                                  &&
-                                                                  true (no linear)
-                                                                  &&
-                                                                  true (no term_eqs)
-                                                                  &&
-                                                                  true (no tableau)
-                                                                  &&
-                                                                  true (no atoms),
-                                                                  pruned=true (no atoms),
-                                                                  both=
-                                                                  true (no var=var)
-                                                                  &&
-                                                                  true (no linear)
-                                                                  &&
-                                                                  true (no term_eqs)
-                                                                  &&
-                                                                  true (no tableau)
-                                                                  &&
-                                                                  true (no atoms)
-                                                                  { roots=
-                                                                    { n$0=v5,
-                                                                    &p1=v1 };
-                                                                    mem  =
-                                                                    { v1 -> { * -> v2 },
-                                                                    v2 -> { } };
-                                                                    attrs=
-                                                                    { v1 -> { MustBeValid(, None, t=0) },
-                                                                    v5 -> { Allocated,
-                                                                    DynamicType ,
-                                                                    MustBeValid(, None, t=0),
-                                                                    Uninitialized } };}
-                                                                  PRE=[{
-                                                                   roots=
-                                                                   { &p1=v1 };
-                                                                   mem  =
-                                                                   { v1 -> { * -> v2 },
-                                                                    v2 -> { } };
-                                                                   attrs=
-                                                                   { v1 -> { MustBeInitialized(, t=0),
-                                                                    MustBeValid(, None, t=0) } };}]
-                                                                  need_specialization=false
-                                                                  skipped_calls=
-                                                                  { }
-                                                                  Topl=
-                                                                  {len=0;content=
-                                                                    [  ]}
-                                                                  full_trace=8
+  bo: { v2 -> [1, +oo] },
+  citv: { v2 -> ≥1 },
+  formula: known=true (no var=var)
+                 &&
+                 v2 = a1 +1
+                 &&
+                 [a1 +1]=v2
+                 &&
+                 true (no tableau)
+                 &&
+                 {is_int([v2]) = 1},
+           pruned=true (no atoms),
+           both=true (no var=var)
+                &&
+                v2 = a2 +1
+                &&
+                [a2 +1]=v2
+                &&
+                true (no tableau)
+                &&
+                {is_int([v2]) = 1}
+  { roots={ &return=v3, &p1=v1 };
+    mem  ={ v1 -> { * -> v2 }, v2 -> { }, v3 -> { * -> v2 } };
+    attrs={ v1 -> { MustBeValid(, None, t=0) },
+            v2 -> { Invalid ConstantDereference(is assigned to the null pointer),
+                    Blame(Vendor, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) },
+            v3 -> { MustBeValid(, None, t=7),
+                    WrittenTo ,
+                    Blame(Unknown, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) } };}
+  PRE=[{ roots={ &p1=v1 };
+         mem  ={ v1 -> { * -> v2 }, v2 -> { } };
+         attrs={ v1 -> { MustBeInitialized(, t=0), MustBeValid(, None, t=0) },
+                 v2 -> { Invalid ConstantDereference(is assigned to the null pointer) } };}]
+  need_specialization=false
+  skipped_calls={ }
+  Topl={len=0;content=
+         [  ]}
+  full_trace=3
+  5
+  6
+Context
+ unsat:false,
+              bo: { v7 -> [1, +oo], v8 -> 0, v9 -> 1 },
+              citv: { v7 -> ≥1, v8 -> =null, v9 -> =1 },
+              formula: known=true (no var=var)
+                             &&
+                             v7 = a1 +1 ∧ v8 = 0 ∧ v9 = 1
+                             &&
+                             0=v8∧1=v9∧[a1 +1]=v7
+                             &&
+                             true (no tableau)
+                             &&
+                             true (no atoms),
+                       pruned={[v7] ≠ 0},
+                       both=true (no var=var)
+                            &&
+                            v7 = a2 +1 ∧ v8 = 0 ∧ v9 = 1
+                            &&
+                            0=v8∧1=v9∧[a2 +1]=v7
+                            &&
+                            true (no tableau)
+                            &&
+                            {[v7] ≠ 0}
+              { roots={ n$1=v7, &x=v2, &p1=v1 };
+                mem  ={ v1 -> { * -> v7 },
+                        v2 -> { * -> v4 },
+                        v3 -> { },
+                        v7 -> { * -> v9 } };
+                attrs={ v1 -> { MustBeValid(, None, t=0),
+                                WrittenTo ,
+                                Blame(Unknown, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) },
+                        v2 -> { MustBeValid(, None, t=0) },
+                        v7 -> { Allocated,
+                                DynamicType ,
+                                MustBeValid(, None, t=0),
+                                WrittenTo ,
+                                Blame(Client, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) },
+                        v8 -> { Invalid ConstantDereference(is assigned to the null pointer),
+                                Blame(Client, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) },
+                        v9 -> { Invalid ConstantDereference(is assigned to the constant 1),
+                                Blame(Client, [MemLeak;UseAfterFree;NPE;], [MLHand;UAFHand;NPEHand;], [DelClient;DelClient;DelClient;]) } };}
+              PRE=[{ roots={ &x=v2, &p1=v1 };
+                     mem  ={ v1 -> { * -> v3 },
+                             v2 -> { * -> v4 },
+                             v3 -> { },
+                             v4 -> { } };
+                     attrs={ v1 -> { MustBeInitialized(, t=0),
+                                     MustBeValid(, None, t=0) },
+                             v2 -> { MustBeInitialized(, t=0),
+                                     MustBeValid(, None, t=0) } };}]
+              need_specialization=false
+              skipped_calls={ }
+              Topl={len=0;content=
+                     [  ]}
+              full_trace=9
+              10
+              12
+              13
+              15

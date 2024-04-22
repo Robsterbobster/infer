@@ -138,7 +138,7 @@ val eval_structure_isl :
     (ISLOk and ISLErs); The boolean indicates whether it is data structures or not. *)
 
 val prune :
-  PathContext.t -> Location.t -> condition:Exp.t -> t -> (t * ValueHistory.t) AccessResult.t
+  PathContext.t -> Location.t -> condition:Exp.t -> t -> Procdesc.t option -> (t * ValueHistory.t) AccessResult.t
 
 val eval_deref :
      PathContext.t
@@ -285,7 +285,7 @@ val allocate : Attribute.allocator -> Location.t -> AbstractValue.t -> t -> t
 
 val add_blame: AbstractValue.t -> Entity.t -> t -> t
 
-val check_in_vendor_world: Procname.t -> bool
+val check_in_vendor_world: string -> bool
 
 val java_resource_release : AbstractValue.t -> t -> t
 
