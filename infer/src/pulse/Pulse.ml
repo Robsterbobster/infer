@@ -817,16 +817,20 @@ module PulseTransferFunctions = struct
       (instr : Sil.instr) : ExecutionDomain.t list * PathContext.t * NonDisjDomain.t =
     match astate with
     | AbortProgram _ | ISLLatentMemoryError _ | LatentAbortProgram _ | LatentInvalidAccess _ ->
+      L.debug_dev "ABORT/LATENT\n";
         ([astate], path, astate_n)
     (* an exception has been raised, we skip the other instructions until we enter in
        exception edge *)
     | ExceptionRaised _
     (* program already exited, simply propagate the exited state upwards  *)
     | ExitProgram _ ->
+      L.debug_dev "EXIT/EXCEPTION\n";
         ([astate], path, astate_n)
     | ContinueProgram astate -> (
+      L.debug_dev "CONTINUE\n";
       match instr with
       | Load {id= lhs_id; e= rhs_exp; loc; typ} ->
+        L.debug_dev "LOAD\n";
           (* [lhs_id := *rhs_exp] *)
           let deref_rhs astate =
             let results =
@@ -887,6 +891,7 @@ module PulseTransferFunctions = struct
           in
           (List.concat_map set_global_astates ~f:deref_rhs, path, astate_n)
       | Store {e1= lhs_exp; e2= rhs_exp; loc; typ} ->
+        L.debug_dev "STORE\n";
           (* [*lhs_exp := rhs_exp] *)
           let event =
             match lhs_exp with
@@ -960,6 +965,7 @@ module PulseTransferFunctions = struct
           let astate_n = NonDisjDomain.set_captured_variables rhs_exp astate_n in
           (PulseReport.report_results tenv proc_desc err_log loc result, path, astate_n)
       | Call (ret, call_exp, actuals, loc, call_flags) ->
+        L.debug_dev "CALL\n";
           let astate_n = check_modified_before_dtor actuals call_exp astate astate_n in
           let astates =
             dispatch_call analysis_data path ret call_exp actuals loc call_flags astate
@@ -983,6 +989,7 @@ module PulseTransferFunctions = struct
           ) () in *)
           (astates, path, astate_n)
       | Prune (condition, loc, is_then_branch, if_kind) ->
+        L.debug_dev "PRUNE\n";
           let prune_result = PulseOperations.prune path loc ~condition astate (Some proc_desc) in
           let path =
             match PulseResult.ok prune_result with
@@ -1009,14 +1016,17 @@ module PulseTransferFunctions = struct
           in
           (PulseReport.report_exec_results tenv proc_desc err_log loc results, path, astate_n)
       | Metadata EndBranches ->
+        L.debug_dev "END BRANCH\n";
           (* We assume that terminated conditions are well-parenthesised, hence an [EndBranches]
              instruction terminates the most recently seen terminated conditional. The empty case
              shouldn't happen but let's not crash by the fault of possible errors in frontends. *)
           let path = {path with conditions= List.tl path.conditions |> Option.value ~default:[]} in
           ([ContinueProgram astate], path, astate_n)
       | Metadata (ExitScope (vars, location)) ->
+        L.debug_dev "EXITSCOPE\n";
           exit_scope vars location path astate astate_n analysis_data
       | Metadata (VariableLifetimeBegins (pvar, typ, location)) when not (Pvar.is_global pvar) ->
+        L.debug_dev "VARIABLE LIFE TIME BEGINS\n";
           ( [ PulseOperations.realloc_pvar tenv path pvar typ location astate
               |> ExecutionDomain.continue ]
           , path
@@ -1029,6 +1039,7 @@ module PulseTransferFunctions = struct
           | TryEntry _
           | TryExit _
           | VariableLifetimeBegins _ ) ->
+            L.debug_dev "META DATA\n";
           ([ContinueProgram astate], path, astate_n) )
 
 
@@ -1045,9 +1056,11 @@ module PulseTransferFunctions = struct
         raise AboutToOOM
     | _ ->
         () ) ;
+    let _ = (fun () -> L.debug_dev "BEFORE AUX: %a \n" ExecutionDomain.pp astate) () in
     let astates, path, astate_n =
       exec_instr_aux path astate astate_n analysis_data cfg_node instr
     in
+    (*let _ = (fun () -> List.iter astates (fun state -> L.debug_dev "AFTER AUX: %a \n" ExecutionDomain.pp state)) () in*)
     (* Records the executed line number in all disjuncts. *)
     let location = Sil.location_of_instr instr in
     let astates = List.map astates ~f:(fun exec_state -> ExecutionDomain.add_new_trace_loc exec_state location) in

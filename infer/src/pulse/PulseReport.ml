@@ -144,8 +144,6 @@ let report_summary_error tenv proc_desc err_log (access_error : AccessResult.sum
     ExecutionDomain.summary option =
   match access_error with
   | PotentialInvalidAccessSummary {astate; address; must_be_valid} ->
-      let state = (astate :> AbductiveDomain.t) in
-      (*L.debug_dev "sum error: %a\n" AbductiveDomain.pp state;*)
       let invalidation = Invalidation.ConstantDereference IntLit.zero in
       let access_trace = fst must_be_valid in
       let is_constant_deref_without_invalidation =
@@ -187,6 +185,7 @@ let report_summary_error tenv proc_desc err_log (access_error : AccessResult.sum
       | `ReportNow ->
           if is_suppressed then L.d_printfln "ReportNow suppressed error" ;
           report ~latent:false ~is_suppressed proc_desc err_log diagnostic ;
+          (*L.debug_dev "report: %a \n" AbductiveDomain.pp (astate :> AbductiveDomain.t);*)
           if Diagnostic.aborts_execution diagnostic then 
             Some (AbortProgram {astate; error_trace_start; error_trace_end}) 
           else None

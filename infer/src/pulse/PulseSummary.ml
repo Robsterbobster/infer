@@ -94,7 +94,8 @@ let exec_summary_of_post_common tenv ~continue_program proc_desc err_log locatio
   (* already a summary but need to reconstruct the variants to make the type system happy :( *)
   | ExitProgram astate ->
       Sat [ (ExitProgram astate, SummaryPost.ExitProgram (0, 0)) ]
-  | AbortProgram ({error_trace_start; error_trace_end} as payload) ->
+  | AbortProgram ({astate;error_trace_start; error_trace_end} as payload) ->
+    (*L.debug_dev "payload: %a \n" AbductiveDomain.pp (astate :> AbductiveDomain.t);*)
       Sat [ (AbortProgram payload, SummaryPost.AbortProgram (error_trace_start.line, error_trace_end.line)) ]
   (* TODO: labels below still have the wrong fields. *)
   | LatentAbortProgram {astate; latent_issue} ->
