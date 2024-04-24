@@ -166,9 +166,9 @@ let of_posts tenv proc_desc err_log location posts =
       let is_autocode = 
         String.equal (Procname.get_method (Procdesc.get_proc_name proc_desc)) name
       in
-      if is_autocode then (L.debug_dev "\n %a" Procdesc.pp_signature proc_desc ;
-      L.debug_dev "%a \n" Errlog.pp_errors err_log;
-      L.debug_dev "%a \n" ExecutionDomain.pp  exec_state ;
+      if is_autocode then (L.debug_dev "\n %a \n" Procdesc.pp_signature proc_desc ;
+      L.debug_dev "Error: %a \n" Errlog.pp_errors err_log;
+      L.debug_dev "Domain: %a \n" ExecutionDomain.pp  exec_state ;
       )
       );
       exec_summary_of_post_common tenv proc_desc err_log location exec_state

@@ -144,6 +144,8 @@ let report_summary_error tenv proc_desc err_log (access_error : AccessResult.sum
     ExecutionDomain.summary option =
   match access_error with
   | PotentialInvalidAccessSummary {astate; address; must_be_valid} ->
+      let state = (astate :> AbductiveDomain.t) in
+      (*L.debug_dev "sum error: %a\n" AbductiveDomain.pp state;*)
       let invalidation = Invalidation.ConstantDereference IntLit.zero in
       let access_trace = fst must_be_valid in
       let is_constant_deref_without_invalidation =
@@ -230,6 +232,8 @@ let report_exec_results tenv proc_desc err_log location results =
           | Recoverable (exec_state, _) ->
               Some exec_state )
         | Sat (Some exec_state) ->
+            let state = (exec_state :> ExecutionDomain.t) in
+            (*L.debug_dev "Error Evaluated state: %a \n" ExecutionDomain.pp state;*)
             Some (exec_state :> ExecutionDomain.t) ) )
 
 
@@ -237,6 +241,8 @@ let report_results tenv proc_desc err_log location results =
   let open PulseResult.Let_syntax in
   List.map results ~f:(fun result ->
       let+ astate = result in
+      (*L.debug_dev "Evaluated loc: %a \n" Location.pp location;
+      L.debug_dev "Evaluated state: %a \n" AbductiveDomain.pp astate;*)
       ExecutionDomain.ContinueProgram astate )
   |> report_exec_results tenv proc_desc err_log location
 

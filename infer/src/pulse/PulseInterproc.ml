@@ -449,9 +449,6 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
         PulseOperations.java_resource_release addr_caller call_state.astate
       else call_state.astate
     in
-    let _ = (fun () -> 
-      L.debug_dev "Value: %a \n" AbstractValue.pp addr_caller;
-      L.debug_dev "Callee attr:%a\n" (fun fmt -> Attributes.pp ~print_rank:false fmt) attrs_post_caller; ) () in
     (* conflict resolving *)
     let astate =
       if Config.pulse_isl then (
