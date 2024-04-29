@@ -94,7 +94,6 @@ let get_location = function
   | UnnecessaryCopy {location} ->
       location
 
-
 let get_copy_type = function UnnecessaryCopy {typ} -> Some typ | _ -> None
 
 let aborts_execution = function
@@ -236,9 +235,9 @@ let get_message diagnostic =
           let {Location.line; _} = Trace.get_outer_location invalidation_trace in
           line
         in
-        F.asprintf "%a%a%a" pp_calling_context_prefix calling_context pp_access_trace access_trace
+        F.asprintf "%a%a (addr: %a) %a" pp_calling_context_prefix calling_context pp_access_trace access_trace Decompiler.pp_expr invalid_address
           (pp_invalidation_trace invalidation_line invalidation)
-          invalidation_trace )
+          invalidation_trace ) 
   | MemoryLeak {allocator; location; allocation_trace} ->
       let allocation_line =
         let {Location.line; _} = Trace.get_outer_location allocation_trace in

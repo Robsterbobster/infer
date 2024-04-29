@@ -107,6 +107,7 @@ let of_abductive_summary_result abductive_summary_result =
 
 let of_invalid_access access_trace = function
   | `InvalidAccess (invalid_address, invalidation, invalidation_trace, astate) ->
+    (*Logging.debug_dev "INVALID ACCESS STATE: %a\n" AbductiveDomain.pp astate;*)
       ReportableError
         { astate
         ; diagnostic=
@@ -120,13 +121,18 @@ let of_invalid_access access_trace = function
 
 
 let of_abductive_access_result access_trace abductive_result =
-  Result.map_error abductive_result ~f:(function
+  let results = Result.map_error abductive_result ~f:(function
     | `InvalidAccess _ as invalid_access ->
         of_invalid_access access_trace invalid_access
     | (`ISLError _ | `PotentialInvalidAccess _) as error ->
         of_abductive_error error )
   (* note: all errors here are fatal *)
-  |> PulseResult.fatal_of_result
+  |> PulseResult.fatal_of_result in
+  (*let _ = (fun () -> match results with
+  | FatalError (err1,err2) -> (match err1 with
+  | ReportableError {astate; _} -> Logging.debug_dev "REPORT STATE: %a \n" AbductiveDomain.pp astate)
+  |_ -> ()) () in*)
+  results
 
 
 let of_error_f error ~f : _ t =

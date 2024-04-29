@@ -250,6 +250,26 @@ val skipped_calls_match_pattern : summary -> bool
 
 val summary_with_need_specialization : summary -> summary
 
+val filter_summary :
+    Tenv.t
+  -> Procname.t
+  -> summary
+  -> summary SatUnsat.t
+
+val summary_of_post_no_filter :
+     Tenv.t
+  -> Procdesc.t
+  -> Location.t
+  -> t
+  -> ( summary
+     , [> `ResourceLeak of summary * JavaClassName.t * Trace.t * Location.t
+       | `RetainCycle of summary * Trace.t list * Decompiler.expr * Decompiler.expr * Location.t
+       | `MemoryLeak of summary * Attribute.allocator * Trace.t * Location.t
+       | `PotentialInvalidAccessSummary of
+         summary * Decompiler.expr * (Trace.t * Invalidation.must_be_valid_reason option) ] )
+     result
+     SatUnsat.t
+
 val summary_of_post :
      Tenv.t
   -> Procdesc.t

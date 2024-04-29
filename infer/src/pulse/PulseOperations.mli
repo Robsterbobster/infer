@@ -150,7 +150,9 @@ val eval_deref :
 (** Like [eval] but evaluates [*exp]. *)
 
 val eval_deref_isl :
-     PathContext.t
+      Tenv.t
+  -> Procdesc.t
+  -> PathContext.t
   -> Location.t
   -> Exp.t
   -> t

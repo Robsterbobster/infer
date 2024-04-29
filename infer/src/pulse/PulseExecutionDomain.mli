@@ -10,6 +10,7 @@ open PulseBasicInterface
 module AbductiveDomain = PulseAbductiveDomain
 module Decompiler = PulseAbductiveDecompiler
 module LatentIssue = PulseLatentIssue
+module Diagnostic = PulseDiagnostic
 
 type 'abductive_domain_t base_t =
   | ContinueProgram of 'abductive_domain_t  (** represents the state at the program point *)

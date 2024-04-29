@@ -7,6 +7,7 @@
 
 open! IStd
 open PulseDomainInterface
+open PulseSatUnsat.Import
 
 [@@@warning "-32"]
 
@@ -16,6 +17,14 @@ val report_summary_error :
   Tenv.t -> Procdesc.t -> Errlog.t -> AccessResult.summary_error -> ExecutionDomain.summary option
 (** [None] means that the execution can continue but we could not compute the continuation state
     (because this only takes a [AccessResult.error], which doesn't have the ok state) *)
+
+val report_errors:
+Tenv.t
+-> Procdesc.t
+-> Errlog.t
+-> Location.t
+-> AccessResult.error list
+-> ExecutionDomain.summary option sat_unsat_t
 
 val report_result :
      Tenv.t

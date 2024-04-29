@@ -6,10 +6,12 @@ open PulseBasicInterface
 open PulseDomainInterface
 open PulseOperations.Import
 
-type start_end_loc = int * int [@@deriving yojson_of]
+type responsible_address = string [@@deriving yojson_of]
+
+type start_end_loc = int * int * responsible_address [@@deriving yojson_of]
 
 type label =
-  | Ok of start_end_loc 
+  | Ok of start_end_loc
   | ExitProgram of start_end_loc
   | ErrorRetainCycle of start_end_loc
   | ErrorMemoryLeak of start_end_loc
@@ -21,6 +23,8 @@ type label =
   | ISLLatentMemoryError of start_end_loc
 [@@deriving yojson_of]
 
+(* issue type, location, address *)
+type report = string * int * string [@@deriving yojson_of]
 
 type summary_post = label * string * (AbductiveDomain.summary) [@@deriving yojson_of]
 

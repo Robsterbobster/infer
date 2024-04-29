@@ -21,6 +21,8 @@ type expr = Decompiler.expr [@@deriving compare, equal, yojson_of]
 
 let pp_expr = Decompiler.pp_expr
 
+let to_string value = Decompiler.to_string value
+
 let find v {AbductiveDomain.decompiler} = Decompiler.find v decompiler
 
 let abstract_value_of_expr = Decompiler.abstract_value_of_expr

@@ -1344,6 +1344,107 @@ let filter_for_summary tenv proc_name astate0 =
     dead_addresses
   , new_eqs )
 
+let filter_summary tenv proc_name astate0 =
+  let open SatUnsat.Import in
+  L.d_printfln "Canonicalizing...@\n" ;
+  let* astate_before_filter = canonicalize astate0 in
+  L.d_printfln "Canonicalized state: %a@\n" pp astate_before_filter ;
+  (* Remove the stack from the post as it's not used: the values of formals are the same as in the
+      pre. Moreover, formals can be treated as local variables inside the function's body so we need
+      to restore their initial values at the end of the function. Removing them altogether achieves
+      this. *)
+  let astate = restore_formals_for_summary astate_before_filter in
+  let astate =
+    { astate with
+      topl=
+        PulseTopl.filter_for_summary
+          ~get_dynamic_type:
+            (BaseAddressAttributes.get_dynamic_type (astate.post :> BaseDomain.t).attrs)
+          astate.path_condition astate.topl }
+  in
+  let astate, pre_live_addresses, post_live_addresses, dead_addresses =
+    discard_unreachable_ ~for_summary:true astate
+  in
+  let can_be_pruned =
+    if PatternMatch.is_entry_point proc_name then
+      (* report all latent issues at entry points *)
+      AbstractValue.Set.empty
+    else pre_live_addresses
+  in
+  let live_addresses = AbstractValue.Set.union pre_live_addresses post_live_addresses in
+  let get_dynamic_type =
+    BaseAddressAttributes.get_dynamic_type (astate_before_filter.post :> BaseDomain.t).attrs
+  in
+  let+ path_condition, live_via_arithmetic, new_eqs =
+    PathCondition.simplify tenv ~get_dynamic_type ~can_be_pruned ~keep:live_addresses
+      astate.path_condition
+  in
+  let live_addresses = AbstractValue.Set.union live_addresses live_via_arithmetic in
+  { astate with
+      path_condition
+    ; topl= PulseTopl.simplify ~keep:live_addresses ~get_dynamic_type ~path_condition astate.topl }
+
+
+let summary_of_post_no_filter tenv pdesc location astate0 = 
+  (* do not store the decompiler in the summary and make sure we only use the original one by
+     marking it invalid *)
+     let open SatUnsat.Import in
+     (* do not store the decompiler in the summary and make sure we only use the original one by
+        marking it invalid *)
+     let astate = {astate0 with decompiler= Decompiler.invalid} in
+     (* NOTE: we normalize (to strengthen the equality relation used by canonicalization) then
+        canonicalize *before* garbage collecting unused addresses in case we detect any last-minute
+        contradictions about addresses we are about to garbage collect *)
+     let path_condition, is_unsat, new_eqs =
+       PathCondition.is_unsat_expensive tenv
+         ~get_dynamic_type:(BaseAddressAttributes.get_dynamic_type (astate.post :> BaseDomain.t).attrs)
+         astate.path_condition
+     in
+     let* () = if is_unsat then Unsat else Sat () in
+     let astate = {astate with path_condition} in
+     let* astate, error = incorporate_new_eqs ~for_summary:true astate new_eqs in
+     let astate_before_filter = astate in
+     let* _, live_addresses, dead_addresses, new_eqs =
+       filter_for_summary tenv (Procdesc.get_proc_name pdesc) astate
+     in
+     let+ astate, error =
+       match error with
+       | None ->
+           incorporate_new_eqs ~for_summary:true astate new_eqs
+       | Some _ ->
+           Sat (astate, error)
+     in
+     (* L.debug_dev "Summary of post called on astate (before filtering) %a \n" pp astate_before_filter; *)
+     match error with
+     | None -> (
+       match
+         check_retain_cycles ~dead_addresses tenv
+           {astate_before_filter with decompiler= astate0.decompiler}
+       with
+       | Error (assignment_traces, value, path, location) ->
+           Error (`RetainCycle (astate, assignment_traces, value, path, location))
+       | Ok () -> (
+         (* NOTE: it's important for correctness that we check leaks last because we are going to carry
+            on with the astate after the leak and we don't want to accidentally skip modifications of
+            the state because of the error monad *)
+         match
+           check_memory_leaks ~live_addresses ~unreachable_addresses:dead_addresses
+             astate_before_filter
+         with
+         | Ok () ->
+             Ok (invalidate_locals pdesc astate)
+         | Error (unreachable_location, JavaResource class_name, trace) ->
+             Error
+               (`ResourceLeak
+                 (astate, class_name, trace, Option.value unreachable_location ~default:location) )
+         | Error (unreachable_location, allocator, trace) ->
+             Error
+               (`MemoryLeak
+                 (astate, allocator, trace, Option.value unreachable_location ~default:location) ) ) )
+     | Some (address, must_be_valid) ->
+         Error
+           (`PotentialInvalidAccessSummary
+             (astate, Decompiler.find address astate0.decompiler, must_be_valid) )
 
 let summary_of_post tenv pdesc location astate0 =
   let open SatUnsat.Import in
