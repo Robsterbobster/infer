@@ -44,20 +44,20 @@ let exec_summary_of_post_common tenv ~continue_program proc_desc err_log locatio
       | Ok astate ->
           continue_program astate, SummaryPost.Ok (0, 0, "")
       | Error (`RetainCycle (astate, assignment_traces, value, path, location)) ->
-          let real_summary = PulseReport.report_summary_error tenv proc_desc err_log
+          let real_summary = PulseReport.report_summary_error tenv proc_desc err_log location
             (ReportableErrorSummary
                {astate; diagnostic= RetainCycle {assignment_traces; value; path; location}} )
           |> Option.value ~default:(ExecutionDomain.ContinueProgram astate)
           in real_summary, SummaryPost.ErrorRetainCycle (0, 0, (Decompiler.to_string value))
       | Error (`MemoryLeak (astate, allocator, allocation_trace, location)) ->
-          let real_summary = PulseReport.report_summary_error tenv proc_desc err_log
+          let real_summary = PulseReport.report_summary_error tenv proc_desc err_log location
             (ReportableErrorSummary
                {astate; diagnostic= MemoryLeak {allocator; allocation_trace; location}} )
           |> Option.value ~default:(ExecutionDomain.ContinueProgram astate) in
           let alloc_trace_start = (Trace.get_start_location allocation_trace).line in 
           real_summary, SummaryPost.ErrorMemoryLeak (alloc_trace_start, location.line, "")
       | Error (`ResourceLeak (astate, class_name, allocation_trace, location)) ->
-          let real_summary = PulseReport.report_summary_error tenv proc_desc err_log
+          let real_summary = PulseReport.report_summary_error tenv proc_desc err_log location
             (ReportableErrorSummary
                {astate; diagnostic= ResourceLeak {class_name; allocation_trace; location}} )
           |> Option.value ~default:(ExecutionDomain.ContinueProgram astate) in
@@ -82,7 +82,7 @@ let exec_summary_of_post_common tenv ~continue_program proc_desc err_log locatio
             (* NOTE: this probably leads to the error being dropped as the access trace is unlikely to
                contain the reason for invalidation and thus we will filter out the report. TODO:
                figure out if that's a problem. *)
-            let real_summary = PulseReport.report_summary_error tenv proc_desc err_log
+            let real_summary = PulseReport.report_summary_error tenv proc_desc err_log location
               (ReportableErrorSummary
                  { diagnostic=
                      AccessToInvalidAddress

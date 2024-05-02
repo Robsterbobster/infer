@@ -271,6 +271,7 @@ struct
     (* [remaining_disjuncts] is the number of remaining disjuncts taking into account disjuncts
        already recorded in the post of a node (and therefore that will stay there).  It is always
        set from [exec_node_instrs], so [remaining_disjuncts] should always be [Some _]. *)
+      (*List.iteri pre_disjuncts (fun i dis -> L.debug_dev "EXEC INSTR PRE %d: %a\n" i T.DisjDomain.pp dis);*)
     let limit = Option.value_exn (AnalysisState.get_remaining_disjuncts ()) in
     let (disjuncts, non_disj_astates), _ =
       List.foldi (List.rev pre_disjuncts)
@@ -281,6 +282,7 @@ struct
             (post_astate, n_disjuncts) )
           else (
             L.d_printfln "@[<v2>Executing instruction from disjunct #%d@;" i ;
+            (*L.debug_dev "EXEC INSTR PRE %d: %a\n" i T.DisjDomain.pp pre_disjunct;*)
             let disjuncts', non_disj' =
               T.exec_instr (pre_disjunct, non_disj) analysis_data node instr
             in
@@ -322,13 +324,16 @@ struct
             let disjuncts', non_disj' =
               Instrs.foldi ~init:([pre_disjunct], pre_non_disj) instrs ~f:exec_instr
             in
+            (*List.iteri disjuncts' (fun i dis -> L.debug_dev "post fold %d: %a\n" i T.DisjDomain.pp dis);*)
             L.d_printfln "@]@\n" ;
             let disj', n = Domain.join_up_to ~limit:disjunct_limit ~into:post disjuncts' in
+            (*List.iter disj' (fun dis -> L.debug_dev "exec %d: %a\n" i T.DisjDomain.pp dis);*)
             ((disj', non_disj' :: non_disj_astates), n) )
           else (
             L.d_printfln "@[Skipping already-visited disjunct #%d@]@;" i ;
             (post_astate, n_disjuncts) ) )
     in
+    (*List.iteri disjuncts (fun i dis -> L.debug_dev "post fold %d: %a\n" i T.DisjDomain.pp dis);*)
     (disjuncts, List.fold ~init:T.NonDisjDomain.bottom ~f:T.NonDisjDomain.join non_disj_astates)
 
 
@@ -409,11 +414,13 @@ module AbstractInterpreterCommon (TransferFunctions : NodeTransferFunctions) = s
     if Config.write_html then L.d_printfln_escaped "PRE STATE:@\n@[%a@]@\n" Domain.pp pre ;
     let exec_instr idx pre instr =
       AnalysisState.set_instr instr ;
+      (*L.debug_dev "out exec instr (pre): %a \n" Domain.pp pre;*)
       let result =
         try
           let post = TransferFunctions.exec_instr pre proc_data node idx instr in
           (* don't forget to reset this so we output messages for future errors too *)
           logged_error := false ;
+          (*L.debug_dev "exec post: %a \n" Domain.pp post;*)
           Ok post
         with exn ->
           (* delay reraising to get a chance to write the debug HTML *)
@@ -423,6 +430,7 @@ module AbstractInterpreterCommon (TransferFunctions : NodeTransferFunctions) = s
       if Config.write_html then dump_html ~pp_instr pre instr result ;
       match result with
       | Ok post ->
+        (*L.debug_dev "out exec instr: %a \n" Domain.pp post;*)
           post
       | Error (exn, backtrace, instr) ->
           ( match exn with
@@ -439,7 +447,9 @@ module AbstractInterpreterCommon (TransferFunctions : NodeTransferFunctions) = s
     in
     (* hack to ensure that we call [exec_instr] on a node even if it has no instructions *)
     let instrs = if Instrs.is_empty instrs then Instrs.singleton Sil.skip_instr else instrs in
-    TransferFunctions.exec_node_instrs old_state_opt ~exec_instr pre instrs
+    let state = TransferFunctions.exec_node_instrs old_state_opt ~exec_instr pre instrs in
+    (*L.debug_dev "OUTER EXEC: %a\n" Domain.pp state;*)
+    state
 
 
   (* Note on narrowing operations: we defines the narrowing operations simply to take a smaller one.

@@ -121,7 +121,6 @@ let summary_of_error_post tenv proc_desc location mk_error astate =
   | Sat (Error (`PotentialInvalidAccessSummary (summary, addr, trace))) ->
       (* ignore the error we wanted to report (with [mk_error]): the abstract state contained a
          potential error already so report [error] instead *)
-      L.debug_dev "PotentialInvalidAccessSummary\n";
       Sat
         (AccessResult.of_abductive_summary_error
            (`PotentialInvalidAccessSummary (summary, addr, trace)) )
@@ -146,7 +145,7 @@ let summary_error_of_error tenv proc_desc location (error : AccessResult.error) 
   | ISLError {astate} ->
       summary_of_error_post tenv proc_desc location (fun astate -> ISLErrorSummary {astate}) astate
 
-let report_summary_error tenv proc_desc err_log (access_error : AccessResult.summary_error) :
+let report_summary_error tenv proc_desc err_log location (access_error : AccessResult.summary_error) :
     ExecutionDomain.summary option =
   match access_error with
   | PotentialInvalidAccessSummary {astate; address; must_be_valid} ->
@@ -174,6 +173,7 @@ let report_summary_error tenv proc_desc err_log (access_error : AccessResult.sum
   | ISLErrorSummary {astate} ->
       Some (ISLLatentMemoryError astate)
   | ReportableErrorSummary {astate; diagnostic} -> (
+      L.debug_dev "REPORTABLE\n";
       let is_nullptr_dereference =
         match diagnostic with AccessToInvalidAddress _ -> true | _ -> false
       in
@@ -187,8 +187,19 @@ let report_summary_error tenv proc_desc err_log (access_error : AccessResult.sum
       let error_trace = Diagnostic.get_trace diagnostic in
       let error_trace_start = Errlog.get_loc_trace_start error_trace in
       let error_trace_end = Errlog.get_loc_trace_end error_trace in
-      match LatentIssue.should_report astate diagnostic with
+      let summary_result = AbductiveDomain.summary_of_post tenv proc_desc location (astate :> AbductiveDomain.t) in
+      let result_state = match summary_result with
+      | Sat (Ok summary)
+      | Sat (Error (`MemoryLeak (summary, _, _, _)) | Error (`ResourceLeak (summary, _, _, _)))
+      | Sat (Error (`RetainCycle (summary, _, _, _, _))) ->
+          summary
+      | Sat (Error (`PotentialInvalidAccessSummary (summary, addr, trace))) ->
+            summary
+      | Unsat -> L.debug_dev "UNSAT DETECTED\n"; astate (* Not sure when will this come *)
+      in
+      match LatentIssue.should_report result_state diagnostic with
       | `ReportNow ->
+          L.debug_dev "REPORT NOW\n";
           if is_suppressed then L.d_printfln "ReportNow suppressed error" ;
           report ~latent:false ~is_suppressed proc_desc err_log diagnostic ;
           (*L.debug_dev "report: %a \n" AbductiveDomain.pp (astate :> AbductiveDomain.t);*)
@@ -196,6 +207,7 @@ let report_summary_error tenv proc_desc err_log (access_error : AccessResult.sum
             Some (AbortProgram {astate; error_trace_start; error_trace_end}) 
           else None
       | `DelayReport latent_issue ->
+          L.debug_dev "DelayReport\n";
           if is_suppressed then L.d_printfln "DelayReport suppressed error" ;
           if Config.pulse_report_latent_issues then
             report_latent_issue ~is_suppressed proc_desc err_log latent_issue ;
@@ -205,7 +217,7 @@ let report_summary_error tenv proc_desc err_log (access_error : AccessResult.sum
 let report_error tenv proc_desc err_log location access_error =
   let open SatUnsat.Import in
   summary_error_of_error tenv proc_desc location access_error
-  >>| report_summary_error tenv proc_desc err_log
+  >>| report_summary_error tenv proc_desc err_log location
 
 
 let report_errors tenv proc_desc err_log location errors =
