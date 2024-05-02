@@ -187,6 +187,10 @@ let report_summary_error tenv proc_desc err_log location (access_error : AccessR
       let error_trace = Diagnostic.get_trace diagnostic in
       let error_trace_start = Errlog.get_loc_trace_start error_trace in
       let error_trace_end = Errlog.get_loc_trace_end error_trace in
+      (* Since summary_of_error_post is modified to keep the state in the abort program, 
+         this may confuse the should_report to think that the state is latent, thus we use 
+         summary_of_post to filter the unfiltered state and then use that to check whether report
+         this issue or not*)
       let summary_result = AbductiveDomain.summary_of_post tenv proc_desc location (astate :> AbductiveDomain.t) in
       let result_state = match summary_result with
       | Sat (Ok summary)
