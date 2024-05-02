@@ -138,15 +138,15 @@ module Attribute = struct
 
   let blame_rank = Variants.blame.rank
 
-  (* potentially conflict resolving location*)
   let isl_subset attr1 attr2 =
     match (attr1, attr2) with
     | Invalid (v1, _), Invalid (v2, _) ->
         Invalidation.isl_equiv v1 v2
     | Invalid _, (WrittenTo _ | DynamicType _) ->
         true
-    (*| Blame (_, _, _ , _), Blame (_, _, _ , _) ->
-        true*)
+    (* For biabduction, pre of summary will not have any blame pred, thus _ *)
+    | _, Blame (_, _, _ , _) ->
+        true
     | Uninitialized, Uninitialized ->
         true
     | (MustBeValid _ | Allocated _ | ISLAbduced _), Invalid _ ->

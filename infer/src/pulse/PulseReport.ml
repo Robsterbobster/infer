@@ -121,6 +121,7 @@ let summary_of_error_post tenv proc_desc location mk_error astate =
   | Sat (Error (`PotentialInvalidAccessSummary (summary, addr, trace))) ->
       (* ignore the error we wanted to report (with [mk_error]): the abstract state contained a
          potential error already so report [error] instead *)
+      L.debug_dev "PotentialInvalidAccessSummary\n";
       Sat
         (AccessResult.of_abductive_summary_error
            (`PotentialInvalidAccessSummary (summary, addr, trace)) )
@@ -138,6 +139,7 @@ let summary_error_of_error tenv proc_desc location (error : AccessResult.error) 
         (fun astate -> PotentialInvalidAccessSummary {astate; address; must_be_valid})
         astate
   | ReportableError {astate; diagnostic} ->
+    (*L.debug_dev "ReportableError: %a\n" AbductiveDomain.pp astate;*)
       summary_of_error_post tenv proc_desc location
         (fun astate -> ReportableErrorSummary {astate; diagnostic})
         astate
@@ -224,6 +226,7 @@ let report_exec_results tenv proc_desc err_log location results =
   List.filter_map results ~f:(fun exec_result ->
       match PulseResult.to_result exec_result with
       | Ok post ->
+        (*L.debug_dev "OK\n";*)
           Some post
       | Error errors -> (
         match report_errors tenv proc_desc err_log location errors with
@@ -236,6 +239,7 @@ let report_exec_results tenv proc_desc err_log location results =
               L.die InternalError
                 "report_errors returned None but the result was not a recoverable error"
           | Recoverable (exec_state, _) ->
+            (*L.debug_dev "Recoverable error\n";*)
               Some exec_state )
         | Sat (Some exec_state) ->
             let state = (exec_state :> ExecutionDomain.t) in

@@ -900,6 +900,10 @@ let apply_prepost path ~is_isl_error_prepost callee_proc_name call_location ~cal
   L.d_printfln "Applying pre/post for %a(%a):@\n%a" Procname.pp callee_proc_name
     (Pp.seq ~sep:"," (fun f (var, _) -> Var.pp f var))
     formals AbductiveDomain.pp pre_post ;
+  (*L.debug_dev "Call state: %a\n" AbductiveDomain.pp astate;  
+  L.debug_dev "Applying pre/post for %a(%a):@\n%a \n" Procname.pp callee_proc_name
+  (Pp.seq ~sep:"," (fun f (var, _) -> Var.pp f var))
+  formals AbductiveDomain.pp pre_post ;*)
   let empty_call_state =
     { astate
     ; subst= AddressMap.empty
@@ -917,6 +921,8 @@ let apply_prepost path ~is_isl_error_prepost callee_proc_name call_location ~cal
          pre/post pair *)
       L.d_printfln "Cannot apply precondition: %a" pp_contradiction reason ;
       log_contradiction reason ;
+      (*L.debug_dev "Cannot apply precondition: %a\n" pp_contradiction reason ;*)
+      log_contradiction reason ;
       (Unsat, Some reason)
   | result -> (
     try
@@ -924,6 +930,7 @@ let apply_prepost path ~is_isl_error_prepost callee_proc_name call_location ~cal
         let open PulseResult.Let_syntax in
         let* call_state = result in
         L.d_printfln "Pre applied successfully. call_state=%a" pp_call_state call_state ;
+        (*L.debug_dev "Pre applied successfully.\n";*)
         (*L.debug_dev "Prepost=%a" AbductiveDomain.pp pre_post ;*)
         (* only call [check_all_valid] when ISL is not active: the ISL mode generates explicit error
            specs (which we recognize here using [is_isl_error_prepost]) instead of relying on
