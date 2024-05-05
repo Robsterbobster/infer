@@ -456,7 +456,7 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
         (* Only update the blame predicate in caller's state if callee's blame entity is a concrete one*)
         let resolve_conflict = match callee_blame_attr with
         | None -> false
-        | Some (entity, _, _, _) -> 
+        | Some (entity, _, _, _, _) -> 
           match entity with
           | Client -> true
           | Vendor -> true

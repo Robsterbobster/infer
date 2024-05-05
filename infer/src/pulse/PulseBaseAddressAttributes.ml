@@ -108,8 +108,8 @@ let allocate allocator address location memory =
   (Attribute.Allocated (allocator, Immediate {location; history= ValueHistory.epoch}))
   memory
   
-let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls memory = add_one address
-(Attribute.Blame (entity, erroneous_prop_ls, san_poli_ls, conf_poli_ls))
+let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname memory = add_one address
+(Attribute.Blame (entity, erroneous_prop_ls, san_poli_ls, conf_poli_ls, procname))
 memory
 
 let java_resource_release address memory = add_one address Attribute.JavaResourceReleased memory
@@ -164,8 +164,8 @@ let remove_must_be_valid_attr address memory =
 
 let remove_blame_attr address memory =
   match get_attribute Attributes.get_blame address memory with
-  | Some (entity, err_prop_ls, san_poli_ls, conf_poli_ls) ->
-      remove_one address (Attribute.Blame (entity, err_prop_ls, san_poli_ls, conf_poli_ls)) memory
+  | Some (entity, err_prop_ls, san_poli_ls, conf_poli_ls, procname) ->
+      remove_one address (Attribute.Blame (entity, err_prop_ls, san_poli_ls, conf_poli_ls, procname)) memory
   | None ->
       memory
 

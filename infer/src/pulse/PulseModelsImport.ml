@@ -229,7 +229,7 @@ module Basic = struct
                         let entity = if is_in_vendor_world then Entity.Vendor else Entity.Client in
                         let astate = PulseOperations.remove_blame_attr address astate
                         in
-                        PulseOperations.add_blame address entity astate
+                        PulseOperations.add_blame address entity proc_name astate
                       ) else astate
                       in
                        ContinueProgram astate )
@@ -307,7 +307,7 @@ module Basic = struct
       let proc_name = Procname.get_method(Procdesc.get_proc_name proc_desc) in
       let is_in_vendor_world = PulseOperations.check_in_vendor_world proc_name in
       let entity = if is_in_vendor_world then Entity.Vendor else Entity.Client in
-      PulseOperations.add_blame ret_addr entity astate
+      PulseOperations.add_blame ret_addr entity proc_name astate
     ) else astate
     in 
     let astate =

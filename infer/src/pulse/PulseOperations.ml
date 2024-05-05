@@ -204,7 +204,7 @@ module ModeledField = struct
   let delegated_release = Fieldname.make pulse_model_type "__infer_model_delegated_release"
 end
 
-let add_blame addr entity result =
+let add_blame addr entity procname result =
   (*let _ = (fun () -> 
     write_blame ()
     ) () in *)
@@ -214,7 +214,7 @@ let add_blame addr entity result =
   in
   let conf_poli_ls = [ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient]
   in
-  AddressAttributes.add_blame addr entity error_prop_ls san_poli_ls conf_poli_ls result  
+  AddressAttributes.add_blame addr entity error_prop_ls san_poli_ls conf_poli_ls procname result  
 
 let read_vendor_names_list () =
   let json = Yojson.Safe.from_file "vendor_names.json" in
@@ -349,7 +349,7 @@ let eval_to_operand path location exp astate procdesc =
         in
         let is_in_vendor_world = check_in_vendor_world proc_name in
         let entity = if is_in_vendor_world then Entity.Vendor else Entity.Client in
-        add_blame value entity astate
+        add_blame value entity proc_name astate
         ) else astate
       in
       (astate, PulseArithmetic.AbstractValueOperand value, hist)
@@ -450,7 +450,7 @@ let add_blame_to_addr tenv proc_desc location addr astate =
   else (let is_in_vendor_world = check_in_vendor_world proc_name in
   if is_in_vendor_world then Entity.Vendor else Entity.Client) in
   let astate = if is_erroenous_state then astate else remove_blame_attr addr astate  in
-  add_blame addr entity astate) else astate in
+  add_blame addr entity proc_name astate) else astate in
   astate
 
 let eval_deref_isl tenv proc_desc path location exp astate =
@@ -539,21 +539,6 @@ let always_reachable address astate = AddressAttributes.always_reachable address
 
 let allocate allocator location addr astate =
   AddressAttributes.allocate allocator addr location astate
-
-let write_blame () = 
-  let error_prop_ls = [ErroneousProperty.MemoryLeak; ErroneousProperty.UseAfterFree; ErroneousProperty.NullPointerDereference]
-  in
-  let san_poli_ls = [SanitisationPolicy.MemoryLeak; SanitisationPolicy.UseAfterFree; SanitisationPolicy.NullPointerDereference]
-  in
-  let conf_poli_ls = [ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient]
-  in
-  let json = [%yojson_of: PulseAttribute.t] (PulseAttribute.Blame (Entity.Vendor,error_prop_ls,san_poli_ls,conf_poli_ls)) in
-  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
-    (* Yojson.Safe.to_channel stdout json_content;
-    Out_channel.newline stdout;
-    Out_channel.flush stdout; *)
-  in
-  f_json json "blame.json"
 
 let java_resource_release address astate =
   let if_valid_access_then_eval addr access astate =

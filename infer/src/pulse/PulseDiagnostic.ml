@@ -150,6 +150,47 @@ let pp_calling_context_prefix fmt calling_context =
         (if in_between_calls > 1 then "s" else "")
 
 
+let get_var diagnostic =
+  match diagnostic with
+  | AccessToInvalidAddress
+      { calling_context
+      ; invalid_address
+      ; invalidation
+      ; invalidation_trace
+      ; access_trace
+      ; must_be_valid_reason } -> 
+        F.asprintf "%a" Decompiler.pp_expr invalid_address
+  | MemoryLeak {allocator; location; allocation_trace} ->
+      ""
+  | ResourceLeak {class_name; location; allocation_trace} ->
+      ""
+  | RetainCycle {location; value; path} ->
+    (F.asprintf "%a" Decompiler.pp_expr value) 
+  | ErlangError (Badkey {calling_context= _; location}) ->
+    ""
+  | ErlangError (Badmap {calling_context= _; location}) ->
+    ""
+  | ErlangError (Badmatch {calling_context= _; location}) ->
+    ""
+  | ErlangError (Badrecord {calling_context= _; location}) ->
+    ""
+  | ErlangError (Case_clause {calling_context= _; location}) ->
+    ""
+  | ErlangError (Function_clause {calling_context= _; location}) ->
+    ""
+  | ErlangError (If_clause {calling_context= _; location}) ->
+    ""
+  | ErlangError (Try_clause {calling_context= _; location}) ->
+    ""
+  | ReadUninitializedValue {calling_context; trace} ->
+    ""
+  | StackVariableAddressEscape {variable; _} ->
+    (F.asprintf "%a" Var.pp variable) 
+  | TaintFlow {tainted; source= source, _; sink= sink, _} ->
+    (F.asprintf "%a" Decompiler.pp_expr tainted) 
+  | UnnecessaryCopy {variable; typ; location; from} ->
+    (F.asprintf "%a" Var.pp variable) 
+
 let get_message diagnostic =
   match diagnostic with
   | AccessToInvalidAddress

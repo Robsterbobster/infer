@@ -28,7 +28,7 @@ val add_one : AbstractValue.t -> Attribute.t -> t -> t
 
 val add : AbstractValue.t -> Attributes.t -> t -> t
 
-val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> SanitisationPolicy.t list -> ConflictPolicy.t list -> t -> t
+val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> SanitisationPolicy.t list -> ConflictPolicy.t list -> string -> t -> t
 
 val allocate : Attribute.allocator -> AbstractValue.t -> Location.t -> t -> t
 

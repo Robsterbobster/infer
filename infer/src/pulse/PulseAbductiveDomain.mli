@@ -128,7 +128,7 @@ module AddressAttributes : sig
   val add_one : AbstractValue.t -> Attribute.t -> t -> t
   (** add the attribute only to the post *)
 
-  val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> SanitisationPolicy.t list -> ConflictPolicy.t list -> t -> t
+  val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> SanitisationPolicy.t list -> ConflictPolicy.t list -> string -> t -> t
   (** add the blame attribute to the post *)
 
   val add_attrs : AbstractValue.t -> Attributes.t -> t -> t
@@ -255,6 +255,10 @@ val filter_summary :
   -> Procname.t
   -> summary
   -> summary SatUnsat.t
+
+val to_summary : 
+  t
+  -> summary
 
 val summary_of_post_no_filter :
      Tenv.t

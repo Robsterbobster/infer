@@ -9,10 +9,30 @@ open! IStd
 module L = Logging
 open PulseBasicInterface
 open PulseDomainInterface
-(*module SummaryPost = PulseSummaryPost*)
+module SummaryPost = PulseSummaryPost
 
-let report ~is_suppressed ~latent proc_desc err_log diagnostic =
+let read_existing_json file_name = Yojson.Safe.from_file file_name
+
+let append_to_json_array original_json new_data_json =
+  match original_json with
+  | `List lst -> `List (lst @ [new_data_json])
+  | _ -> `List ([new_data_json])
+
+
+let write_issue_report_json (issue_report: PulseSummaryPost.issue_report) =
+  let json_report = [%yojson_of: PulseSummaryPost.issue_report] issue_report in
+  let existing_json = read_existing_json "issue_report.json" in
+  let json = append_to_json_array existing_json json_report in
+  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+    (* Yojson.Safe.to_channel stdout json_content;
+    Out_channel.newline stdout;
+    Out_channel.flush stdout; *)
+  in
+  f_json json "issue_report.json"
+
+let report ~is_suppressed ~latent proc_desc err_log astate diagnostic  =
   let open Diagnostic in
+  (*L.debug_dev "REPORT ERROR: %s\n" (get_message diagnostic);*)
   if is_suppressed && not Config.pulse_report_issues_for_tests then ()
   else
     (* Report suppressed issues with a message to distinguish them from non-suppressed issues.
@@ -29,7 +49,14 @@ let report ~is_suppressed ~latent proc_desc err_log diagnostic =
       let copy_type = get_copy_type diagnostic |> Option.map ~f:Typ.to_string in
       Jsonbug_t.{cost_polynomial= None; cost_degree= None; nullsafe_extra= None; copy_type}
     in
-    (*let report = SummaryPost.report (get_issue_type ~latent diagnostic) in*)
+    let issue = get_issue_type ~latent diagnostic in
+    let issue_string = Format.asprintf "%a" IssueType.pp issue in
+    let responsible_var = get_var diagnostic in
+    let issue_report = SummaryPost.construct_issue_report proc_desc issue_string responsible_var astate in
+    (*L.debug_dev "Issue type: %a\n" IssueType.pp issue;
+    L.debug_dev "Responsible var:%s\n" responsible_var;
+    L.debug_dev "State:%a\n" AbductiveDomain.sum_pp astate;*)
+    write_issue_report_json issue_report;
     Reporting.log_issue proc_desc err_log ~loc:(get_location diagnostic)
       ~ltr:(extra_trace @ get_trace diagnostic)
       ~extras Pulse
@@ -37,8 +64,8 @@ let report ~is_suppressed ~latent proc_desc err_log diagnostic =
       (get_message diagnostic)
 
 
-let report_latent_issue proc_desc err_log latent_issue ~is_suppressed =
-  LatentIssue.to_diagnostic latent_issue |> report ~latent:true ~is_suppressed proc_desc err_log
+let report_latent_issue proc_desc err_log latent_issue ~is_suppressed astate =
+  LatentIssue.to_diagnostic latent_issue |> report ~latent:true ~is_suppressed proc_desc err_log astate
 
 
 (* skip reporting on Java classes annotated with [@Nullsafe] if requested *)
@@ -160,7 +187,7 @@ let report_summary_error tenv proc_desc err_log location (access_error : AccessR
       in
       if is_suppressed then L.d_printfln "suppressed error" ;
       if Config.pulse_report_latent_issues then
-        report ~latent:true ~is_suppressed proc_desc err_log
+        report ~latent:true ~is_suppressed proc_desc err_log astate
           (AccessToInvalidAddress
              { calling_context= []
              ; invalid_address= address
@@ -173,7 +200,7 @@ let report_summary_error tenv proc_desc err_log location (access_error : AccessR
   | ISLErrorSummary {astate} ->
       Some (ISLLatentMemoryError astate)
   | ReportableErrorSummary {astate; diagnostic} -> (
-      L.debug_dev "REPORTABLE\n";
+      (*L.debug_dev "REPORTABLE\n";*)
       let is_nullptr_dereference =
         match diagnostic with AccessToInvalidAddress _ -> true | _ -> false
       in
@@ -203,18 +230,18 @@ let report_summary_error tenv proc_desc err_log location (access_error : AccessR
       in
       match LatentIssue.should_report result_state diagnostic with
       | `ReportNow ->
-          L.debug_dev "REPORT NOW\n";
+          (*L.debug_dev "REPORT NOW\n";*)
           if is_suppressed then L.d_printfln "ReportNow suppressed error" ;
-          report ~latent:false ~is_suppressed proc_desc err_log diagnostic ;
+          report ~latent:false ~is_suppressed proc_desc err_log astate diagnostic;
           (*L.debug_dev "report: %a \n" AbductiveDomain.pp (astate :> AbductiveDomain.t);*)
           if Diagnostic.aborts_execution diagnostic then 
             Some (AbortProgram {astate; error_trace_start; error_trace_end}) 
           else None
       | `DelayReport latent_issue ->
-          L.debug_dev "DelayReport\n";
+          (*L.debug_dev "DelayReport\n";*)
           if is_suppressed then L.d_printfln "DelayReport suppressed error" ;
           if Config.pulse_report_latent_issues then
-            report_latent_issue ~is_suppressed proc_desc err_log latent_issue ;
+            report_latent_issue ~is_suppressed proc_desc err_log latent_issue astate ;
           Some (LatentAbortProgram {astate; latent_issue}) )
 
 

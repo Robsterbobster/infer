@@ -38,7 +38,7 @@ let alloc_common allocator ~size_exp_opt : model =
       let proc_name = Procname.get_method (Procdesc.get_proc_name proc_desc) in
       let is_in_vendor_world = PulseOperations.check_in_vendor_world proc_name in
       let entity = if is_in_vendor_world then Entity.Vendor else Entity.Client in
-      PulseOperations.add_blame ret_addr entity astate_null
+      PulseOperations.add_blame ret_addr entity proc_name astate_null
     ) else astate_null
     in 
     (* L.debug_dev "null branch state: %a\n" AbductiveDomain.pp astate_null; *)

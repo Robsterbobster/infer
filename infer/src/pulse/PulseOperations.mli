@@ -285,7 +285,7 @@ val always_reachable : AbstractValue.t -> t -> t
 
 val allocate : Attribute.allocator -> Location.t -> AbstractValue.t -> t -> t
 
-val add_blame: AbstractValue.t -> Entity.t -> t -> t
+val add_blame: AbstractValue.t -> Entity.t -> string -> t -> t
 
 val check_in_vendor_world: string -> bool
 

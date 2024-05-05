@@ -23,8 +23,8 @@ type label =
   | ISLLatentMemoryError of start_end_loc
 [@@deriving yojson_of]
 
-(* issue type, location, address *)
-type report = string * int * string [@@deriving yojson_of]
+(* Function name, Issue type, resposible address, summary*)
+type issue_report = string * string * string * (AbductiveDomain.summary) [@@deriving yojson_of]
 
 type summary_post = label * string * (AbductiveDomain.summary) [@@deriving yojson_of]
 
@@ -41,6 +41,8 @@ type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
 val from_lists_of_summaries : 
   (AbductiveDomain.summary ExecutionDomain.base_t * label) list -> string
   ->  t
+
+val construct_issue_report: Procdesc.t -> string -> string -> AbductiveDomain.summary -> issue_report
 
 val construct_mapping: Pvar.t -> AbstractValue.t -> mapping
 

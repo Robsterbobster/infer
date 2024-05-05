@@ -81,7 +81,7 @@ module Attribute = struct
     | UnknownEffect of CallEvent.t * ValueHistory.t
     | UnreachableAt of Location.t
     | WrittenTo of Trace.t
-    | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list)
+    | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list) * string
   [@@deriving compare, variants, yojson_of]
 
   let equal = [%compare.equal: t]
@@ -145,7 +145,7 @@ module Attribute = struct
     | Invalid _, (WrittenTo _ | DynamicType _) ->
         true
     (* For biabduction, pre of summary will not have any blame pred, thus _ *)
-    | _, Blame (_, _, _ , _) ->
+    | _, Blame (_, _, _ , _, _) ->
         true
     | Uninitialized, Uninitialized ->
         true
@@ -226,8 +226,8 @@ module Attribute = struct
         F.fprintf f "UnreachableAt(%a)" Location.pp location
     | WrittenTo trace ->
         F.fprintf f "WrittenTo %a" (Trace.pp ~pp_immediate:(pp_string_if_debug "mutation")) trace
-    | Blame (entity, errorprop_ls, sanpolicy_ls, conflictpolicy_ls) ->
-        F.fprintf f "Blame(%a, %a, %a, %a)" Entity.pp entity ErroneousProperty.list_pp errorprop_ls SanitisationPolicy.list_pp sanpolicy_ls ConflictPolicy.list_pp conflictpolicy_ls
+    | Blame (entity, errorprop_ls, sanpolicy_ls, conflictpolicy_ls, procname) ->
+        F.fprintf f "Blame(%a, %s, %a, %a, %a)" Entity.pp entity procname ErroneousProperty.list_pp errorprop_ls SanitisationPolicy.list_pp sanpolicy_ls ConflictPolicy.list_pp conflictpolicy_ls
 
 
   let is_suitable_for_pre = function
@@ -450,7 +450,7 @@ module Attributes = struct
 
 
 let get_blame =
-    get_by_rank Attribute.blame_rank ~dest:(function [@warning "-8"] |Blame (entity, errneous_prop, san_poli, conf_poli) -> (entity, errneous_prop, san_poli, conf_poli) )
+    get_by_rank Attribute.blame_rank ~dest:(function [@warning "-8"] |Blame (entity, errneous_prop, san_poli, conf_poli, procname) -> (entity, errneous_prop, san_poli, conf_poli, procname) )
 
   let get_closure_proc_name =
     get_by_rank Attribute.closure_rank ~dest:(function [@warning "-8"] Closure proc_name ->

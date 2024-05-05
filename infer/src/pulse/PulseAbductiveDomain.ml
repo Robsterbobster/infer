@@ -339,8 +339,8 @@ module AddressAttributes = struct
   let allocate allocator address location astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.allocate allocator address location)
 
-  let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls astate =
-    map_post_attrs astate ~f:(BaseAddressAttributes.add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls)
+  let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname astate =
+    map_post_attrs astate ~f:(BaseAddressAttributes.add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname)
 
   let java_resource_release address astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.java_resource_release address)
@@ -1384,6 +1384,9 @@ let filter_summary tenv proc_name astate0 =
       path_condition
     ; topl= PulseTopl.simplify ~keep:live_addresses ~get_dynamic_type ~path_condition astate.topl }
 
+
+let to_summary astate = 
+  {astate with decompiler= Decompiler.invalid}
 
 let summary_of_post_no_filter tenv pdesc location astate0 = 
   (* do not store the decompiler in the summary and make sure we only use the original one by

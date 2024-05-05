@@ -65,7 +65,7 @@ type t =
       (** temporary marker to remember where a variable became unreachable; helps with accurately
           reporting leaks *)
   | WrittenTo of Trace.t
-  | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list)
+  | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list) * string
 [@@deriving compare, yojson_of]
 
 val pp : F.formatter -> t -> unit
@@ -93,7 +93,7 @@ module Attributes : sig
 
   val get_allocation : t -> (allocator * Trace.t) option
 
-  val get_blame : t -> (Entity.t * ErroneousProperty.t list * SanitisationPolicy.t list * ConflictPolicy.t list) option
+  val get_blame : t -> (Entity.t * ErroneousProperty.t list * SanitisationPolicy.t list * ConflictPolicy.t list * string) option
 
   val is_ref_counted : t -> bool
 

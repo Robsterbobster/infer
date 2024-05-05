@@ -11,7 +11,7 @@ open PulseSatUnsat.Import
 
 [@@@warning "-32"]
 
-val report : is_suppressed:bool -> latent:bool -> Procdesc.t -> Errlog.t -> Diagnostic.t -> unit
+val report : is_suppressed:bool -> latent:bool -> Procdesc.t -> Errlog.t -> AbductiveDomain.summary -> Diagnostic.t -> unit
 
 val report_summary_error :
   Tenv.t -> Procdesc.t -> Errlog.t -> Location.t -> AccessResult.summary_error -> ExecutionDomain.summary option
