@@ -23,8 +23,8 @@ type label =
   | ISLLatentMemoryError of start_end_loc
 [@@deriving yojson_of]
 
-(* Function name, Issue type, resposible address, summary*)
-type issue_report = string * string * string * (AbductiveDomain.summary) [@@deriving yojson_of]
+(* Function name, Location, Issue type, resposible address, summary*)
+type issue_report = string * Location.t * string * string * (AbductiveDomain.summary) [@@deriving yojson_of]
 
 type summary_post = label * string * (AbductiveDomain.summary) [@@deriving yojson_of]
 
@@ -54,10 +54,10 @@ let construct_summary_post (summary_label : AbductiveDomain.summary ExecutionDom
       label, path, astate
 
 
-let construct_issue_report (proc_desc: (Procdesc.t)) (issue_type : string) (responsible_address: string) (summary: AbductiveDomain.summary) = 
+let construct_issue_report (proc_desc: (Procdesc.t)) (location: Location.t) (issue_type : string) (responsible_address: string) (summary: AbductiveDomain.summary) = 
   let procname = Procdesc.get_proc_name proc_desc in
   let func_name = Procname.get_method procname in
-  (func_name, issue_type, responsible_address, summary)
+  (func_name, location, issue_type, responsible_address, summary)
 
 let from_lists_of_summaries summary_labels path=
   let result_list = List.map summary_labels ~f:(fun summary -> construct_summary_post summary path) in

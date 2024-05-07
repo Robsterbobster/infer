@@ -52,10 +52,15 @@ let report ~is_suppressed ~latent proc_desc err_log astate diagnostic  =
     let issue = get_issue_type ~latent diagnostic in
     let issue_string = Format.asprintf "%a" IssueType.pp issue in
     let responsible_var = get_var diagnostic in
-    let issue_report = SummaryPost.construct_issue_report proc_desc issue_string responsible_var astate in
-    (*L.debug_dev "Issue type: %a\n" IssueType.pp issue;
+    let loc = Procdesc.get_loc proc_desc in
+    let error_loc = Diagnostic.get_location diagnostic in
+    let file = loc.file in
+    let issue_report = SummaryPost.construct_issue_report proc_desc error_loc issue_string responsible_var astate in
+    L.debug_dev "%a\n" Procdesc.pp_signature proc_desc;
+    L.debug_dev "Issue location: %a\n" Location.pp error_loc;
+    L.debug_dev "Issue type: %a\n" IssueType.pp issue;
     L.debug_dev "Responsible var:%s\n" responsible_var;
-    L.debug_dev "State:%a\n" AbductiveDomain.sum_pp astate;*)
+    L.debug_dev "State:%a\n" AbductiveDomain.sum_pp astate;
     write_issue_report_json issue_report;
     Reporting.log_issue proc_desc err_log ~loc:(get_location diagnostic)
       ~ltr:(extra_trace @ get_trace diagnostic)

@@ -212,7 +212,7 @@ let add_blame addr entity procname result =
   in
   let san_poli_ls = [SanitisationPolicy.MemoryLeak; SanitisationPolicy.UseAfterFree; SanitisationPolicy.NullPointerDereference]
   in
-  let conf_poli_ls = [ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient; ConflictPolicy.RemoveClient]
+  let conf_poli_ls = [ConflictPolicy.Update; ConflictPolicy.Update; ConflictPolicy.Update]
   in
   AddressAttributes.add_blame addr entity error_prop_ls san_poli_ls conf_poli_ls procname result  
 

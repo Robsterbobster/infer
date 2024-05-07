@@ -25,6 +25,7 @@ void foo1(int* p1, int x){
     }
 }
 
+
 void foo2(int* p1, int x){
     int* p2 = vendor(p1);
     if (p2 != NULL){

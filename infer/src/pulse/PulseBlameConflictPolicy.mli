@@ -2,8 +2,7 @@ open! IStd
 module F = Format
 
 type t = 
-| RemoveClient
-| RemoveVendor
+| Update
 [@@deriving compare, equal, yojson_of]
 
 val pp : F.formatter -> t -> unit

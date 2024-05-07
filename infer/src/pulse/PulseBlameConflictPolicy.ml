@@ -3,14 +3,12 @@ module F = Format
 
 (* TODO: convert these tags into actual conflict handling policy *)
 type t = 
-| RemoveClient
-| RemoveVendor
+| Update
 [@@deriving compare, equal, yojson_of]
 
 let pp fmt policy = 
   match policy with
-  | RemoveClient -> F.fprintf fmt "DelClient"
-  | RemoveVendor -> F.fprintf fmt "DelVendor"
+  | Update -> F.fprintf fmt "Update"
 
 let list_pp fmt property_ls =
   (fun () -> 
