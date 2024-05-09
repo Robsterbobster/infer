@@ -13,24 +13,27 @@ void foo(){
 */
 
 
-int* vendor(int* p1){
-    p1 = (int *)malloc(sizeof(int));
-    return p1;
+int* vendor_code(int* x){
+    int value;
+    if (x != NULL){
+        value = *x;
+    }
+    //do something
 }
 
-void foo1(int* p1, int x){
-    int* p2 = vendor(p1);
-    if (p2 != NULL){
-        *p2 = 1;
+void foo1(){
+    int* p1 = (int*) malloc(sizeof(int));
+    vendor_code(p1);
+    if (p1 != NULL){
+        *p1 = 1;
     }
 }
 
 
-void foo2(int* p1, int x){
-    int* p2 = vendor(p1);
-    if (p2 != NULL){
-        //do something
-    }
+void foo2(){
+    int* p1 = (int*) malloc(sizeof(int));
+    vendor_code(p1);
+    // do something unrelated to p1
 }
 
 

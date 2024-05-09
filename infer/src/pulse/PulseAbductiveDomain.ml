@@ -342,6 +342,9 @@ module AddressAttributes = struct
   let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname)
 
+  let add_blame_path_cond address astate_str astate =
+    map_post_attrs astate ~f:(BaseAddressAttributes.add_blame_path_cond address astate_str)
+
   let java_resource_release address astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.java_resource_release address)
 
