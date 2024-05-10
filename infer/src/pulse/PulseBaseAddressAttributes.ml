@@ -142,6 +142,8 @@ let get_attribute getter address attrs =
   let open Option.Monad_infix in
   Graph.find_opt address attrs >>= getter
 
+let get_blame address memory =
+  get_attribute Attributes.get_blame address memory
 
 let remove_allocation_attr address memory =
   match get_attribute Attributes.get_allocation address memory with

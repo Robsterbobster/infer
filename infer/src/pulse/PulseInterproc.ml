@@ -438,7 +438,7 @@ let delete_edges_in_callee_pre_from_caller ~edges_pre_opt addr_caller call_state
 
 
 let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc ~edges_pre_opt
-    ~cell_callee_post:(edges_callee_post, attrs_callee_post) (addr_caller, hist_caller) call_state =
+    ~cell_callee_post:(edges_callee_post, attrs_callee_post) (addr_caller, hist_caller) call_state pre_post =
   let call_state =
     let call_state, attrs_post_caller =
       caller_attrs_of_callee_attrs timestamp callee_proc_name call_loc hist_caller call_state
@@ -465,6 +465,37 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
         let astate = if resolve_conflict then PulseOperations.remove_blame_attr addr_caller astate else astate in
         AddressAttributes.add_attrs addr_caller attrs_post_caller astate)
       else AddressAttributes.abduce_and_add addr_caller attrs_post_caller astate
+    in
+    (* Add blame meta info, i.e. summary of callee *)
+    let astate = 
+      if Config.pulse_isl then (
+        let callee_name = Procname.get_method callee_proc_name in
+        let is_in_vendor_world = PulseOperations.check_in_vendor_world callee_name in 
+        let callee_entity_str = if is_in_vendor_world then "Vendor" else "Client" in
+        let caller_blame_attr = AddressAttributes.get_blame addr_caller astate in
+        let caller_entity_str = match caller_blame_attr with
+        | None -> ""
+        | Some (entity, _, _, _, _) -> 
+          F.asprintf "%a" PulseBlameEntity.pp entity
+        in
+        let caller_name = match caller_blame_attr with
+        | None -> ""
+        | Some (_, _, _, _, procname) -> 
+          procname
+        in
+        let need_record_pre_post = (not (String.equal callee_entity_str caller_entity_str)) || ((String.equal callee_name caller_name) && (String.equal callee_entity_str caller_entity_str)) 
+        in
+        if need_record_pre_post then ((* prepost is already the summary of the callee function *) 
+          let astate = PulseOperations.remove_blame_path_cond_attr addr_caller astate in
+          let summary = AbductiveDomain.to_summary pre_post in
+          let summary_json = [%yojson_of: AbductiveDomain.summary] summary in
+          let summary_str = Yojson.Safe.to_string summary_json in
+          AddressAttributes.add_blame_path_cond addr_caller summary_str astate 
+          (*let summary = AbductiveDomain.summary_of_post
+          let summary_str = [%yojson_of: AbductiveDomain.mappings]
+          AbductiveDomain.add_blame_path_cond addr_caller *)) else astate
+        ) 
+      else astate 
     in
     {call_state with astate}
   in
@@ -532,7 +563,7 @@ let rec record_post_for_address path callee_proc_name call_loc
               else attrs_post
             in
             record_post_cell path callee_proc_name call_loc ~edges_pre_opt addr_hist_caller
-              ~cell_callee_post:(edges_post, attrs_post) call_state
+              ~cell_callee_post:(edges_post, attrs_post) call_state pre_post
         in
         Memory.Edges.fold ~init:call_state_after_post edges_post
           ~f:(fun call_state (_access, (addr_callee_dest, _)) ->

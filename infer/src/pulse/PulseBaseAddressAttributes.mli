@@ -48,6 +48,8 @@ val invalidate : AbstractValue.t * ValueHistory.t -> Invalidation.t -> Location.
 
 val get_allocation : AbstractValue.t -> t -> (Attribute.allocator * Trace.t) option
 
+val get_blame : AbstractValue.t -> t -> (Entity.t * ErroneousProperty.t list * SanitisationPolicy.t list * ConflictPolicy.t list * string) option
+
 val get_closure_proc_name : AbstractValue.t -> t -> Procname.t option
 
 val get_copied_var : AbstractValue.t -> t -> Var.t option

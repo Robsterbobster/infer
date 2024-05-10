@@ -424,6 +424,8 @@ let eval_deref_biad_isl path location access addr_hist astate =
 
 let remove_blame_attr address astate = AddressAttributes.remove_blame_attr address astate
 
+let remove_blame_path_cond_attr address astate = AddressAttributes.remove_blame_path_cond_attr address astate
+
 let check_erroneous_state tenv proc_desc location astate =
   let open SatUnsat.Import in
   let+ summary_result = AbductiveDomain.summary_of_post tenv proc_desc location astate in

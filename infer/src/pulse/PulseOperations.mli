@@ -301,6 +301,8 @@ val remove_allocation_attr : AbstractValue.t -> t -> t
 
 val remove_blame_attr : AbstractValue.t -> t -> t
 
+val remove_blame_path_cond_attr : AbstractValue.t -> t -> t
+
 val invalidate_access :
      PathContext.t
   -> Location.t

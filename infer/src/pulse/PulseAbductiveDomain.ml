@@ -352,6 +352,8 @@ module AddressAttributes = struct
   let get_allocation addr astate =
     BaseAddressAttributes.get_allocation addr (astate.post :> base_domain).attrs
 
+  let get_blame addr astate =
+    BaseAddressAttributes.get_blame addr (astate.post :> base_domain).attrs
 
   let get_copied_var addr astate =
     BaseAddressAttributes.get_copied_var addr (astate.post :> base_domain).attrs
@@ -391,6 +393,8 @@ module AddressAttributes = struct
   let remove_blame_attr address astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.remove_blame_attr address)
 
+  let remove_blame_path_cond_attr address astate =
+    map_post_attrs astate ~f:(BaseAddressAttributes.remove_blame_path_cond_attr address)
 
   let get_closure_proc_name addr astate =
     BaseAddressAttributes.get_closure_proc_name addr (astate.post :> base_domain).attrs
