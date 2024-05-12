@@ -32,6 +32,8 @@ val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> Sanit
 
 val add_blame_path_cond : AbstractValue.t -> string -> t -> t
 
+val add_error_origin : AbstractValue.t -> string -> Entity.t -> t -> t
+
 val allocate : Attribute.allocator -> AbstractValue.t -> Location.t -> t -> t
 
 val always_reachable : AbstractValue.t -> t -> t
@@ -100,6 +102,8 @@ val remove_isl_abduced_attr : AbstractValue.t -> t -> t
 val remove_blame_attr : AbstractValue.t -> t -> t
 
 val remove_blame_path_cond_attr : AbstractValue.t -> t -> t
+
+val remove_error_origin_attr : AbstractValue.t -> t -> t
 
 val remove_unsuitable_for_summary : t -> t
 

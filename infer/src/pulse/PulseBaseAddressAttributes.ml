@@ -116,6 +116,10 @@ let add_blame_path_cond address astate memory = add_one address
 (Attribute.BlamePathCondition astate)
 memory
 
+let add_error_origin address func_name entity memory = add_one address
+(Attribute.ErrorOrigin (func_name, entity))
+memory
+
 let java_resource_release address memory = add_one address Attribute.JavaResourceReleased memory
 
 let mark_as_end_of_collection address memory = add_one address Attribute.EndOfCollection memory
@@ -179,6 +183,13 @@ let remove_blame_path_cond_attr address memory =
   match get_attribute Attributes.get_blame_path_cond address memory with
   | Some astate ->
       remove_one address (Attribute.BlamePathCondition astate) memory
+  | None ->
+      memory
+
+let remove_error_origin_attr address memory =
+  match get_attribute Attributes.get_error_origin address memory with
+  | Some (func_name, entity) ->
+      remove_one address (Attribute.ErrorOrigin (func_name, entity)) memory
   | None ->
       memory
 

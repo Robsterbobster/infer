@@ -437,7 +437,52 @@ let delete_edges_in_callee_pre_from_caller ~edges_pre_opt addr_caller call_state
         (subst, post_edges) )
 
 
-let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc ~edges_pre_opt
+let record_pre_post addr_caller callee_proc_name astate pre_post = 
+  (* Add blame meta info, i.e. summary of callee *)
+  if Config.pulse_isl then (
+    let callee_name = Procname.get_method callee_proc_name in
+    let is_in_vendor_world = PulseOperations.check_in_vendor_world callee_name in 
+    let callee_entity_str = if is_in_vendor_world then "Vendor" else "Client" in
+    let caller_blame_attr = AddressAttributes.get_blame addr_caller astate in
+    let caller_entity_str = match caller_blame_attr with
+    | None -> ""
+    | Some (entity, _, _, _, _) -> 
+      F.asprintf "%a" PulseBlameEntity.pp entity
+    in
+    let caller_name = match caller_blame_attr with
+    | None -> ""
+    | Some (_, _, _, _, procname) -> 
+      procname
+    in
+    (* Record pre/post when 1. caller and callee entities not match 2. same entity but different function names *)
+    let need_record_pre_post = (not (String.equal callee_entity_str caller_entity_str)) || ((String.equal callee_name caller_name) && (String.equal callee_entity_str caller_entity_str)) 
+    in
+    if need_record_pre_post then ((* prepost is already the summary of the callee function *) 
+      let astate = PulseOperations.remove_blame_path_cond_attr addr_caller astate in
+      let summary = AbductiveDomain.to_summary pre_post in
+      let summary_json = [%yojson_of: AbductiveDomain.summary] summary in
+      let summary_str = Yojson.Safe.to_string summary_json in
+      let astate = AddressAttributes.add_blame_path_cond addr_caller summary_str astate in
+      (*L.debug_dev "Added path cond state: %a\n" AbductiveDomain.pp astate;*)
+      astate
+      (*let summary = AbductiveDomain.summary_of_post
+      let summary_str = [%yojson_of: AbductiveDomain.mappings]
+      AbductiveDomain.add_blame_path_cond addr_caller *)) else astate
+    ) 
+  else astate 
+
+let add_error_origin addr_caller callee_proc_name ~is_isl_error_prepost astate =
+  (* Add blame meta info, i.e. summary of callee *)
+  if Config.pulse_isl && is_isl_error_prepost then (
+    let callee_name = Procname.get_method callee_proc_name in
+    let is_in_vendor_world = PulseOperations.check_in_vendor_world callee_name in 
+    let callee_entity = if is_in_vendor_world then PulseBlameEntity.Vendor else PulseBlameEntity.Client in
+    AddressAttributes.add_error_origin addr_caller callee_name callee_entity astate
+    ) 
+  else astate 
+  
+
+let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc ~is_isl_error_prepost ~edges_pre_opt
     ~cell_callee_post:(edges_callee_post, attrs_callee_post) (addr_caller, hist_caller) call_state pre_post =
   let call_state =
     let call_state, attrs_post_caller =
@@ -452,7 +497,7 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
     (* conflict resolving *)
     let astate =
       if Config.pulse_isl then (
-        let callee_blame_attr = Attributes.get_blame attrs_post_caller in
+        let callee_blame_attr = Attributes.get_blame attrs_callee_post in
         (* Only update the blame predicate in caller's state if callee's blame entity is a concrete one*)
         let resolve_conflict = match callee_blame_attr with
         | None -> false
@@ -463,39 +508,14 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
           | _ -> false
         in
         let astate = if resolve_conflict then PulseOperations.remove_blame_attr addr_caller astate else astate in
+        (* Record pre post *)
+        let astate = record_pre_post addr_caller callee_proc_name astate pre_post in
+        (* Add error origin if is_isl_error_prepost is true, which implies a latent bug is manifested *)
+        let astate = add_error_origin addr_caller callee_proc_name ~is_isl_error_prepost astate in  
+        (*L.debug_dev "CALLER ADDR: %a\n" AbstractValue.pp addr_caller;
+        L.debug_dev "CALLEE BLAME ENTITY: %s\n" entity_str;*)
         AddressAttributes.add_attrs addr_caller attrs_post_caller astate)
       else AddressAttributes.abduce_and_add addr_caller attrs_post_caller astate
-    in
-    (* Add blame meta info, i.e. summary of callee *)
-    let astate = 
-      if Config.pulse_isl then (
-        let callee_name = Procname.get_method callee_proc_name in
-        let is_in_vendor_world = PulseOperations.check_in_vendor_world callee_name in 
-        let callee_entity_str = if is_in_vendor_world then "Vendor" else "Client" in
-        let caller_blame_attr = AddressAttributes.get_blame addr_caller astate in
-        let caller_entity_str = match caller_blame_attr with
-        | None -> ""
-        | Some (entity, _, _, _, _) -> 
-          F.asprintf "%a" PulseBlameEntity.pp entity
-        in
-        let caller_name = match caller_blame_attr with
-        | None -> ""
-        | Some (_, _, _, _, procname) -> 
-          procname
-        in
-        let need_record_pre_post = (not (String.equal callee_entity_str caller_entity_str)) || ((String.equal callee_name caller_name) && (String.equal callee_entity_str caller_entity_str)) 
-        in
-        if need_record_pre_post then ((* prepost is already the summary of the callee function *) 
-          let astate = PulseOperations.remove_blame_path_cond_attr addr_caller astate in
-          let summary = AbductiveDomain.to_summary pre_post in
-          let summary_json = [%yojson_of: AbductiveDomain.summary] summary in
-          let summary_str = Yojson.Safe.to_string summary_json in
-          AddressAttributes.add_blame_path_cond addr_caller summary_str astate 
-          (*let summary = AbductiveDomain.summary_of_post
-          let summary_str = [%yojson_of: AbductiveDomain.mappings]
-          AbductiveDomain.add_blame_path_cond addr_caller *)) else astate
-        ) 
-      else astate 
     in
     {call_state with astate}
   in
@@ -529,7 +549,7 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
 
 
 let rec record_post_for_address path callee_proc_name call_loc
-    ({AbductiveDomain.pre; _} as pre_post) ~addr_callee ~addr_hist_caller call_state =
+    ({AbductiveDomain.pre; _} as pre_post) ~is_isl_error_prepost ~addr_callee ~addr_hist_caller call_state =
   L.d_printfln "%a<->%a" AbstractValue.pp addr_callee AbstractValue.pp (fst addr_hist_caller) ;
   match visit call_state ~pre:(pre :> BaseDomain.t) ~addr_callee ~addr_hist_caller with
   | `AlreadyVisited, call_state ->
@@ -540,9 +560,14 @@ let rec record_post_for_address path callee_proc_name call_loc
         call_state
     | Some ((edges_post, attrs_post) as cell_callee_post) ->
         let edges_pre_opt = BaseMemory.find_opt addr_callee (pre :> BaseDomain.t).BaseDomain.heap in
+        (*let _ = (fun () -> 
+          let (addr, _) = addr_hist_caller in
+          L.debug_dev "Callee addr: %a \n" AbstractValue.pp addr_callee;
+          L.debug_dev "Callee attr:%a\n" (fun fmt -> Attributes.pp ~print_rank:false fmt) attrs_post; ) () in *)
         let call_state_after_post =
           if is_cell_read_only ~edges_pre_opt ~cell_post:cell_callee_post then (
             L.d_printfln "cell at %a is read-only, not modifying@\n" AbstractValue.pp addr_callee ;
+            (*L.debug_dev "cell at %a is read-only, not modifying@\n" AbstractValue.pp addr_callee ;*)
             call_state )
           else
             let attrs_post =
@@ -554,15 +579,14 @@ let rec record_post_for_address path callee_proc_name call_loc
                     attrs_post
                 | Some (_, attrs_caller) ->
                     (* if post attr is abduced, use the one in caller which is up-to-date *)
-                    (*let _ = (fun () -> 
-                      let (addr, _) = addr_hist_caller in
-                      L.debug_dev "Value: %a \n" AbstractValue.pp addr;
-                      L.debug_dev "Callee attr:%a\n" (fun fmt -> Attributes.pp ~print_rank:false fmt) attrs_post; 
-                    L.debug_dev "Caller attr:%a\n" (fun fmt -> Attributes.pp ~print_rank:false fmt) attrs_caller;) () in *)
                     Attributes.replace_isl_abduced attrs_post attrs_caller
               else attrs_post
             in
-            record_post_cell path callee_proc_name call_loc ~edges_pre_opt addr_hist_caller
+            (*let _ = (fun () -> 
+              let (addr, _) = addr_hist_caller in
+              L.debug_dev "Caller addr: %a \n" AbstractValue.pp addr;
+              L.debug_dev "Caller attr:%a\n" (fun fmt -> Attributes.pp ~print_rank:false fmt) attrs_post; ) () in *)
+            record_post_cell path callee_proc_name call_loc ~is_isl_error_prepost ~edges_pre_opt addr_hist_caller
               ~cell_callee_post:(edges_post, attrs_post) call_state pre_post
         in
         Memory.Edges.fold ~init:call_state_after_post edges_post
@@ -571,11 +595,11 @@ let rec record_post_for_address path callee_proc_name call_loc
               call_state_subst_find_or_new call_state addr_callee_dest
                 ~default_hist_caller:(snd addr_hist_caller)
             in
-            record_post_for_address path callee_proc_name call_loc pre_post
+            record_post_for_address path callee_proc_name call_loc pre_post ~is_isl_error_prepost
               ~addr_callee:addr_callee_dest ~addr_hist_caller:addr_hist_curr_dest call_state ) )
 
 
-let record_post_for_actual path callee_proc_name call_loc pre_post ~formal:(formal, typ)
+let record_post_for_actual path callee_proc_name call_loc pre_post ~is_isl_error_prepost ~formal:(formal, typ)
     ~actual:(actual, _) call_state =
   L.d_printfln_escaped "Recording POST from [%a] <-> %a" Var.pp formal AbstractValue.pp (fst actual) ;
   match
@@ -587,7 +611,7 @@ let record_post_for_actual path callee_proc_name call_loc pre_post ~formal:(form
       deref_non_c_struct addr_formal_pre typ
         (pre_post.AbductiveDomain.pre :> BaseDomain.t).BaseDomain.heap
     in
-    record_post_for_address path callee_proc_name call_loc pre_post ~addr_callee:formal_pre
+    record_post_for_address path callee_proc_name call_loc pre_post ~is_isl_error_prepost ~addr_callee:formal_pre
       ~addr_hist_caller:actual call_state
   with
   | Some call_state ->
@@ -596,7 +620,7 @@ let record_post_for_actual path callee_proc_name call_loc pre_post ~formal:(form
       call_state
 
 
-let record_post_for_return ({PathContext.timestamp} as path) callee_proc_name call_loc pre_post
+let record_post_for_return ({PathContext.timestamp} as path) callee_proc_name call_loc pre_post ~is_isl_error_prepost
     call_state =
   let return_var = Var.of_pvar (Pvar.get_ret_pvar callee_proc_name) in
   match BaseStack.find_opt return_var (pre_post.AbductiveDomain.post :> BaseDomain.t).stack with
@@ -619,7 +643,7 @@ let record_post_for_return ({PathContext.timestamp} as path) callee_proc_name ca
         in
         L.d_printfln_escaped "Recording POST from [return] <-> %a" AbstractValue.pp return_caller ;
         let call_state =
-          record_post_for_address path callee_proc_name call_loc pre_post ~addr_callee:return_callee
+          record_post_for_address path callee_proc_name call_loc pre_post ~is_isl_error_prepost ~addr_callee:return_callee
             ~addr_hist_caller:(return_caller, return_caller_hist)
             call_state
         in
@@ -634,7 +658,7 @@ let record_post_for_return ({PathContext.timestamp} as path) callee_proc_name ca
         (call_state, Some (return_caller, return_caller_hist)) )
 
 
-let apply_post_for_parameters path callee_proc_name call_location pre_post ~formals ~actuals
+let apply_post_for_parameters path callee_proc_name call_location pre_post ~is_isl_error_prepost ~formals ~actuals
     call_state =
   (* for each [(formal_i, actual_i)] pair, do [post_i = post union subst(graph reachable from
      formal_i in post)], deleting previous info when comparing pre and post shows a difference
@@ -643,7 +667,7 @@ let apply_post_for_parameters path callee_proc_name call_location pre_post ~form
      post but nuke other fields in the meantime? is that possible?). *)
   match
     List.fold2 formals actuals ~init:call_state ~f:(fun call_state formal actual ->
-        record_post_for_actual path callee_proc_name call_location pre_post ~formal ~actual
+        record_post_for_actual path callee_proc_name call_location pre_post ~is_isl_error_prepost ~formal ~actual
           call_state )
   with
   | Unequal_lengths ->
@@ -653,12 +677,12 @@ let apply_post_for_parameters path callee_proc_name call_location pre_post ~form
       call_state
 
 
-let apply_post_for_captured_vars path callee_proc_name call_location pre_post ~captured_formals
+let apply_post_for_captured_vars path callee_proc_name call_location pre_post ~is_isl_error_prepost ~captured_formals
     ~captured_actuals call_state =
   match
     List.fold2 captured_formals captured_actuals ~init:call_state
       ~f:(fun call_state formal actual ->
-        record_post_for_actual path callee_proc_name call_location pre_post ~formal ~actual
+        record_post_for_actual path callee_proc_name call_location pre_post ~is_isl_error_prepost ~formal ~actual
           call_state )
   with
   | Unequal_lengths ->
@@ -668,11 +692,11 @@ let apply_post_for_captured_vars path callee_proc_name call_location pre_post ~c
       result
 
 
-let apply_post_for_globals path callee_proc_name call_location pre_post call_state =
+let apply_post_for_globals path callee_proc_name call_location pre_post ~is_isl_error_prepost call_state =
   fold_globals_of_stack path call_location (pre_post.AbductiveDomain.pre :> BaseDomain.t).stack
     call_state ~f:(fun _var ~stack_value:(addr_callee, _) ~addr_hist_caller call_state ->
       Ok
-        (record_post_for_address path callee_proc_name call_location pre_post ~addr_callee
+        (record_post_for_address path callee_proc_name call_location pre_post ~is_isl_error_prepost ~addr_callee
            ~addr_hist_caller call_state ) )
   |> (* always return [Ok _] above *) PulseResult.ok_exn
 
@@ -762,18 +786,18 @@ let apply_unknown_effects pre_post call_state =
   {call_state with astate}
 
 
-let apply_post path callee_proc_name call_location pre_post ~captured_formals ~captured_actuals
+let apply_post path callee_proc_name call_location pre_post ~is_isl_error_prepost ~captured_formals ~captured_actuals
     ~formals ~actuals call_state =
   let open PulseResult.Let_syntax in
   PerfEvent.(log (fun logger -> log_begin_event logger ~name:"pulse call post" ())) ;
   let r =
     let call_state, return_caller =
       apply_unknown_effects pre_post call_state
-      |> apply_post_for_parameters path callee_proc_name call_location pre_post ~formals ~actuals
-      |> apply_post_for_captured_vars path callee_proc_name call_location pre_post ~captured_formals
+      |> apply_post_for_parameters path callee_proc_name call_location pre_post ~is_isl_error_prepost ~formals ~actuals
+      |> apply_post_for_captured_vars path callee_proc_name call_location pre_post ~is_isl_error_prepost ~captured_formals
            ~captured_actuals
-      |> apply_post_for_globals path callee_proc_name call_location pre_post
-      |> record_post_for_return path callee_proc_name call_location pre_post
+      |> apply_post_for_globals path callee_proc_name call_location pre_post ~is_isl_error_prepost
+      |> record_post_for_return path callee_proc_name call_location pre_post ~is_isl_error_prepost
     in
     let+ call_state =
       record_post_remaining_attributes path callee_proc_name call_location pre_post call_state
@@ -979,7 +1003,7 @@ let apply_prepost path ~is_isl_error_prepost callee_proc_name call_location ~cal
         let call_state = {call_state with astate; visited= AddressSet.empty} in
         (* apply the postcondition *)
         let* call_state, return_caller =
-          apply_post path callee_proc_name call_location pre_post ~captured_formals
+          apply_post path callee_proc_name call_location pre_post ~is_isl_error_prepost ~captured_formals
             ~captured_actuals ~formals ~actuals call_state
         in
         let astate =

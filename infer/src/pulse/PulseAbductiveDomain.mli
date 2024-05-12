@@ -134,6 +134,9 @@ module AddressAttributes : sig
   val add_blame_path_cond : AbstractValue.t -> string -> t -> t
   (** add the blame path condition to the post *)
 
+  val add_error_origin : AbstractValue.t -> string -> Entity.t -> t -> t
+  (** add the blame path condition to the post *)
+
   val add_attrs : AbstractValue.t -> Attributes.t -> t -> t
 
   val check_valid :
@@ -169,6 +172,8 @@ module AddressAttributes : sig
   val remove_blame_attr : AbstractValue.t -> t -> t
 
   val remove_blame_path_cond_attr : AbstractValue.t -> t -> t
+
+  val remove_error_origin_attr : AbstractValue.t -> t -> t
 
   val get_allocation : AbstractValue.t -> t -> (Attribute.allocator * Trace.t) option
 

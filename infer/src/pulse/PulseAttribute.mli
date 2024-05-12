@@ -67,6 +67,7 @@ type t =
   | WrittenTo of Trace.t
   | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list) * string
   | BlamePathCondition of string (* Due to cyclic import, record state using json string *)
+  | ErrorOrigin of string * Entity.t (* the function name of the error summary and its entity *)
 [@@deriving compare, yojson_of]
 
 val pp : F.formatter -> t -> unit
@@ -97,6 +98,8 @@ module Attributes : sig
   val get_blame : t -> (Entity.t * ErroneousProperty.t list * SanitisationPolicy.t list * ConflictPolicy.t list * string) option
 
   val get_blame_path_cond : t -> string option
+
+  val get_error_origin : t -> (string * Entity.t) option
 
   val is_ref_counted : t -> bool
 
