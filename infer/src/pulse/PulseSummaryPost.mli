@@ -30,9 +30,9 @@ type summary_post = label * string * (AbductiveDomain.summary) [@@deriving yojso
 
 type t = summary_post list [@@deriving yojson_of]
 
-type mapping = (string * AbstractValue.t) [@@deriving yojson_of]
+type mapping = (string * AbstractValue.t) [@@deriving yojson_of, compare]
 
-type mappings = mapping list [@@deriving yojson_of]
+type mappings = mapping list [@@deriving yojson_of, compare]
 
 type info = string * string * int * int [@@deriving yojson_of]
 

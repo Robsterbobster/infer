@@ -35,6 +35,7 @@ val apply_prepost :
   -> Procname.t
   -> Location.t
   -> callee_prepost:AbductiveDomain.t
+  -> PulseSummaryPost.mappings
   -> captured_formals:(Var.t * Typ.t) list
   -> captured_actuals:((AbstractValue.t * ValueHistory.t) * Typ.t) list
   -> formals:(Var.t * Typ.t) list

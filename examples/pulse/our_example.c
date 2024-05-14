@@ -21,7 +21,6 @@ void foo (){
     if(x != NULL){
         //*x = NULL;
         *x = malloc(sizeof(int));
-        free(*x);
         set(x, 1);
         //free(*x);
     }   

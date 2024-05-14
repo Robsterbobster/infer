@@ -112,8 +112,8 @@ let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname
 (Attribute.Blame (entity, erroneous_prop_ls, san_poli_ls, conf_poli_ls, procname))
 memory
 
-let add_blame_path_cond address astate memory = add_one address
-(Attribute.BlamePathCondition astate)
+let add_blame_path_cond address astate mappings memory = add_one address
+(Attribute.BlamePathCondition (astate, mappings))
 memory
 
 let add_error_origin address func_name entity memory = add_one address
@@ -181,8 +181,8 @@ let remove_blame_attr address memory =
 
 let remove_blame_path_cond_attr address memory =
   match get_attribute Attributes.get_blame_path_cond address memory with
-  | Some astate ->
-      remove_one address (Attribute.BlamePathCondition astate) memory
+  | Some (astate, mappings) ->
+      remove_one address (Attribute.BlamePathCondition (astate, mappings)) memory
   | None ->
       memory
 
