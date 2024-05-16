@@ -1,16 +1,16 @@
 [
     [
-        "foo1",
+        "foo",
         {
             "file": [
                 "RelativeProjectRoot",
-                "mem_leak_usage.c"
+                "our_example.c"
             ],
-            "line": 28,
+            "line": 24,
             "col": 9
         },
-        "Memory Leak",
-        "",
+        "Null Dereference",
+        "*x",
         {
             "post": {
                 "heap": [
@@ -36,14 +36,46 @@
                                     "Dereference"
                                 ],
                                 [
-                                    "v10",
+                                    "v7",
                                     "_"
                                 ]
                             ]
                         ]
                     ]
                 ],
-                "stack": [],
+                "stack": [
+                    [
+                        [
+                            "LogicalVar",
+                            {
+                                "kind": [
+                                    "KNormal"
+                                ],
+                                "name": [
+                                    "Normal"
+                                ],
+                                "stamp": 3
+                            }
+                        ],
+                        [
+                            "v5",
+                            "_"
+                        ]
+                    ],
+                    [
+                        [
+                            "ProgramVar",
+                            {
+                                "plain": "x",
+                                "mangled": "x{98f13708210194c475687be6106a3b84}"
+                            }
+                        ],
+                        [
+                            "v2",
+                            "_"
+                        ]
+                    ]
+                ],
                 "attrs": [
                     [
                         "v1",
@@ -57,9 +89,9 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 24,
+                                            "line": 19,
                                             "col": 1
                                         },
                                         "history": "_"
@@ -76,25 +108,6 @@
                         "v2",
                         [
                             [
-                                "AddressOfStackVariable",
-                                [
-                                    "ProgramVar",
-                                    {
-                                        "plain": "p1",
-                                        "mangled": "p1{8e296a067a37563370ded05f5a3bf3ec}"
-                                    }
-                                ],
-                                {
-                                    "file": [
-                                        "RelativeProjectRoot",
-                                        "mem_leak_usage.c"
-                                    ],
-                                    "line": 28,
-                                    "col": 9
-                                },
-                                "_"
-                            ],
-                            [
                                 "MustBeValid",
                                 0,
                                 [
@@ -103,9 +116,9 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 25,
+                                            "line": 20,
                                             "col": 5
                                         },
                                         "history": "_"
@@ -121,9 +134,9 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 25,
+                                            "line": 20,
                                             "col": 5
                                         },
                                         "history": "_"
@@ -168,7 +181,7 @@
                                         "Update"
                                     ]
                                 ],
-                                "foo1"
+                                "foo"
                             ]
                         ]
                     ],
@@ -186,10 +199,10 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 25,
-                                            "col": 22
+                                            "line": 20,
+                                            "col": 15
                                         },
                                         "history": "_"
                                     }
@@ -199,9 +212,22 @@
                                 "DynamicType",
                                 {
                                     "desc": [
-                                        "Tint",
+                                        "Tptr",
+                                        {
+                                            "desc": [
+                                                "Tint",
+                                                [
+                                                    "IInt"
+                                                ]
+                                            ],
+                                            "quals": {
+                                                "is_const": false,
+                                                "is_restrict": false,
+                                                "is_volatile": false
+                                            }
+                                        },
                                         [
-                                            "IInt"
+                                            "Pk_pointer"
                                         ]
                                     ],
                                     "quals": {
@@ -212,53 +238,6 @@
                                 }
                             ],
                             [
-                                "ISLAbduced",
-                                [
-                                    "ViaCall",
-                                    {
-                                        "f": [
-                                            "Call",
-                                            [
-                                                "C",
-                                                {
-                                                    "name": [
-                                                        "vendor_code"
-                                                    ],
-                                                    "mangled": null,
-                                                    "parameters": [],
-                                                    "template_args": [
-                                                        "NoTemplate"
-                                                    ]
-                                                }
-                                            ]
-                                        ],
-                                        "location": {
-                                            "file": [
-                                                "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
-                                            ],
-                                            "line": 26,
-                                            "col": 5
-                                        },
-                                        "history": "_",
-                                        "in_call": [
-                                            "Immediate",
-                                            {
-                                                "location": {
-                                                    "file": [
-                                                        "RelativeProjectRoot",
-                                                        "mem_leak_usage.c"
-                                                    ],
-                                                    "line": 19,
-                                                    "col": 17
-                                                },
-                                                "history": "_"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            ],
-                            [
                                 "MustBeValid",
                                 0,
                                 [
@@ -267,26 +246,15 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 25,
-                                            "col": 22
+                                            "line": 20,
+                                            "col": 15
                                         },
                                         "history": "_"
                                     }
                                 ],
                                 null
-                            ],
-                            [
-                                "UnreachableAt",
-                                {
-                                    "file": [
-                                        "RelativeProjectRoot",
-                                        "mem_leak_usage.c"
-                                    ],
-                                    "line": 28,
-                                    "col": 9
-                                }
                             ],
                             [
                                 "WrittenTo",
@@ -296,9 +264,9 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 28,
+                                            "line": 23,
                                             "col": 9
                                         },
                                         "history": "_"
@@ -343,18 +311,127 @@
                                         "Update"
                                     ]
                                 ],
-                                "foo1"
+                                "set"
                             ],
                             [
                                 "BlamePathCondition",
-                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeInitialized\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeValid\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}],null]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]],[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[16,18,19]}",
-                                "[[\"x\",\"v5\"]]"
+                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v2\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v6\",[[\"Invalid\",[\"ConstantDereference\",\"0\"],[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeInitialized\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeValid\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}],null]]],[\"v6\",[[\"Invalid\",[\"ConstantDereference\",\"0\"],[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[3,5,6]}",
+                                "[[\"y\",\"v5\"],[\"v\",\"v9\"]]",
+                                {
+                                    "file": [
+                                        "RelativeProjectRoot",
+                                        "our_example.c"
+                                    ],
+                                    "line": 24,
+                                    "col": 9
+                                }
+                            ],
+                            [
+                                "ErrorOrigin",
+                                "set",
+                                [
+                                    "Client"
+                                ]
                             ]
                         ]
                     ],
                     [
-                        "v8",
+                        "v7",
                         [
+                            [
+                                "Invalid",
+                                [
+                                    "ConstantDereference",
+                                    "0"
+                                ],
+                                [
+                                    "Immediate",
+                                    {
+                                        "location": {
+                                            "file": [
+                                                "RelativeProjectRoot",
+                                                "our_example.c"
+                                            ],
+                                            "line": 23,
+                                            "col": 14
+                                        },
+                                        "history": "_"
+                                    }
+                                ]
+                            ],
+                            [
+                                "Blame",
+                                [
+                                    "Client"
+                                ],
+                                [
+                                    [
+                                        "MemoryLeak"
+                                    ],
+                                    [
+                                        "UseAfterFree"
+                                    ],
+                                    [
+                                        "NullPointerDereference"
+                                    ]
+                                ],
+                                [
+                                    [
+                                        "MemoryLeak"
+                                    ],
+                                    [
+                                        "UseAfterFree"
+                                    ],
+                                    [
+                                        "NullPointerDereference"
+                                    ]
+                                ],
+                                [
+                                    [
+                                        "Update"
+                                    ],
+                                    [
+                                        "Update"
+                                    ],
+                                    [
+                                        "Update"
+                                    ]
+                                ],
+                                "foo"
+                            ],
+                            [
+                                "ErrorOrigin",
+                                "set",
+                                [
+                                    "Client"
+                                ]
+                            ]
+                        ]
+                    ],
+                    [
+                        "v9",
+                        [
+                            [
+                                "Invalid",
+                                [
+                                    "ConstantDereference",
+                                    "1"
+                                ],
+                                [
+                                    "Immediate",
+                                    {
+                                        "location": {
+                                            "file": [
+                                                "RelativeProjectRoot",
+                                                "our_example.c"
+                                            ],
+                                            "line": 24,
+                                            "col": 9
+                                        },
+                                        "history": "_"
+                                    }
+                                ]
+                            ],
                             [
                                 "Blame",
                                 [
@@ -393,144 +470,27 @@
                                         "Update"
                                     ]
                                 ],
-                                "vendor_code"
+                                "set"
                             ],
                             [
                                 "BlamePathCondition",
-                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeInitialized\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeValid\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}],null]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]],[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[16,18,19]}",
-                                "[[\"x\",\"v5\"]]"
-                            ]
-                        ]
-                    ],
-                    [
-                        "v9",
-                        [
-                            [
-                                "Invalid",
-                                [
-                                    "ConstantDereference",
-                                    "0"
-                                ],
-                                [
-                                    "Immediate",
-                                    {
-                                        "location": {
-                                            "file": [
-                                                "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
-                                            ],
-                                            "line": 27,
-                                            "col": 9
-                                        },
-                                        "history": "_"
-                                    }
-                                ]
+                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v2\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v6\",[[\"Invalid\",[\"ConstantDereference\",\"0\"],[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeInitialized\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeValid\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}],null]]],[\"v6\",[[\"Invalid\",[\"ConstantDereference\",\"0\"],[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[3,5,6]}",
+                                "[[\"y\",\"v5\"],[\"v\",\"v9\"]]",
+                                {
+                                    "file": [
+                                        "RelativeProjectRoot",
+                                        "our_example.c"
+                                    ],
+                                    "line": 24,
+                                    "col": 9
+                                }
                             ],
                             [
-                                "Blame",
+                                "ErrorOrigin",
+                                "set",
                                 [
                                     "Client"
-                                ],
-                                [
-                                    [
-                                        "MemoryLeak"
-                                    ],
-                                    [
-                                        "UseAfterFree"
-                                    ],
-                                    [
-                                        "NullPointerDereference"
-                                    ]
-                                ],
-                                [
-                                    [
-                                        "MemoryLeak"
-                                    ],
-                                    [
-                                        "UseAfterFree"
-                                    ],
-                                    [
-                                        "NullPointerDereference"
-                                    ]
-                                ],
-                                [
-                                    [
-                                        "Update"
-                                    ],
-                                    [
-                                        "Update"
-                                    ],
-                                    [
-                                        "Update"
-                                    ]
-                                ],
-                                "foo1"
-                            ]
-                        ]
-                    ],
-                    [
-                        "v10",
-                        [
-                            [
-                                "Invalid",
-                                [
-                                    "ConstantDereference",
-                                    "1"
-                                ],
-                                [
-                                    "Immediate",
-                                    {
-                                        "location": {
-                                            "file": [
-                                                "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
-                                            ],
-                                            "line": 28,
-                                            "col": 9
-                                        },
-                                        "history": "_"
-                                    }
                                 ]
-                            ],
-                            [
-                                "Blame",
-                                [
-                                    "Client"
-                                ],
-                                [
-                                    [
-                                        "MemoryLeak"
-                                    ],
-                                    [
-                                        "UseAfterFree"
-                                    ],
-                                    [
-                                        "NullPointerDereference"
-                                    ]
-                                ],
-                                [
-                                    [
-                                        "MemoryLeak"
-                                    ],
-                                    [
-                                        "UseAfterFree"
-                                    ],
-                                    [
-                                        "NullPointerDereference"
-                                    ]
-                                ],
-                                [
-                                    [
-                                        "Update"
-                                    ],
-                                    [
-                                        "Update"
-                                    ],
-                                    [
-                                        "Update"
-                                    ]
-                                ],
-                                "foo1"
                             ]
                         ]
                     ]
@@ -564,7 +524,7 @@
                             ]
                         ],
                         [
-                            "v9",
+                            "v7",
                             [
                                 [],
                                 {
@@ -574,7 +534,7 @@
                             ]
                         ],
                         [
-                            "v10",
+                            "v9",
                             [
                                 [],
                                 {
@@ -593,7 +553,7 @@
                                     "den": "1"
                                 }
                             ],
-                            "v9"
+                            "v7"
                         ],
                         [
                             [
@@ -603,7 +563,7 @@
                                     "den": "1"
                                 }
                             ],
-                            "v10"
+                            "v9"
                         ],
                         [
                             [
@@ -628,39 +588,7 @@
                         ]
                     ],
                     "tableau": [],
-                    "atoms": [
-                        [
-                            "Equal",
-                            [
-                                "IsInt",
-                                [
-                                    "Linear",
-                                    [
-                                        [
-                                            [
-                                                "v8",
-                                                {
-                                                    "num": "1",
-                                                    "den": "1"
-                                                }
-                                            ]
-                                        ],
-                                        {
-                                            "num": "0",
-                                            "den": "1"
-                                        }
-                                    ]
-                                ]
-                            ],
-                            [
-                                "Const",
-                                {
-                                    "num": "1",
-                                    "den": "1"
-                                }
-                            ]
-                        ]
-                    ]
+                    "atoms": []
                 },
                 "pruned": [
                     [
@@ -714,7 +642,7 @@
                             ]
                         ],
                         [
-                            "v9",
+                            "v7",
                             [
                                 [],
                                 {
@@ -724,7 +652,7 @@
                             ]
                         ],
                         [
-                            "v10",
+                            "v9",
                             [
                                 [],
                                 {
@@ -743,7 +671,7 @@
                                     "den": "1"
                                 }
                             ],
-                            "v9"
+                            "v7"
                         ],
                         [
                             [
@@ -753,7 +681,7 @@
                                     "den": "1"
                                 }
                             ],
-                            "v10"
+                            "v9"
                         ],
                         [
                             [
@@ -779,37 +707,6 @@
                     ],
                     "tableau": [],
                     "atoms": [
-                        [
-                            "Equal",
-                            [
-                                "IsInt",
-                                [
-                                    "Linear",
-                                    [
-                                        [
-                                            [
-                                                "v8",
-                                                {
-                                                    "num": "1",
-                                                    "den": "1"
-                                                }
-                                            ]
-                                        ],
-                                        {
-                                            "num": "0",
-                                            "den": "1"
-                                        }
-                                    ]
-                                ]
-                            ],
-                            [
-                                "Const",
-                                {
-                                    "num": "1",
-                                    "den": "1"
-                                }
-                            ]
-                        ],
                         [
                             "NotEqual",
                             [
@@ -846,22 +743,22 @@
             "need_specialization": false,
             "skipped_calls": "_",
             "full_trace": [
-                24,
-                25,
-                26,
-                27,
-                28
+                19,
+                20,
+                21,
+                23,
+                24
             ]
         }
     ],
     [
-        "foo2",
+        "foo",
         {
             "file": [
                 "RelativeProjectRoot",
-                "mem_leak_usage.c"
+                "our_example.c"
             ],
-            "line": 35,
+            "line": 27,
             "col": 5
         },
         "Memory Leak",
@@ -896,6 +793,20 @@
                                 ]
                             ]
                         ]
+                    ],
+                    [
+                        "v8",
+                        [
+                            [
+                                [
+                                    "Dereference"
+                                ],
+                                [
+                                    "v9",
+                                    "_"
+                                ]
+                            ]
+                        ]
                     ]
                 ],
                 "stack": [],
@@ -912,9 +823,9 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 33,
+                                            "line": 19,
                                             "col": 1
                                         },
                                         "history": "_"
@@ -935,16 +846,16 @@
                                 [
                                     "ProgramVar",
                                     {
-                                        "plain": "p1",
-                                        "mangled": "p1{e369853df766fa44e1ed0ff613f563bd}"
+                                        "plain": "x",
+                                        "mangled": "x{98f13708210194c475687be6106a3b84}"
                                     }
                                 ],
                                 {
                                     "file": [
                                         "RelativeProjectRoot",
-                                        "mem_leak_usage.c"
+                                        "our_example.c"
                                     ],
-                                    "line": 35,
+                                    "line": 27,
                                     "col": 5
                                 },
                                 "_"
@@ -958,9 +869,9 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 34,
+                                            "line": 20,
                                             "col": 5
                                         },
                                         "history": "_"
@@ -976,9 +887,9 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 34,
+                                            "line": 20,
                                             "col": 5
                                         },
                                         "history": "_"
@@ -1023,12 +934,136 @@
                                         "Update"
                                     ]
                                 ],
-                                "foo2"
+                                "foo"
                             ]
                         ]
                     ],
                     [
                         "v5",
+                        [
+                            [
+                                "DynamicType",
+                                {
+                                    "desc": [
+                                        "Tptr",
+                                        {
+                                            "desc": [
+                                                "Tint",
+                                                [
+                                                    "IInt"
+                                                ]
+                                            ],
+                                            "quals": {
+                                                "is_const": false,
+                                                "is_restrict": false,
+                                                "is_volatile": false
+                                            }
+                                        },
+                                        [
+                                            "Pk_pointer"
+                                        ]
+                                    ],
+                                    "quals": {
+                                        "is_const": false,
+                                        "is_restrict": false,
+                                        "is_volatile": false
+                                    }
+                                }
+                            ],
+                            [
+                                "Invalid",
+                                [
+                                    "CFree"
+                                ],
+                                [
+                                    "Immediate",
+                                    {
+                                        "location": {
+                                            "file": [
+                                                "RelativeProjectRoot",
+                                                "our_example.c"
+                                            ],
+                                            "line": 27,
+                                            "col": 5
+                                        },
+                                        "history": "_"
+                                    }
+                                ]
+                            ],
+                            [
+                                "WrittenTo",
+                                [
+                                    "Immediate",
+                                    {
+                                        "location": {
+                                            "file": [
+                                                "RelativeProjectRoot",
+                                                "our_example.c"
+                                            ],
+                                            "line": 23,
+                                            "col": 9
+                                        },
+                                        "history": "_"
+                                    }
+                                ]
+                            ],
+                            [
+                                "Blame",
+                                [
+                                    "Client"
+                                ],
+                                [
+                                    [
+                                        "MemoryLeak"
+                                    ],
+                                    [
+                                        "UseAfterFree"
+                                    ],
+                                    [
+                                        "NullPointerDereference"
+                                    ]
+                                ],
+                                [
+                                    [
+                                        "MemoryLeak"
+                                    ],
+                                    [
+                                        "UseAfterFree"
+                                    ],
+                                    [
+                                        "NullPointerDereference"
+                                    ]
+                                ],
+                                [
+                                    [
+                                        "Update"
+                                    ],
+                                    [
+                                        "Update"
+                                    ],
+                                    [
+                                        "Update"
+                                    ]
+                                ],
+                                "foo"
+                            ],
+                            [
+                                "BlamePathCondition",
+                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]],[\"v6\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v2\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v6\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"WrittenTo\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeInitialized\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeValid\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}],null]]],[\"v6\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"MustBeValid\",8,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}],null]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[3,5,6]}",
+                                "[[\"y\",\"v5\"],[\"v\",\"v9\"]]",
+                                {
+                                    "file": [
+                                        "RelativeProjectRoot",
+                                        "our_example.c"
+                                    ],
+                                    "line": 24,
+                                    "col": 9
+                                }
+                            ]
+                        ]
+                    ],
+                    [
+                        "v8",
                         [
                             [
                                 "Allocated",
@@ -1041,10 +1076,10 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 34,
-                                            "col": 22
+                                            "line": 23,
+                                            "col": 14
                                         },
                                         "history": "_"
                                     }
@@ -1077,7 +1112,7 @@
                                                 "C",
                                                 {
                                                     "name": [
-                                                        "vendor_code"
+                                                        "set"
                                                     ],
                                                     "mangled": null,
                                                     "parameters": [],
@@ -1090,10 +1125,10 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 35,
-                                            "col": 5
+                                            "line": 24,
+                                            "col": 9
                                         },
                                         "history": "_",
                                         "in_call": [
@@ -1102,10 +1137,10 @@
                                                 "location": {
                                                     "file": [
                                                         "RelativeProjectRoot",
-                                                        "mem_leak_usage.c"
+                                                        "our_example.c"
                                                     ],
-                                                    "line": 19,
-                                                    "col": 17
+                                                    "line": 6,
+                                                    "col": 5
                                                 },
                                                 "history": "_"
                                             }
@@ -1122,10 +1157,10 @@
                                         "location": {
                                             "file": [
                                                 "RelativeProjectRoot",
-                                                "mem_leak_usage.c"
+                                                "our_example.c"
                                             ],
-                                            "line": 34,
-                                            "col": 22
+                                            "line": 23,
+                                            "col": 14
                                         },
                                         "history": "_"
                                     }
@@ -1133,23 +1168,67 @@
                                 null
                             ],
                             [
-                                "Uninitialized"
-                            ],
-                            [
                                 "UnreachableAt",
                                 {
                                     "file": [
                                         "RelativeProjectRoot",
-                                        "mem_leak_usage.c"
+                                        "our_example.c"
                                     ],
-                                    "line": 35,
+                                    "line": 27,
                                     "col": 5
                                 }
                             ],
                             [
+                                "WrittenTo",
+                                [
+                                    "ViaCall",
+                                    {
+                                        "f": [
+                                            "Call",
+                                            [
+                                                "C",
+                                                {
+                                                    "name": [
+                                                        "set"
+                                                    ],
+                                                    "mangled": null,
+                                                    "parameters": [],
+                                                    "template_args": [
+                                                        "NoTemplate"
+                                                    ]
+                                                }
+                                            ]
+                                        ],
+                                        "location": {
+                                            "file": [
+                                                "RelativeProjectRoot",
+                                                "our_example.c"
+                                            ],
+                                            "line": 24,
+                                            "col": 9
+                                        },
+                                        "history": "_",
+                                        "in_call": [
+                                            "Immediate",
+                                            {
+                                                "location": {
+                                                    "file": [
+                                                        "RelativeProjectRoot",
+                                                        "our_example.c"
+                                                    ],
+                                                    "line": 6,
+                                                    "col": 5
+                                                },
+                                                "history": "_"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ],
+                            [
                                 "Blame",
                                 [
-                                    "Vendor"
+                                    "Client"
                                 ],
                                 [
                                     [
@@ -1184,18 +1263,47 @@
                                         "Update"
                                     ]
                                 ],
-                                "vendor_code"
+                                "set"
                             ],
                             [
                                 "BlamePathCondition",
-                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeInitialized\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeValid\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}],null]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]],[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[16,18,19]}",
-                                "[[\"x\",\"v5\"]]"
+                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]],[\"v6\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v2\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v6\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"WrittenTo\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeInitialized\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeValid\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}],null]]],[\"v6\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"MustBeValid\",8,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}],null]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[3,5,6]}",
+                                "[[\"y\",\"v5\"],[\"v\",\"v9\"]]",
+                                {
+                                    "file": [
+                                        "RelativeProjectRoot",
+                                        "our_example.c"
+                                    ],
+                                    "line": 24,
+                                    "col": 9
+                                }
                             ]
                         ]
                     ],
                     [
-                        "v8",
+                        "v9",
                         [
+                            [
+                                "Invalid",
+                                [
+                                    "ConstantDereference",
+                                    "1"
+                                ],
+                                [
+                                    "Immediate",
+                                    {
+                                        "location": {
+                                            "file": [
+                                                "RelativeProjectRoot",
+                                                "our_example.c"
+                                            ],
+                                            "line": 24,
+                                            "col": 9
+                                        },
+                                        "history": "_"
+                                    }
+                                ]
+                            ],
                             [
                                 "Blame",
                                 [
@@ -1234,12 +1342,20 @@
                                         "Update"
                                     ]
                                 ],
-                                "vendor_code"
+                                "set"
                             ],
                             [
                                 "BlamePathCondition",
-                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"Blame\",[\"Vendor\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"vendor_code\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v2\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"x\",\"mangled\":\"x{0}\"}],[\"v1\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":16,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeInitialized\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}]],[\"MustBeValid\",5,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"mem_leak_usage.c\"],\"line\":19,\"col\":17},\"history\":\"_\"}],null]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]],[\"NotEqual\",[\"Linear\",[[[\"v2\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]],[\"Const\",{\"num\":\"0\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[16,18,19]}",
-                                "[[\"x\",\"v5\"]]"
+                                "{\"post\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]],[\"v6\",[[[\"Dereference\"],[\"v5\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v2\",[[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v5\",[[\"Blame\",[\"Unknown\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]],[\"v6\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"WrittenTo\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"Blame\",[\"Client\"],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"MemoryLeak\"],[\"UseAfterFree\"],[\"NullPointerDereference\"]],[[\"Update\"],[\"Update\"],[\"Update\"]],\"set\"]]]]},\"pre\":{\"heap\":[[\"v1\",[[[\"Dereference\"],[\"v3\",\"_\"]]]],[\"v2\",[[[\"Dereference\"],[\"v5\",\"_\"]]]],[\"v3\",[[[\"Dereference\"],[\"v6\",\"_\"]]]]],\"stack\":[[[\"ProgramVar\",{\"plain\":\"y\",\"mangled\":\"y{0}\"}],[\"v1\",\"_\"]],[[\"ProgramVar\",{\"plain\":\"v\",\"mangled\":\"v{1}\"}],[\"v2\",\"_\"]]],\"attrs\":[[\"v1\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v2\",[[\"MustBeInitialized\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}]],[\"MustBeValid\",0,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":3,\"col\":1},\"history\":\"_\"}],null]]],[\"v3\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeInitialized\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}]],[\"MustBeValid\",2,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":5,\"col\":9},\"history\":\"_\"}],null]]],[\"v6\",[[\"ISLAbduced\",[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}]],[\"MustBeValid\",8,[\"Immediate\",{\"location\":{\"file\":[\"RelativeProjectRoot\",\"our_example.c\"],\"line\":6,\"col\":5},\"history\":\"_\"}],null]]]]},\"path_condition\":{\"known\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]},\"pruned\":[],\"both\":{\"var_eqs\":[],\"linear_eqs\":[],\"term_eqs\":[],\"tableau\":[],\"atoms\":[[\"Equal\",[\"IsInt\",[\"Linear\",[[[\"v5\",{\"num\":\"1\",\"den\":\"1\"}]],{\"num\":\"0\",\"den\":\"1\"}]]],[\"Const\",{\"num\":\"1\",\"den\":\"1\"}]]]}},\"decompiler\":\"<opaque>\",\"topl\":\"<opaque>\",\"need_specialization\":false,\"skipped_calls\":\"_\",\"full_trace\":[3,5,6]}",
+                                "[[\"y\",\"v5\"],[\"v\",\"v9\"]]",
+                                {
+                                    "file": [
+                                        "RelativeProjectRoot",
+                                        "our_example.c"
+                                    ],
+                                    "line": 24,
+                                    "col": 9
+                                }
                             ]
                         ]
                     ]
@@ -1271,9 +1387,47 @@
                                     "den": "1"
                                 }
                             ]
+                        ],
+                        [
+                            "v8",
+                            [
+                                [
+                                    [
+                                        "a3",
+                                        {
+                                            "num": "1",
+                                            "den": "1"
+                                        }
+                                    ]
+                                ],
+                                {
+                                    "num": "1",
+                                    "den": "1"
+                                }
+                            ]
+                        ],
+                        [
+                            "v9",
+                            [
+                                [],
+                                {
+                                    "num": "1",
+                                    "den": "1"
+                                }
+                            ]
                         ]
                     ],
                     "term_eqs": [
+                        [
+                            [
+                                "Const",
+                                {
+                                    "num": "1",
+                                    "den": "1"
+                                }
+                            ],
+                            "v9"
+                        ],
                         [
                             [
                                 "Linear",
@@ -1294,42 +1448,31 @@
                                 ]
                             ],
                             "v5"
+                        ],
+                        [
+                            [
+                                "Linear",
+                                [
+                                    [
+                                        [
+                                            "a3",
+                                            {
+                                                "num": "1",
+                                                "den": "1"
+                                            }
+                                        ]
+                                    ],
+                                    {
+                                        "num": "1",
+                                        "den": "1"
+                                    }
+                                ]
+                            ],
+                            "v8"
                         ]
                     ],
                     "tableau": [],
-                    "atoms": [
-                        [
-                            "Equal",
-                            [
-                                "IsInt",
-                                [
-                                    "Linear",
-                                    [
-                                        [
-                                            [
-                                                "v8",
-                                                {
-                                                    "num": "1",
-                                                    "den": "1"
-                                                }
-                                            ]
-                                        ],
-                                        {
-                                            "num": "0",
-                                            "den": "1"
-                                        }
-                                    ]
-                                ]
-                            ],
-                            [
-                                "Const",
-                                {
-                                    "num": "1",
-                                    "den": "1"
-                                }
-                            ]
-                        ]
-                    ]
+                    "atoms": []
                 },
                 "pruned": [
                     [
@@ -1381,9 +1524,47 @@
                                     "den": "1"
                                 }
                             ]
+                        ],
+                        [
+                            "v8",
+                            [
+                                [
+                                    [
+                                        "a4",
+                                        {
+                                            "num": "1",
+                                            "den": "1"
+                                        }
+                                    ]
+                                ],
+                                {
+                                    "num": "1",
+                                    "den": "1"
+                                }
+                            ]
+                        ],
+                        [
+                            "v9",
+                            [
+                                [],
+                                {
+                                    "num": "1",
+                                    "den": "1"
+                                }
+                            ]
                         ]
                     ],
                     "term_eqs": [
+                        [
+                            [
+                                "Const",
+                                {
+                                    "num": "1",
+                                    "den": "1"
+                                }
+                            ],
+                            "v9"
+                        ],
                         [
                             [
                                 "Linear",
@@ -1404,41 +1585,31 @@
                                 ]
                             ],
                             "v5"
+                        ],
+                        [
+                            [
+                                "Linear",
+                                [
+                                    [
+                                        [
+                                            "a4",
+                                            {
+                                                "num": "1",
+                                                "den": "1"
+                                            }
+                                        ]
+                                    ],
+                                    {
+                                        "num": "1",
+                                        "den": "1"
+                                    }
+                                ]
+                            ],
+                            "v8"
                         ]
                     ],
                     "tableau": [],
                     "atoms": [
-                        [
-                            "Equal",
-                            [
-                                "IsInt",
-                                [
-                                    "Linear",
-                                    [
-                                        [
-                                            [
-                                                "v8",
-                                                {
-                                                    "num": "1",
-                                                    "den": "1"
-                                                }
-                                            ]
-                                        ],
-                                        {
-                                            "num": "0",
-                                            "den": "1"
-                                        }
-                                    ]
-                                ]
-                            ],
-                            [
-                                "Const",
-                                {
-                                    "num": "1",
-                                    "den": "1"
-                                }
-                            ]
-                        ],
                         [
                             "NotEqual",
                             [
@@ -1475,9 +1646,12 @@
             "need_specialization": false,
             "skipped_calls": "_",
             "full_trace": [
-                33,
-                34,
-                35
+                19,
+                20,
+                21,
+                23,
+                24,
+                27
             ]
         }
     ]

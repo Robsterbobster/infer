@@ -437,7 +437,7 @@ let delete_edges_in_callee_pre_from_caller ~edges_pre_opt addr_caller call_state
         (subst, post_edges) )
 
 
-let record_pre_post addr_caller callee_proc_name astate mappings pre_post = 
+let record_pre_post addr_caller callee_proc_name call_loc astate mappings pre_post = 
   (* Add blame meta info, i.e. summary of callee *)
   if Config.pulse_isl then (
     let callee_name = Procname.get_method callee_proc_name in
@@ -454,7 +454,7 @@ let record_pre_post addr_caller callee_proc_name astate mappings pre_post =
     | Some (_, _, _, _, procname) -> 
       procname
     in
-    (* Record pre/post when 1. caller and callee entities not match 2. same entity but different function names *)
+    (* Record pre/post when 1. caller and callee entities not match 2. same entity and function names, i.e. recursion *)
     let need_record_pre_post = (not (String.equal callee_entity_str caller_entity_str)) || ((String.equal callee_name caller_name) && (String.equal callee_entity_str caller_entity_str)) 
     in
     if need_record_pre_post then ((* prepost is already the summary of the callee function *) 
@@ -464,7 +464,7 @@ let record_pre_post addr_caller callee_proc_name astate mappings pre_post =
       let summary_str = Yojson.Safe.to_string summary_json in
       let mappings_json = [%yojson_of: PulseSummaryPost.mappings] mappings in
       let mappings_str = Yojson.Safe.to_string mappings_json in
-      let astate = AddressAttributes.add_blame_path_cond addr_caller summary_str mappings_str astate in
+      let astate = AddressAttributes.add_blame_path_cond addr_caller summary_str mappings_str call_loc astate in
       (*L.debug_dev "Added path cond state: %a\n" AbductiveDomain.pp astate;*)
       astate
       (*let summary = AbductiveDomain.summary_of_post
@@ -511,7 +511,7 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
         in
         let astate = if resolve_conflict then PulseOperations.remove_blame_attr addr_caller astate else astate in
         (* Record pre post *)
-        let astate = record_pre_post addr_caller callee_proc_name astate mappings pre_post in
+        let astate = record_pre_post addr_caller callee_proc_name call_loc astate mappings pre_post in
         (* Add error origin if is_isl_error_prepost is true, which implies a latent bug is manifested *)
         let astate = add_error_origin addr_caller callee_proc_name ~is_isl_error_prepost astate in  
         (*L.debug_dev "CALLER ADDR: %a\n" AbstractValue.pp addr_caller;

@@ -30,7 +30,7 @@ val add : AbstractValue.t -> Attributes.t -> t -> t
 
 val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> SanitisationPolicy.t list -> ConflictPolicy.t list -> string -> t -> t
 
-val add_blame_path_cond : AbstractValue.t -> string -> string -> t -> t
+val add_blame_path_cond : AbstractValue.t -> string -> string -> Location.t -> t -> t
 
 val add_error_origin : AbstractValue.t -> string -> Entity.t -> t -> t
 
