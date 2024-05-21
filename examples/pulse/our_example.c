@@ -6,16 +6,6 @@ void set (int** y, int v){
     *z =  v;
 }
 
-/*
-int* vendor (int v){
-    return NULL;
-}
-
-void foo1(){
-    int* x = vendor(1);
-    *x = 1;
-}
-*/
 void foo (){
     int** x = malloc(sizeof(int*));
     if(x != NULL){
@@ -26,4 +16,3 @@ void foo (){
     }   
     free(x);
 }
-

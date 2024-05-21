@@ -34,9 +34,7 @@ type mapping = (string * AbstractValue.t) [@@deriving yojson_of, compare]
 
 type mappings = mapping list [@@deriving yojson_of, compare]
 
-type info = string * string * int * int [@@deriving yojson_of]
-
-type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
+type info = string * Location.t [@@deriving yojson_of]
 
 val from_lists_of_summaries : 
   (AbductiveDomain.summary ExecutionDomain.base_t * label) list -> string
@@ -44,10 +42,10 @@ val from_lists_of_summaries :
 
 val construct_issue_report: Procdesc.t -> Location.t -> string -> string -> AbductiveDomain.summary -> issue_report
 
-val construct_mapping: Pvar.t -> AbstractValue.t -> mapping
+val construct_mapping: string -> AbstractValue.t -> mapping
+
+val append_to_mappings: mapping -> mappings -> mappings
 
 val from_formals_actuals_lst: Pvar.t list -> AbstractValue.t list -> mappings
 
-val construct_info : Procname.t -> string -> int -> int -> info
-
-val construct_context : Procname.t -> string -> int -> int -> AbductiveDomain.t -> context
+val construct_info : Procname.t -> Location.t -> info

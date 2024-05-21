@@ -122,7 +122,7 @@ let unknown_call ({PathContext.timestamp} as path) call_loc (reason : CallEvent.
   |> add_skipped_proc
 
 let apply_callee tenv ({PathContext.timestamp} as path) ~caller_proc_desc callee_pname call_loc
-    callee_exec_state ~ret mappings ~captured_formals ~captured_actuals ~formals ~actuals astate =
+    callee_exec_state ~ret mappings ~is_in_vendor_world ~captured_formals ~captured_actuals ~formals ~actuals astate =
   let open ExecutionDomain in
   let ( let* ) x f =
     SatUnsat.bind
@@ -134,7 +134,7 @@ let apply_callee tenv ({PathContext.timestamp} as path) ~caller_proc_desc callee
   let map_call_result ~is_isl_error_prepost callee_prepost ~f =
     let sat_unsat, contradiction =
       PulseInterproc.apply_prepost path ~is_isl_error_prepost callee_pname call_loc ~callee_prepost
-        mappings ~captured_formals ~captured_actuals ~formals ~actuals astate
+        mappings ~is_in_vendor_world ~captured_formals ~captured_actuals ~formals ~actuals astate
     in
     let sat_unsat =
       let* post, return_val_opt, subst = sat_unsat in
@@ -357,6 +357,7 @@ let call_aux tenv path caller_proc_desc call_loc callee_pname ret actuals mappin
   if should_keep_at_most_one_disjunct then
     L.d_printfln "Will keep at most one disjunct because %a is in block list" Procname.pp
       callee_pname ;
+  let is_in_vendor_world = PulseOperations.check_in_vendor_world (Procname.get_method callee_pname) in 
   (* call {!AbductiveDomain.PrePost.apply} on each pre/post pair in the summary. *)
   List.fold ~init:([], None) exec_states ~f:(fun (posts, contradiction) callee_exec_state ->
       if should_keep_at_most_one_disjunct && not (List.is_empty posts) then (posts, contradiction)
@@ -372,7 +373,7 @@ let call_aux tenv path caller_proc_desc call_loc callee_pname ret actuals mappin
         in
         (* apply all pre/post specs *)
         match
-          apply_callee tenv path ~caller_proc_desc callee_pname call_loc callee_exec_state mappings
+          apply_callee tenv path ~caller_proc_desc callee_pname call_loc callee_exec_state mappings ~is_in_vendor_world
             ~captured_formals ~captured_actuals ~formals ~actuals ~ret astate
         with
         | Unsat, new_contradiction ->

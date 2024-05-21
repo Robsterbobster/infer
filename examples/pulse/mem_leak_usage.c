@@ -13,7 +13,7 @@ void foo(){
 */
 
 
-int* vendor_code(int* x){
+void vendor_code(int* x){
     int value;
     if (x != NULL){
         value = *x;
@@ -23,6 +23,7 @@ int* vendor_code(int* x){
 
 void foo1(){
     int* p1 = (int*) malloc(sizeof(int));
+    int p2[] = {1,2,3};
     vendor_code(p1);
     if (p1 != NULL){
         *p1 = 1;

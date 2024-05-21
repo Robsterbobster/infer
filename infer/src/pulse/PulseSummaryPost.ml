@@ -34,9 +34,7 @@ type mapping = string * AbstractValue.t [@@deriving yojson_of, compare]
 
 type mappings = mapping list [@@deriving yojson_of, compare]
 
-type info = string * string * int * int [@@deriving yojson_of]
-
-type context = (info * AbductiveDomain.t) [@@deriving yojson_of]
+type info = string * Location.t [@@deriving yojson_of]
 
 (* From the computed summary with label, construct a structure for dumping information. *)
 let construct_summary_post (summary_label : AbductiveDomain.summary ExecutionDomain.base_t * label) (path: string)=
@@ -63,17 +61,16 @@ let from_lists_of_summaries summary_labels path=
   let result_list = List.map summary_labels ~f:(fun summary -> construct_summary_post summary path) in
   result_list
 
-let construct_mapping (formal: (Pvar.t)) (actual: (AbstractValue.t)) = (Mangled.to_string (Pvar.get_name formal), actual)
+let construct_mapping (formal: (string)) (actual: (AbstractValue.t)) = (formal, actual)
+
+let append_to_mappings (new_mapping: mapping) (maps: mappings) = maps @ [new_mapping]
 
 let from_formals_actuals_lst (formals: (Pvar.t list)) (actuals: (AbstractValue.t list))= 
+  let formals = List.map formals ~f:(fun formal -> Mangled.to_string (Pvar.get_name formal)) in
   let result_list = List.map2 formals actuals ~f:construct_mapping in
   match result_list with
   | List.Or_unequal_lengths.Ok lst -> lst
   | List.Or_unequal_lengths.Unequal_lengths -> []  
 
   
-let construct_info (proc_name:(Procname.t)) (file_path:(string)) (line_num: (int)) (column_num: (int)) = Procname.get_method proc_name, file_path, line_num, column_num
-
-let construct_context (proc_name:(Procname.t)) (file_path:(string)) (line_num: (int)) (column_num: (int)) (summary: AbductiveDomain.t)= 
-  let info = construct_info proc_name file_path line_num column_num in
-  (info, summary)
+let construct_info (proc_name:(Procname.t)) (loc: (Location.t)) = Procname.get_method proc_name, loc

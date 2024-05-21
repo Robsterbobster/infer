@@ -108,17 +108,38 @@ let allocate allocator address location memory =
   (Attribute.Allocated (allocator, Immediate {location; history= ValueHistory.epoch}))
   memory
   
-let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname memory = add_one address
-(Attribute.Blame (entity, erroneous_prop_ls, san_poli_ls, conf_poli_ls, procname))
-memory
+let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname memory = 
+  let attrs = (Graph.find_opt address memory) in
+  let is_empty = match attrs with
+  | Some attr -> Attributes.is_empty attr
+  | None -> true
+  in
+  if not is_empty then
+    add_one address
+  (Attribute.Blame (entity, erroneous_prop_ls, san_poli_ls, conf_poli_ls, procname))
+  memory else memory
 
-let add_blame_path_cond address astate mappings call_loc memory = add_one address
-(Attribute.BlamePathCondition (astate, mappings, call_loc))
-memory
+let add_blame_path_cond address callee_name astate mappings call_loc memory = 
+  let attrs = (Graph.find_opt address memory) in
+  let is_empty = match attrs with
+  | Some attr -> Attributes.is_empty attr
+  | None -> true
+  in
+  if not is_empty then
+  add_one address
+  (Attribute.BlamePathCondition (callee_name, astate, mappings, call_loc))
+  memory else memory
 
-let add_error_origin address func_name entity memory = add_one address
-(Attribute.ErrorOrigin (func_name, entity))
-memory
+let add_error_origin address func_name entity memory = 
+  let attrs = (Graph.find_opt address memory) in
+  let is_empty = match attrs with
+  | Some attr -> Attributes.is_empty attr
+  | None -> true
+  in
+  if not is_empty then
+  add_one address
+  (Attribute.ErrorOrigin (func_name, entity))
+  memory else memory
 
 let java_resource_release address memory = add_one address Attribute.JavaResourceReleased memory
 
@@ -181,8 +202,8 @@ let remove_blame_attr address memory =
 
 let remove_blame_path_cond_attr address memory =
   match get_attribute Attributes.get_blame_path_cond address memory with
-  | Some (astate, mappings, call_loc) ->
-      remove_one address (Attribute.BlamePathCondition (astate, mappings, call_loc)) memory
+  | Some (callee_name, astate, mappings, call_loc) ->
+      remove_one address (Attribute.BlamePathCondition (callee_name, astate, mappings, call_loc)) memory
   | None ->
       memory
 

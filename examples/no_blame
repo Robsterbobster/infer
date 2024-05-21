@@ -1,0 +1,102 @@
+Issue location: line 28, column 9
+Issue type: Memory Leak
+Responsible var:
+State:
+unsat:false,
+bo: { v5 -> [1, +oo], v9 -> 0, v10 -> 1 },
+citv: { v5 -> ≥1, v9 -> =null, v10 -> =1 },
+formula: known=true (no var=var)
+               &&
+               v5 = a1 +1 ∧ v9 = 0 ∧ v10 = 1
+               &&
+               0=v9∧1=v10∧[a1 +1]=v5
+               &&
+               true (no tableau)
+               &&
+               {is_int([v8]) = 1},
+         pruned={[v5] ≠ 0},
+         both=true (no var=var)
+              &&
+              v5 = a2 +1 ∧ v9 = 0 ∧ v10 = 1
+              &&
+              0=v9∧1=v10∧[a2 +1]=v5
+              &&
+              true (no tableau)
+              &&
+              {is_int([v8]) = 1}∧{[v5] ≠ 0}
+{ roots={ };
+  mem  ={ v2 -> { * -> v5 }, v5 -> { * -> v10 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0), Uninitialized },
+          v2 -> { s&p1 (variable `p1` declared here at line 25 :t1 ) at line 28, column 9,
+                  MustBeValid(, None, t=0),
+                  WrittenTo  },
+          v5 -> { Allocated,
+                  DynamicType ,
+                  ISLAbduced ,
+                  MustBeValid(, None, t=0),
+                  UnreachableAt(line 28, column 9),
+                  WrittenTo  },
+          v9 -> { Invalid ConstantDereference(is assigned to the null pointer) },
+          v10 -> { Invalid ConstantDereference(is assigned to the constant 1) } };}
+PRE=[{ roots={ };
+       mem  ={ };
+       attrs={ };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=24
+25
+26
+27
+28
+foo2 [defined, Return type: void, Formals: None, Locals:  p1:int*]
+
+Issue location: line 35, column 5
+Issue type: Memory Leak
+Responsible var:
+State:
+unsat:false,
+bo: { v5 -> [1, +oo] },
+citv: { v5 -> ≥1 },
+formula: known=true (no var=var)
+               &&
+               v5 = a1 +1
+               &&
+               [a1 +1]=v5
+               &&
+               true (no tableau)
+               &&
+               {is_int([v8]) = 1},
+         pruned={[v5] ≠ 0},
+         both=true (no var=var)
+              &&
+              v5 = a2 +1
+              &&
+              [a2 +1]=v5
+              &&
+              true (no tableau)
+              &&
+              {is_int([v8]) = 1}∧{[v5] ≠ 0}
+{ roots={ };
+  mem  ={ v2 -> { * -> v5 }, v5 -> { * -> v8 } };
+  attrs={ v1 -> { MustBeValid(, None, t=0), Uninitialized },
+          v2 -> { s&p1 (variable `p1` declared here at line 34 :t1 ) at line 35, column 5,
+                  MustBeValid(, None, t=0),
+                  WrittenTo  },
+          v5 -> { Allocated,
+                  DynamicType ,
+                  ISLAbduced ,
+                  MustBeValid(, None, t=0),
+                  Uninitialized,
+                  UnreachableAt(line 35, column 5) } };}
+PRE=[{ roots={ };
+       mem  ={ };
+       attrs={ };}]
+need_specialization=false
+skipped_calls={ }
+Topl={len=0;content=
+       [  ]}
+full_trace=33
+34
+35

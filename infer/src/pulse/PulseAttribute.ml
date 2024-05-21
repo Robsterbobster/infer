@@ -82,7 +82,7 @@ module Attribute = struct
     | UnreachableAt of Location.t
     | WrittenTo of Trace.t
     | Blame of Entity.t * (ErroneousProperty.t list) * (SanitisationPolicy.t list) * (ConflictPolicy.t list) * string
-    | BlamePathCondition of string * string * Location.t(* Due to cyclic import, record state using json string *)
+    | BlamePathCondition of string * string * string * Location.t(* Due to cyclic import, record state using json string *)
     | ErrorOrigin of string * Entity.t (* the function name of the error summary and its entity *)
   [@@deriving compare, variants, yojson_of]
 
@@ -474,7 +474,7 @@ module Attributes = struct
     get_by_rank Attribute.blame_rank ~dest:(function [@warning "-8"] |Blame (entity, errneous_prop, san_poli, conf_poli, procname) -> (entity, errneous_prop, san_poli, conf_poli, procname) )
 
   let get_blame_path_cond =
-    get_by_rank Attribute.blame_path_cond_rank ~dest:(function [@warning "-8"] |BlamePathCondition (astate, mappings, call_loc) -> (astate, mappings, call_loc) )
+    get_by_rank Attribute.blame_path_cond_rank ~dest:(function [@warning "-8"] |BlamePathCondition (callee_name, astate, mappings, call_loc) -> (callee_name, astate, mappings, call_loc) )
 
   let get_error_origin =
     get_by_rank Attribute.error_origin_rank ~dest:(function [@warning "-8"] |ErrorOrigin (func_name, entity) -> (func_name, entity) )

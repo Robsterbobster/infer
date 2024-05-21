@@ -131,7 +131,7 @@ module AddressAttributes : sig
   val add_blame : AbstractValue.t -> Entity.t -> ErroneousProperty.t list -> SanitisationPolicy.t list -> ConflictPolicy.t list -> string -> t -> t
   (** add the blame attribute to the post *)
 
-  val add_blame_path_cond : AbstractValue.t -> string -> string -> Location.t -> t -> t
+  val add_blame_path_cond : AbstractValue.t -> string -> string -> string -> Location.t -> t -> t
   (** add the blame path condition to the post *)
 
   val add_error_origin : AbstractValue.t -> string -> Entity.t -> t -> t

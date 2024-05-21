@@ -21,14 +21,11 @@ let append_to_json_array original_json new_data_json =
 
 let write_issue_report_json (issue_report: PulseSummaryPost.issue_report) =
   let json_report = [%yojson_of: PulseSummaryPost.issue_report] issue_report in
-  let existing_json = read_existing_json "issue_report.json" in
-  let json = append_to_json_array existing_json json_report in
-  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+  let json_str = Yojson.Safe.to_string json_report in
     (* Yojson.Safe.to_channel stdout json_content;
     Out_channel.newline stdout;
     Out_channel.flush stdout; *)
-  in
-  f_json json "issue_report.json"
+  Config.issue_report_write_cache := !Config.issue_report_write_cache @ [json_str]
 
 let report ~is_suppressed ~latent proc_desc err_log astate diagnostic  =
   let open Diagnostic in

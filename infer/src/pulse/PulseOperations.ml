@@ -217,15 +217,21 @@ let add_blame addr entity procname result =
   AddressAttributes.add_blame addr entity error_prop_ls san_poli_ls conf_poli_ls procname result  
 
 let read_vendor_names_list () =
-  let json = Yojson.Safe.from_file "vendor_names.json" in
-  let lst = match json with
-    | `List names -> names
-    | _ -> L.die InternalError "Expected a JSON array"
-  in
-  List.map lst (function
-    | `String name -> name
-    | _ -> L.die InternalError "Expected a string"
-  ) 
+  match !Config.vendor_names_cache with
+  | Some lst -> lst
+  | None ->
+    let json = Yojson.Safe.from_file "vendor_names.json" in
+    let lst = match json with
+      | `List names -> names
+      | _ -> L.die InternalError "Expected a JSON array"
+    in
+    let names = List.map lst (function
+      | `String name -> name
+      | _ -> L.die InternalError "Expected a string"
+    ) in
+    Config.vendor_names_cache := Some names;
+    names
+  
 
 let check_in_vendor_world name = 
   List.exists (read_vendor_names_list ()) ~f:(fun x -> String.equal x name)

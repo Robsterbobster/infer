@@ -342,8 +342,8 @@ module AddressAttributes = struct
   let add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.add_blame address entity erroneous_prop_ls san_poli_ls conf_poli_ls procname)
 
-  let add_blame_path_cond address astate_str mappings_str call_loc astate =
-    map_post_attrs astate ~f:(BaseAddressAttributes.add_blame_path_cond address astate_str mappings_str call_loc)
+  let add_blame_path_cond address callee_name astate_str mappings_str call_loc astate =
+    map_post_attrs astate ~f:(BaseAddressAttributes.add_blame_path_cond address callee_name astate_str mappings_str call_loc)
 
   let add_error_origin address func_name entity astate =
     map_post_attrs astate ~f:(BaseAddressAttributes.add_error_origin address func_name entity)
@@ -1318,6 +1318,7 @@ let filter_for_summary tenv proc_name astate0 =
   L.d_printfln "Canonicalizing...@\n" ;
   let* astate_before_filter = canonicalize astate0 in
   L.d_printfln "Canonicalized state: %a@\n" pp astate_before_filter ;
+  (*L.debug_dev "Canonicalized state: %a@\n" pp astate_before_filter ;*)
   (* Remove the stack from the post as it's not used: the values of formals are the same as in the
      pre. Moreover, formals can be treated as local variables inside the function's body so we need
      to restore their initial values at the end of the function. Removing them altogether achieves
@@ -1331,6 +1332,7 @@ let filter_for_summary tenv proc_name astate0 =
             (BaseAddressAttributes.get_dynamic_type (astate.post :> BaseDomain.t).attrs)
           astate.path_condition astate.topl }
   in
+  (*L.debug_dev "After topl filter: %a \n" pp astate; *)
   let astate, pre_live_addresses, post_live_addresses, dead_addresses =
     discard_unreachable_ ~for_summary:true astate
   in

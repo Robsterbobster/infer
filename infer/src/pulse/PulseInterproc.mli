@@ -36,6 +36,7 @@ val apply_prepost :
   -> Location.t
   -> callee_prepost:AbductiveDomain.t
   -> PulseSummaryPost.mappings
+  -> is_in_vendor_world: bool
   -> captured_formals:(Var.t * Typ.t) list
   -> captured_actuals:((AbstractValue.t * ValueHistory.t) * Typ.t) list
   -> formals:(Var.t * Typ.t) list

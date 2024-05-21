@@ -96,6 +96,15 @@ let build_system_of_exe_name name =
       |> List.dedup_and_sort ~compare:String.compare )
 
 
+(* Global var *)
+let vendor_names_cache = ref None
+
+let vendor_names_write_cache = ref []
+
+let vendor_info_write_cache = ref []
+
+let issue_report_write_cache = ref []
+
 (** Constant configuration values *)
 
 let anonymous_block_num_sep = "_"

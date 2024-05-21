@@ -30,6 +30,14 @@ type build_system =
 
 type scheduler = File | Restart | SyntacticCallGraph [@@deriving equal]
 
+val vendor_names_cache : string list option ref
+
+val vendor_names_write_cache : string list ref
+
+val vendor_info_write_cache : string list ref
+
+val issue_report_write_cache: string list ref
+
 val build_system_of_exe_name : string -> build_system
 
 val string_of_build_system : build_system -> string
