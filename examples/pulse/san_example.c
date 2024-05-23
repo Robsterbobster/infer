@@ -6,14 +6,3 @@ void foo1(){
     *x = 1;
 }
 
-/*void foo (){
-    int* x = (int*)malloc(sizeof(int));
-    int y = rand();
-    free(x);
-    set(x, y);
-    //int* z = set(x, y);
-    //int a = *z;
-    free(x);
-    //free(z);
-}*/
-

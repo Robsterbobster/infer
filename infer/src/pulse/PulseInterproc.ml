@@ -458,12 +458,12 @@ let record_pre_post addr_caller callee_proc_name ~is_in_vendor_world call_loc as
     in
     if need_record_pre_post then ((* prepost is already the summary of the callee function *) 
       let astate = PulseOperations.remove_blame_path_cond_attr addr_caller astate in
-      let summary = AbductiveDomain.to_summary pre_post in
-      let summary_json = [%yojson_of: AbductiveDomain.summary] summary in
-      let summary_str = Yojson.Safe.to_string summary_json in
+      let path_cond = astate.path_condition in
+      let path_cond_json = [%yojson_of: PathCondition.t] path_cond in
+      let path_cond_str = Yojson.Safe.to_string path_cond_json in
       let mappings_json = [%yojson_of: PulseSummaryPost.mappings] mappings in
       let mappings_str = Yojson.Safe.to_string mappings_json in
-      let astate = AddressAttributes.add_blame_path_cond addr_caller callee_name summary_str mappings_str call_loc astate in
+      let astate = AddressAttributes.add_blame_path_cond addr_caller callee_name path_cond_str mappings_str call_loc astate in
       astate
       ) else astate
     ) 

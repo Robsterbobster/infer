@@ -163,12 +163,20 @@ let append_to_json_array original_json new_data_json =
 let write_vendor_info_json (proc_name:(Procname.t)) (loc:(Location.t))  =
   let info = SummaryPost.construct_info proc_name loc in
   let json = [%yojson_of: SummaryPost.info] info in
-  let json_str = Yojson.Safe.to_string json in
-  Config.vendor_info_write_cache := !Config.vendor_info_write_cache @ [json_str]
+  let existing_json = read_existing_json "vendor_info.json" in
+  let json = append_to_json_array existing_json json in
+  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+  in
+  f_json json "vendor_info.json"
 
-let write_vendor_names_json (proc_name:(Procname.t))  =
-  let name = Procname.get_method proc_name in
-  Config.vendor_names_write_cache := !Config.vendor_names_write_cache @ [name]
+  let write_vendor_names_json (proc_name:(Procname.t)) =
+    let name = Procname.get_method proc_name in
+    let json_context = [%yojson_of: string] name in
+    let existing_json = read_existing_json "vendor_names.json" in
+    let json = append_to_json_array existing_json json_context in
+    let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+    in
+    f_json json "vendor_names.json"
 
 
 let write_summary_and_posts_json (summary_labels_list : (AbductiveDomain.summary ExecutionDomain.base_t * SummaryPost.label) list

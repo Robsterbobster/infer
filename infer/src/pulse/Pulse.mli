@@ -8,7 +8,3 @@
 open! IStd
 
 val checker : PulseSummary.t InterproceduralAnalysis.t -> PulseSummary.t option
-
-val get_autocode_proc_name: SourceFile.t -> Procname.t
-
-val get_autocode_function_procname: unit -> Procname.t
