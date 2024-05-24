@@ -505,13 +505,15 @@ let record_post_cell ({PathContext.timestamp} as path) callee_proc_name call_loc
           | _ -> false
         in
         let astate = if resolve_conflict then PulseOperations.remove_blame_attr addr_caller astate else astate in
+        (*L.debug_dev "CALLER ADDR: %a\n" AbstractValue.pp addr_caller;
+        L.debug_dev "CALLEE BLAME ENTITY: %s\n" entity_str;*)
+        let astate = AddressAttributes.add_attrs addr_caller attrs_post_caller astate in
         (* Record pre post *)
         let astate = record_pre_post addr_caller callee_proc_name ~is_in_vendor_world call_loc astate mappings pre_post in
         (* Add error origin if is_isl_error_prepost is true, which implies a latent bug is manifested *)
         let astate = add_error_origin addr_caller callee_proc_name ~is_isl_error_prepost ~is_in_vendor_world astate in  
-        (*L.debug_dev "CALLER ADDR: %a\n" AbstractValue.pp addr_caller;
-        L.debug_dev "CALLEE BLAME ENTITY: %s\n" entity_str;*)
-        AddressAttributes.add_attrs addr_caller attrs_post_caller astate)
+        astate
+        )
       else AddressAttributes.abduce_and_add addr_caller attrs_post_caller astate
     in
     {call_state with astate}
