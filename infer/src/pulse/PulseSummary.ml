@@ -6,6 +6,7 @@
  *)
 
 open! IStd
+open Unix
 module F = Format
 module L = Logging
 open PulseBasicInterface
@@ -160,23 +161,36 @@ let append_to_json_array original_json new_data_json =
   | `List lst -> `List (lst @ [new_data_json])
   | _ -> `List ([new_data_json])
 
+(* Acquire a lock on the file *)
+let lock_file fname =
+  let fd = openfile fname ~perm:0o644 ~mode:[O_RDWR; O_CREAT] in
+  lockf fd F_LOCK 0L;
+  fd
+
+(* Release the lock on the file *)
+let unlock_file fd =
+  lockf fd F_ULOCK 0L;
+  close fd
+
 let write_vendor_info_json (proc_name:(Procname.t)) (loc:(Location.t))  =
   let info = SummaryPost.construct_info proc_name loc in
   let json = [%yojson_of: SummaryPost.info] info in
+  let fd = lock_file "vendor_info.json" in
   let existing_json = read_existing_json "vendor_info.json" in
   let json = append_to_json_array existing_json json in
   let f_json json_content fname = Yojson.Safe.to_file fname json_content;
   in
-  f_json json "vendor_info.json"
+  f_json json "vendor_info.json"; unlock_file fd
 
-  let write_vendor_names_json (proc_name:(Procname.t)) =
-    let name = Procname.get_method proc_name in
-    let json_context = [%yojson_of: string] name in
-    let existing_json = read_existing_json "vendor_names.json" in
-    let json = append_to_json_array existing_json json_context in
-    let f_json json_content fname = Yojson.Safe.to_file fname json_content;
-    in
-    f_json json "vendor_names.json"
+let write_vendor_names_json (proc_name:(Procname.t)) =
+  let name = Procname.get_method proc_name in
+  let json_context = [%yojson_of: string] name in
+  let fd = lock_file "vendor_names.json" in
+  let existing_json = read_existing_json "vendor_names.json" in
+  let json = append_to_json_array existing_json json_context in
+  let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+  in
+  f_json json "vendor_names.json"; unlock_file fd
 
 
 let write_summary_and_posts_json (summary_labels_list : (AbductiveDomain.summary ExecutionDomain.base_t * SummaryPost.label) list
