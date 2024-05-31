@@ -457,6 +457,7 @@ let record_pre_post addr_caller callee_proc_name ~is_in_vendor_world call_loc as
     let need_record_pre_post = (not (String.equal callee_entity_str caller_entity_str)) || ((String.equal callee_name caller_name) && (String.equal callee_entity_str caller_entity_str)) 
     in
     if need_record_pre_post then ((* prepost is already the summary of the callee function *) 
+      (*L.debug_dev "Caller: %s \n Callee: %s\n" caller_entity_str callee_entity_str;*)
       let astate = PulseOperations.remove_blame_path_cond_attr addr_caller astate in
       let path_cond = astate.path_condition in
       let path_cond_json = [%yojson_of: PathCondition.t] path_cond in

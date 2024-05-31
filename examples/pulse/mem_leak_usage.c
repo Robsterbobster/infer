@@ -13,30 +13,35 @@ void foo(){
 */
 
 
-void vendor_code(int* x){
+int* vendor_code(int* x){
     int value;
-    if (x != NULL){
-        value = *x;
-    }
+    //foo1: successful deref, x's blame transfered to vendor 
+    //foo2: unsuccessful deref, no blame transfer, x's blame is client
+    value = *x;
     //do something
+    free(x);
+    //foo1: x's (resource's) blame is assigned to vendor 
+    x = (int*) malloc(sizeof(int));
+    assert(x == NULL);
+    return x;
 }
 
 void foo1(){
+    //blame of p1 is assigned to client
     int* p1 = (int*) malloc(sizeof(int));
-    int p2[] = {1,2,3};
-    vendor_code(p1);
-    if (p1 != NULL){
-        *p1 = 1;
-    }
+    assert (p1 != NULL);
+    p1 = vendor_code(p1);
+    // p1 is null, thus unsuccessful deref, p1's blame remains to vendor
+    *p1 = 1;
 }
-
 
 void foo2(){
+    //blame of p1 is assigned to client
     int* p1 = (int*) malloc(sizeof(int));
-    vendor_code(p1);
-    // do something unrelated to p1
+    assert (p1 == NULL);
+    p1 = vendor_code(p1);
+    *p1 = 1;
 }
-
 
 
 /*
