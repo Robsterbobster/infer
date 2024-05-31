@@ -191,16 +191,17 @@ let analyze source_files_to_analyze =
   let json = Yojson.Safe.from_string "[]" in
   let f_json json_content fname = Yojson.Safe.to_file fname json_content;
   in
-  Config.vendor_names_cache := None; 
-  Config.vendor_names_write_cache := [];
-  Config.vendor_info_write_cache := [];
-  Config.issue_report_write_cache := [];
-  f_json json "vendor_info.json";f_json json "issue_report.json" );
+  f_json json "issue_report.json"; if Config.record_vendor_info then f_json json "vendor_info.json" );
   if Config.vendor_pre_mode then (
     let json = Yojson.Safe.from_string "[]" in
     let f_json json_content fname = Yojson.Safe.to_file fname json_content;
     in
-    f_json json "vendor_names.json" );
+    f_json json "vendor_names.json"; f_json json "vendor_info.json" );
+  if Config.call_stats_mode then  (
+    let json = Yojson.Safe.from_string "[]" in
+    let f_json json_content fname = Yojson.Safe.to_file fname json_content;
+    in
+    f_json json "stats.json" );
   let results = if Config.pulse_fix_mode then (
     (* Special rountine for fix mode. Here, only 1 func needs to be analyzed. *)
     let fix_file = match Lazy.force (source_files_to_analyze) with
