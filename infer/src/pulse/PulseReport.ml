@@ -29,6 +29,17 @@ let lock_file fname =
 let unlock_file fd =
   lockf fd F_ULOCK 0L;
   close fd
+  
+(* Write JSON content to a temporary file *)
+let write_temp_json json_content temp_fname =
+let oc = open_out temp_fname in
+try
+  Yojson.Safe.to_channel oc json_content;
+  flush oc; (* Ensure all data is written *)
+  close_out oc
+with e ->
+  close_out_noerr oc;
+  raise e
 
 let write_issue_report_json (issue_report: PulseSummaryPost.issue_report) =
   let json_report = [%yojson_of: PulseSummaryPost.issue_report] issue_report in
