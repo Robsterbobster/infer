@@ -289,6 +289,8 @@ val add_blame: AbstractValue.t -> Entity.t -> string -> t -> t
 
 val check_in_vendor_world: string -> bool
 
+val vendor_world_is_empty: unit -> bool
+
 val java_resource_release : AbstractValue.t -> t -> t
 
 val add_dynamic_type : Typ.t -> AbstractValue.t -> t -> t

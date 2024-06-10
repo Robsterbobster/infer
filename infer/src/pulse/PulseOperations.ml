@@ -236,6 +236,9 @@ let read_vendor_names_list () =
 let check_in_vendor_world name = 
   List.exists (read_vendor_names_list ()) ~f:(fun x -> String.equal x name)
 
+let vendor_world_is_empty () = 
+  (List.length (read_vendor_names_list ())) == 0
+
 let eval_access path ?must_be_valid_reason mode location addr_hist access astate =
   let+ astate = check_addr_access path ?must_be_valid_reason mode location addr_hist astate in
   Memory.eval_edge addr_hist access astate
